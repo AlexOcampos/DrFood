@@ -8,29 +8,52 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.ocasoft.drfood.HomeActivity$PlaceholderFragment">
 
-    <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/HomeHeader_LinLay"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/home_header_height"
+        android:background="#ff8fdf7d">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/textView"
-        android:layout_below="@+id/section_label"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp" />
+        <TextView
+            android:id="@+id/HomeHeader_TV1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HOME - "/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="82dp" />
+        <TextView
+            android:id="@+id/section_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/HomeBody_LinLay"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/HomeHeader_LinLay"
+        android:background="#ffdf846e">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/home_button_name_trackfood"
+            android:id="@+id/HomeBody_LinLay_button1" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/home_button_name_showhistory"
+            android:id="@+id/HomeBody_LinLay_button2" />
+
+    </LinearLayout>
+
+
+
+
+
+
 
     <!--
     <RelativeLayout

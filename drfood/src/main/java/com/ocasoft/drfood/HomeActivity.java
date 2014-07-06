@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,7 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HomeActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -34,6 +37,9 @@ public class HomeActivity extends ActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+		Log.i("TEST","onCreate");
+
         setContentView(R.layout.activity_home);
 
         mNavigationDrawerFragment =
@@ -49,6 +55,7 @@ public class HomeActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+		Log.i("TEST","onNavigationDrawerItemSelected");
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
@@ -58,13 +65,13 @@ public class HomeActivity extends ActionBarActivity
 
     public void onSectionAttached(int number) {
         switch (number) {
-            case 1:
+            case 1: // Home
                 mTitle = getString(R.string.title_section1);
                 break;
-            case 2:
+            case 2: // Section 2
                 mTitle = getString(R.string.title_section2);
                 break;
-            case 3:
+            case 3: // Help
                 mTitle = getString(R.string.title_section3);
                 break;
         }
@@ -118,6 +125,7 @@ public class HomeActivity extends ActionBarActivity
          * number.
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
+			Log.i("NavDrawFrag","PlaceholderFragment newInstance");
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -131,11 +139,82 @@ public class HomeActivity extends ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+
+			View rootView = null;
+			TextView textView;
+
+			int sectionFragment = getArguments().getInt(ARG_SECTION_NUMBER);
+			switch (sectionFragment) {
+				case 1: // Home Fragment
+					Log.i("NavDrawFrag","PlaceholderFragment - onCreateView - Home section");
+					rootView = inflateHomeFragment(inflater, container);
+					break;
+				case 2: // Section2 Fragment
+					Log.i("NavDrawFrag","PlaceholderFragment - onCreateView - 2 section");
+					rootView = inflater.inflate(R.layout.fragment_section2, container, false);
+					textView = (TextView) rootView.findViewById(R.id.section_label);
+					textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+					break;
+				case 3: // Help Fragment
+					Log.i("NavDrawFrag","PlaceholderFragment - onCreateView - Help section");
+					rootView = inflater.inflate(R.layout.fragment_help, container, false);
+					textView = (TextView) rootView.findViewById(R.id.section_label);
+					textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+					break;
+			}
+
             return rootView;
         }
+
+		/**
+		 * Returns the Home Fragment for the NavigationDrawerFragment.
+		 * @param inflater the inflater of the onCreateView
+		 * @param container the container of the onCreateView
+		 * @return the home view
+		 */
+		private View inflateHomeFragment (LayoutInflater inflater, ViewGroup container) {
+			View rootView = null;
+			TextView textView;
+
+			// Inflate the home view
+			rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
+			// Load section number
+			textView = (TextView) rootView.findViewById(R.id.section_label);
+			textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+
+			// Actions for TrackFood's button
+			Button buttonTrackFood = (Button) rootView.findViewById(R.id.HomeBody_LinLay_button1);
+			buttonTrackFood.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					// TODO:
+					Context context = v.getContext();
+
+					CharSequence text = "Hello Button1. You will track food.";
+					int duration = Toast.LENGTH_LONG;
+
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+				}
+			});
+
+			// Actions for ShowHistory's button
+			Button buttonShowHistory = (Button) rootView.findViewById(R.id.HomeBody_LinLay_button2);
+			buttonShowHistory.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					// Do something in response to button click
+					Context context = v.getContext();
+
+					CharSequence text = "Hello Button2. You will show the food history.";
+					int duration = Toast.LENGTH_LONG;
+
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+				}
+			});
+
+			return rootView;
+		}
 
         @Override
         public void onAttach(Activity activity) {

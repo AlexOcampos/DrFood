@@ -7,7 +7,9 @@
          https://developer.android.com/design/patterns/navigation-drawer.html -->
     <dimen name="navigation_drawer_width">240dp</dimen>
 
-    <!-- Boton -->
+    <dimen name="home_header_height">60dp</dimen>
+
+    <!-- Boton
     <dimen name="plus_button_height">48dp</dimen>
-    <dimen name="plus_button_width">48dp</dimen>
+    <dimen name="plus_button_width">48dp</dimen> -->
 </resources>

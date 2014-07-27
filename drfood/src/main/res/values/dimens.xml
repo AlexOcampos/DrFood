@@ -5,9 +5,17 @@
 
         <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html -->
-    <dimen name="navigation_drawer_width">240dp</dimen>
+    <dimen name="navigation_drawer_width">350dp</dimen>
 
     <dimen name="home_header_height">60dp</dimen>
+
+    <dimen name="home_progressBar">200dp</dimen>
+
+
+    <dimen name="height_home_card">150dp</dimen>
+    <dimen name="padding_home_card">8dp</dimen>
+
+    <dimen name="padding_home_card_text">10dp</dimen>
 
     <!-- Boton
     <dimen name="plus_button_height">48dp</dimen>

@@ -1,3 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffd1d1d1">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,39 +15,213 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.ocasoft.drfood.HomeActivity$PlaceholderFragment">
 
+    <!-- START HEADER -->
     <LinearLayout
         android:id="@+id/HomeHeader_LinLay"
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/home_header_height"
-        android:background="#ff8fdf7d">
+        android:background="#ffd7fffd"
+        android:layout_marginBottom="@dimen/padding_home_card">
 
         <TextView
             android:id="@+id/HomeHeader_TV1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="MARTES 8 DE ABRIL"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginBottom="3dp"/>
+
+
+        <LinearLayout
+            android:id="@+id/progressBarLL"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="@dimen/home_progressBar"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBarHome"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/progressBar_label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="X cal from 200 recommended"
+                android:textAlignment="center"
+                android:textSize="10dp"
+                android:layout_marginBottom="3dp"
+                android:layout_below="@id/progressBarHome"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <!-- END HEADER -->
+
+    <!-- START NEW CARD -->
+    <LinearLayout
+        android:id="@+id/HomeBody_LinLay_Track"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/height_home_card"
+        android:layout_below="@id/HomeHeader_LinLay"
+        android:background="#ffffffff"
+        android:layout_marginTop="@dimen/padding_home_card"
+        android:layout_marginBottom="@dimen/padding_home_card"
+        android:clickable="true">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/height_home_card"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="@dimen/height_home_card"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical|center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/new_icon"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/section_label_4_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="@string/home_button_name_trackfood"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/padding_home_card_text"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <!-- END NEW CARD -->
+
+    <!-- START HISTORY CARD -->
+    <LinearLayout
+        android:id="@+id/HomeBody_LinLay_History"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/height_home_card"
+        android:layout_below="@id/HomeBody_LinLay_Track"
+        android:background="#ffffffff"
+        android:layout_marginTop="@dimen/padding_home_card"
+        android:layout_marginBottom="@dimen/padding_home_card"
+        android:clickable="true">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/height_home_card"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="@dimen/height_home_card"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical|center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bar_graph"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/section_label_5_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="@string/home_button_name_showhistory"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/padding_home_card_text"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <!-- END HISTORY CARD -->
+
+
+    <!-- START Test card - text -->
+    <LinearLayout
+        android:id="@+id/HomeBody_LinLay3"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/height_home_card"
+        android:layout_below="@id/HomeBody_LinLay_History"
+        android:background="#ffffffff"
+        android:layout_marginTop="@dimen/padding_home_card"
+        android:layout_marginBottom="@dimen/padding_home_card"
+        android:clickable="true">
+
+        <TextView
+            android:id="@+id/section_label3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HOME - "/>
+            android:text="@string/Lorem_ipsum_medium"/>
+
+    </LinearLayout>
+    <!-- END Test card - text -->
+
+    <!-- START TEST CARD - BUTTON 1
+    <LinearLayout
+        android:id="@+id/HomeBody_LinLay1"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/height_home_card"
+        android:layout_below="@id/HomeBody_LinLay3"
+        android:background="#ffffffff"
+        android:layout_marginTop="@dimen/padding_home_card"
+        android:layout_marginBottom="@dimen/padding_home_card">
 
         <TextView
             android:id="@+id/section_label"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/HomeBody_LinLay"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/HomeHeader_LinLay"
-        android:background="#ffdf846e">
+            android:layout_height="wrap_content"/>
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/home_button_name_trackfood"
             android:id="@+id/HomeBody_LinLay_button1" />
+
+    </LinearLayout>
+     END TEST CARD - BUTTON 1 -->
+
+    <!-- START TEST CARD - BUTTON 2
+    <LinearLayout
+        android:id="@+id/HomeBody_LinLay2"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/height_home_card"
+        android:layout_below="@id/HomeBody_LinLay1"
+        android:background="#ffffffff"
+        android:layout_marginTop="@dimen/padding_home_card"
+        android:layout_marginBottom="@dimen/padding_home_card">
+
+        <TextView
+            android:id="@+id/section_label2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum dolor sit amet"/>
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -48,12 +229,7 @@
             android:id="@+id/HomeBody_LinLay_button2" />
 
     </LinearLayout>
-
-
-
-
-
-
+     END TEST CARD - BUTTON 2 -->
 
     <!--
     <RelativeLayout
@@ -79,3 +255,4 @@
     -->
 
 </RelativeLayout>
+</ScrollView>

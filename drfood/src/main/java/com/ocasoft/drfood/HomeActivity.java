@@ -1,6 +1,8 @@
 package com.ocasoft.drfood;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -18,6 +20,8 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +55,7 @@ public class HomeActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
     }
 
     @Override
@@ -143,11 +148,49 @@ public class HomeActivity extends ActionBarActivity
 			View rootView = null;
 			TextView textView;
 
+			//Progress bar
+			ProgressBar mProgress;
+			int mProgressStatus = 0;
+
+			//Cards
+			LinearLayout trackFoodCard;
+
 			int sectionFragment = getArguments().getInt(ARG_SECTION_NUMBER);
 			switch (sectionFragment) {
 				case 1: // Home Fragment
 					Log.i("NavDrawFrag","PlaceholderFragment - onCreateView - Home section");
 					rootView = inflateHomeFragment(inflater, container);
+
+					//Progress bar
+					Log.i("NavDrawFrag","PlaceholderFragment - onCreateView - Home section - ProgressBar init");
+					mProgress = (ProgressBar) rootView.findViewById(R.id.progressBarHome);
+					mProgress.setMax(3000);
+					mProgress.setProgress(75);
+					//mProgress.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN); // +2500
+					//mProgress.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN); // 2200 - 2500
+					//mProgress.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN); // 1700 - 2200
+					mProgress.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN); // -1700
+
+
+					//Manage Cards
+					//rootView.findViewById(R.id.HomeBody_LinLay1).setVisibility(View.GONE); // Remove card
+
+					// Test LL clickable
+					LinearLayout homeCard_LL3 = (LinearLayout) rootView.findViewById(R.id.HomeBody_LinLay3);
+					homeCard_LL3.setOnClickListener(new View.OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							// Do something in response to button click
+							Context context = v.getContext();
+
+							CharSequence text = "Hello LinearLayout Lorem Ipsum dolor.";
+							int duration = Toast.LENGTH_LONG;
+
+							Toast toast = Toast.makeText(context, text, duration);
+							toast.show();
+						}
+					});
+
 					break;
 				case 2: // Section2 Fragment
 					Log.i("NavDrawFrag","PlaceholderFragment - onCreateView - 2 section");
@@ -180,14 +223,14 @@ public class HomeActivity extends ActionBarActivity
 			rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
 			// Load section number
-			textView = (TextView) rootView.findViewById(R.id.section_label);
-			textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+//			textView = (TextView) rootView.findViewById(R.id.section_label);
+//			textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
 
-			// Actions for TrackFood's button
-			Button buttonTrackFood = (Button) rootView.findViewById(R.id.HomeBody_LinLay_button1);
+			// Actions for TrackFood's button (Clickable Linear Layout)
+			LinearLayout buttonTrackFood = (LinearLayout) rootView.findViewById(R.id.HomeBody_LinLay_Track);
 			buttonTrackFood.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
-					// TODO:
+					// TODO: Start Track food activity
 					Context context = v.getContext();
 
 					CharSequence text = "Hello Button1. You will track food.";
@@ -198,11 +241,11 @@ public class HomeActivity extends ActionBarActivity
 				}
 			});
 
-			// Actions for ShowHistory's button
-			Button buttonShowHistory = (Button) rootView.findViewById(R.id.HomeBody_LinLay_button2);
+			// Actions for ShowHistory's button  (Clickable Linear Layout)
+			LinearLayout buttonShowHistory = (LinearLayout) rootView.findViewById(R.id.HomeBody_LinLay_History);
 			buttonShowHistory.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
-					// Do something in response to button click
+					// TODO: Start Show history activity
 					Context context = v.getContext();
 
 					CharSequence text = "Hello Button2. You will show the food history.";

@@ -4,12 +4,12 @@
     <string name="app_name">Dr Food</string>
 
     <!-- NavigationDrawerFragment titles -->
-    <string name="title_section1">Home</string>
+    <string name="title_section1">Dr. Food</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">About</string>
 
     <!-- Home Button names -->
-    <string name="home_button_name_trackfood">Track food</string>
+    <string name="home_button_name_trackfood">Track your food!</string>
     <string name="home_button_name_showhistory">Show history</string>
 
     <!-- Others -->
@@ -17,5 +17,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Test -->
+    <string name="Lorem_ipsum_medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consequat purus semper lorem pretium pretium. Phasellus tincidunt mi sed nisl blandit, non dapibus eros pulvinar. Integer non velit aliquet, bibendum arcu eget, vehicula lacus. Sed quis tincidunt mauris, eget pellentesque ante. Morbi neque diam, molestie sed ultrices quis, feugiat at est.</string>
 
 </resources>

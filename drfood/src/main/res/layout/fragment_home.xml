@@ -103,6 +103,7 @@
                     android:layout_height="fill_parent"
                     android:text="@string/home_button_name_trackfood"
                     android:textStyle="bold"
+                    android:textSize="@dimen/text_home_card"
                     android:layout_marginLeft="@dimen/padding_home_card_text"
                     android:gravity="center_vertical"/>
 
@@ -150,6 +151,7 @@
                     android:layout_height="fill_parent"
                     android:text="@string/home_button_name_showhistory"
                     android:textStyle="bold"
+                    android:textSize="@dimen/text_home_card"
                     android:layout_marginLeft="@dimen/padding_home_card_text"
                     android:gravity="center_vertical"/>
 

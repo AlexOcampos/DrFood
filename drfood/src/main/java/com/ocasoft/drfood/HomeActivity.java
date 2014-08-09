@@ -1,6 +1,7 @@
 package com.ocasoft.drfood;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.v7.app.ActionBarActivity;
@@ -233,11 +234,15 @@ public class HomeActivity extends ActionBarActivity
 					// TODO: Start Track food activity
 					Context context = v.getContext();
 
-					CharSequence text = "Hello Button1. You will track food.";
-					int duration = Toast.LENGTH_LONG;
+//					CharSequence text = "Hello Button1. You will track food.";
+//					int duration = Toast.LENGTH_LONG;
+//
+//					Toast toast = Toast.makeText(context, text, duration);
+//					toast.show();
 
-					Toast toast = Toast.makeText(context, text, duration);
-					toast.show();
+					Intent intent = new Intent(context, FoodSelectorActivity.class);
+
+					context.startActivity(intent);
 				}
 			});
 

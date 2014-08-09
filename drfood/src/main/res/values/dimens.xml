@@ -17,7 +17,7 @@
 
     <!-- ======== FOOD_SELECTOR ======== -->
     <dimen name="height_searcher_food_selector">64dp</dimen>
-    <dimen name="height_tile_gridview_food_selector">120dp</dimen>
-    <dimen name="width_tile_gridview_food_selector">120dp</dimen>
+    <dimen name="height_tile_gridview_food_selector">100dp</dimen>
+    <dimen name="width_tile_gridview_food_selector">100dp</dimen>
 
 </resources>

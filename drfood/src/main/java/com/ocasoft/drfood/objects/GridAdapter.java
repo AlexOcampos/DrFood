@@ -28,8 +28,8 @@ public class GridAdapter extends BaseAdapter{
 		//Mockup
 		for (int i = 0; i < 50; i++) {
 			Item object = new Item();
-			object.text = "Food "+i;
-			object.resId = R.drawable.icon;
+			object.text = "spaghetti carbonara "+i;
+			object.resId = R.drawable.spaghetti;
 			mItems.add(object);
 		}
 		mContext = context;

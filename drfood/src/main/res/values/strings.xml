@@ -11,6 +11,7 @@
     <!-- ===== FRAGMENT_HOME ===== -->
     <!-- Home Button names -->
     <string name="home_button_name_trackfood">Track your food!</string>
+    <string name="home_button_name_editfood">Edit tracked food</string>
     <string name="home_button_name_showhistory">Show history</string>
 
     <!-- Others -->

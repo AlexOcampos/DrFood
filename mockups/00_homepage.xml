@@ -1,0 +1,104 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1238" measuredH="742" mockupW="914" mockupH="740">
+  <controls>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Image" x="498" y="2" w="-1" h="-1" measuredW="740" measuredH="740" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>http%3A//mockuphone.com/static/images/phones/nexus4_portrait.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::MultilineButton" x="752" y="387" w="232" h="101" measuredW="202" measuredH="78" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>PencilIcon%7Clarge</icon>
+        <text>Edit%20tracked%20food</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::MultilineButton" x="752" y="502" w="232" h="101" measuredW="171" measuredH="78" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>ChartColumnIcon%7Clarge</icon>
+        <text>Show%20history</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::StickyNote" x="324" y="92" w="309" h="183" measuredW="109" measuredH="123" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Se%20cargar%E1%20din%E1micamente%20cada%20vez%20que%20se%20entre%20en%20el%20fragment.%20La%20progressbar%20tendr%E1%20diferentes%20colores%20en%20funci%F3n%20del%20progreso.%20Los%20colores%20ser%E1n%20rojo%2C%20amarillo%20y%20verde%20distribuidos%20en%20funci%F3n%20de%20los%20valores%20conforme%20a%20una%20campana%20de%20gauss.%0A%20%0A%BFincluir%20info%20del%20n%FAmero%20de%20comidas%20registradas%20para%20ese%20d%EDa%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Image" x="728" y="131" w="281" h="36" measuredW="355" measuredH="45" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/18_action_bar_done.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Canvas" x="728" y="166" w="281" h="91" measuredW="100" measuredH="70" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::ProgressBar" x="752" y="201" w="232" h="13" measuredW="100" measuredH="20" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <indeterminate>false</indeterminate>
+        <scrollBarValue>71</scrollBarValue>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Label" x="814" y="210" w="-1" h="-1" measuredW="108" measuredH="18" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>10</size>
+        <text>X%20cal%20/%20Y%20recommended</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="789" y="173" w="-1" h="-1" measuredW="158" measuredH="21" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Tuesday%2024%20October%202014</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::MultilineButton" x="752" y="272" w="232" h="101" measuredW="189" measuredH="78" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>PlusBigIcon%7Clarge</icon>
+        <text>Track%20new%20food</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Arrow" x="633" y="171" w="80" h="15" measuredW="150" measuredH="100" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <leftArrow>false</leftArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::StickyNote" x="468" y="284" w="229" h="125" measuredW="109" measuredH="123" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%F1adir%20una%20nueva%20comida.%0AAbre%20la%20vista%20trackfood%20preseleccionando%20la%20fecha%20y%20comida%20%28esta%20%FAltima%20en%20funci%F3n%20de%20la%20hora%20actual%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::StickyNote" x="468" y="409" w="229" h="93" measuredW="109" measuredH="123" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Editar%20una%20comida%20ya%20a%F1adida.%0AAbre%20la%20vista%20trackfood%20con%20la%20%FAltima%20comida%20registrada.</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::StickyNote" x="468" y="545" w="229" h="57" measuredW="109" measuredH="123" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Consultar%20hist%F3rico%20de%20comidas</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Arrow" x="684" y="338" w="80" h="15" measuredW="150" measuredH="100" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <leftArrow>false</leftArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Arrow" x="684" y="442" w="80" h="15" measuredW="150" measuredH="100" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <leftArrow>false</leftArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Arrow" x="684" y="566" w="80" h="15" measuredW="150" measuredH="100" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <leftArrow>false</leftArrow>
+        <text/>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

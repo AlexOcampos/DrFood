@@ -1,0 +1,355 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1268" measuredH="742" mockupW="894" mockupH="740">
+  <controls>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Image" x="498" y="2" w="-1" h="-1" measuredW="740" measuredH="740" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>http%3A//mockuphone.com/static/images/phones/nexus4_portrait.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Image" x="726" y="136" w="284" h="32" measuredW="326" measuredH="43" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/2014-10-09_10h46_02.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="78" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="1001" y="258" w="-1" h="351" measuredW="16" measuredH="100" zOrder="2" locked="false" isInGroup="-1"/>
+    <control controlID="79" controlTypeID="com.balsamiq.mockups::VCurly" x="531" y="168" w="180" h="80" measuredW="180" measuredH="140" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>40463</color>
+        <direction>right</direction>
+        <size>9</size>
+        <text>secci%F3n%20fija</text>
+      </controlProperties>
+    </control>
+    <control controlID="80" controlTypeID="com.balsamiq.mockups::VCurly" x="531" y="258" w="180" h="351" measuredW="180" measuredH="140" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>40463</color>
+        <direction>right</direction>
+        <size>9</size>
+        <text>Scrollable</text>
+      </controlProperties>
+    </control>
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::HRule" x="738" y="248" w="260" h="-1" measuredW="100" measuredH="10" zOrder="5" locked="false" isInGroup="-1"/>
+    <control controlID="90" controlTypeID="com.balsamiq.mockups::ComboBox" x="738" y="177" w="-1" h="-1" measuredW="105" measuredH="24" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>BREAKFAST</text>
+      </controlProperties>
+    </control>
+    <control controlID="92" controlTypeID="com.balsamiq.mockups::Label" x="893" y="201" w="-1" h="-1" measuredW="106" measuredH="21" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>X%20cal%20consummed</text>
+      </controlProperties>
+    </control>
+    <control controlID="93" controlTypeID="com.balsamiq.mockups::Label" x="880" y="222" w="-1" h="-1" measuredW="118" measuredH="21" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>X%20cal%20recommended</text>
+      </controlProperties>
+    </control>
+    <control controlID="94" controlTypeID="com.balsamiq.mockups::Image" x="750" y="537" w="69" h="61" measuredW="114" measuredH="97" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/plus_float_icon.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="95" controlTypeID="com.balsamiq.mockups::Image" x="917" y="537" w="69" h="61" measuredW="114" measuredH="97" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/favourite_float_icon.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="96" controlTypeID="com.balsamiq.mockups::Image" x="834" y="537" w="69" h="61" measuredW="114" measuredH="97" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/done_float_icon.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="97" controlTypeID="com.balsamiq.mockups::Label" x="738" y="276" w="-1" h="-1" measuredW="34" measuredH="21" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Apple</text>
+      </controlProperties>
+    </control>
+    <control controlID="99" controlTypeID="com.balsamiq.mockups::Canvas" x="726" y="258" w="275" h="56" measuredW="100" measuredH="70" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0.25</backgroundAlpha>
+        <borderStyle>none</borderStyle>
+        <color>0</color>
+      </controlProperties>
+    </control>
+    <control controlID="101" controlTypeID="com.balsamiq.mockups::Canvas" x="726" y="370" w="275" h="56" measuredW="100" measuredH="70" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0.25</backgroundAlpha>
+        <borderStyle>none</borderStyle>
+        <color>0</color>
+      </controlProperties>
+    </control>
+    <control controlID="102" controlTypeID="com.balsamiq.mockups::Canvas" x="726" y="482" w="275" h="56" measuredW="100" measuredH="70" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0.25</backgroundAlpha>
+        <borderStyle>none</borderStyle>
+        <color>0</color>
+      </controlProperties>
+    </control>
+    <control controlID="103" controlTypeID="com.balsamiq.mockups::Label" x="922" y="276" w="-1" h="-1" measuredW="37" measuredH="21" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>50%20cal</text>
+      </controlProperties>
+    </control>
+    <control controlID="105" controlTypeID="com.balsamiq.mockups::Label" x="865" y="276" w="-1" h="-1" measuredW="42" measuredH="21" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1%20piece</text>
+      </controlProperties>
+    </control>
+    <control controlID="106" controlTypeID="com.balsamiq.mockups::Label" x="738" y="332" w="-1" h="-1" measuredW="35" measuredH="21" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Bread</text>
+      </controlProperties>
+    </control>
+    <control controlID="108" controlTypeID="com.balsamiq.mockups::Label" x="865" y="332" w="-1" h="-1" measuredW="38" measuredH="21" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>150%20gr</text>
+      </controlProperties>
+    </control>
+    <control controlID="109" controlTypeID="com.balsamiq.mockups::Label" x="922" y="332" w="-1" h="-1" measuredW="45" measuredH="21" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>250%20cal</text>
+      </controlProperties>
+    </control>
+    <control controlID="111" controlTypeID="com.balsamiq.mockups::Paragraph" x="738" y="381" w="127" h="35" measuredW="275" measuredH="80" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Spaghetti%20with%20tomato%20sauce</text>
+      </controlProperties>
+    </control>
+    <control controlID="112" controlTypeID="com.balsamiq.mockups::Label" x="865" y="388" w="-1" h="-1" measuredW="41" measuredH="21" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>250%20gr</text>
+      </controlProperties>
+    </control>
+    <control controlID="113" controlTypeID="com.balsamiq.mockups::Label" x="921" y="388" w="-1" h="-1" measuredW="50" measuredH="21" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1500%20cal</text>
+      </controlProperties>
+    </control>
+    <control controlID="114" controlTypeID="com.balsamiq.mockups::StickyNote" x="374" y="91" w="212" h="103" measuredW="109" measuredH="123" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Selector%20de%20la%20comida%20del%20d%EDa.%20Por%20defecto%20se%20cargar%E1%20en%20el%20correspondiente%20seg%FAn%20la%20hora%20del%20d%EDa.</text>
+      </controlProperties>
+    </control>
+    <control controlID="115" controlTypeID="com.balsamiq.mockups::Arrow" x="576" y="150" w="162" h="44" measuredW="150" measuredH="100" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <leftArrow>false</leftArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="116" controlTypeID="com.balsamiq.mockups::StickyNote" x="374" y="202" w="212" h="74" measuredW="109" measuredH="123" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10470904</color>
+        <text>Sumatorio%20de%20las%20calor%EDas%20consumidas%20en%20la%20comida%20actual</text>
+      </controlProperties>
+    </control>
+    <control controlID="117" controlTypeID="com.balsamiq.mockups::StickyNote" x="1056" y="216" w="212" h="74" measuredW="109" measuredH="123" zOrder="27" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10470904</color>
+        <text>Calor%EDas%20diarias%20recomendadas</text>
+      </controlProperties>
+    </control>
+    <control controlID="119" controlTypeID="com.balsamiq.mockups::Paragraph" x="738" y="208" w="127" h="35" measuredW="275" measuredH="80" zOrder="28" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>X%20cal%20consummed%20at%20this%20lunch</text>
+      </controlProperties>
+    </control>
+    <control controlID="120" controlTypeID="com.balsamiq.mockups::StickyNote" x="1056" y="135" w="212" h="74" measuredW="109" measuredH="123" zOrder="29" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10470904</color>
+        <text>Calor%EDas%20totales%20consumidas%20en%20el%20d%EDa%20de%20hoy</text>
+      </controlProperties>
+    </control>
+    <control controlID="121" controlTypeID="com.balsamiq.mockups::Arrow" x="576" y="228" w="162" h="22" measuredW="150" measuredH="100" zOrder="30" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <direction>bottom</direction>
+        <leftArrow>false</leftArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="122" controlTypeID="com.balsamiq.mockups::Arrow" x="995" y="171" w="71" h="37" measuredW="150" measuredH="100" zOrder="31" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <direction>bottom</direction>
+        <leftArrow>true</leftArrow>
+        <rightArrow>false</rightArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="123" controlTypeID="com.balsamiq.mockups::Arrow" x="995" y="237" w="71" h="21" measuredW="150" measuredH="100" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <direction>top</direction>
+        <leftArrow>true</leftArrow>
+        <rightArrow>false</rightArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="126" controlTypeID="com.balsamiq.mockups::StickyNote" x="374" y="283" w="212" h="57" measuredW="109" measuredH="123" zOrder="33" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10470904</color>
+        <text>Nombre%20del%20alimento</text>
+      </controlProperties>
+    </control>
+    <control controlID="127" controlTypeID="com.balsamiq.mockups::StickyNote" x="374" y="344" w="212" h="57" measuredW="109" measuredH="123" zOrder="34" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10470904</color>
+        <text>Cantidad%20consumida</text>
+      </controlProperties>
+    </control>
+    <control controlID="128" controlTypeID="com.balsamiq.mockups::StickyNote" x="1056" y="305" w="212" h="57" measuredW="109" measuredH="123" zOrder="35" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10470904</color>
+        <text>Calor%EDas%20consumidas</text>
+      </controlProperties>
+    </control>
+    <control controlID="130" controlTypeID="com.balsamiq.mockups::Arrow" x="576" y="283" w="162" h="39" measuredW="150" measuredH="100" zOrder="36" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <direction>bottom</direction>
+        <leftArrow>false</leftArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="131" controlTypeID="com.balsamiq.mockups::Arrow" x="576" y="297" w="289" h="78" measuredW="150" measuredH="100" zOrder="37" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <direction>bottom</direction>
+        <leftArrow>false</leftArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="132" controlTypeID="com.balsamiq.mockups::Arrow" x="959" y="290" w="107" h="45" measuredW="150" measuredH="100" zOrder="38" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <direction>top</direction>
+        <leftArrow>true</leftArrow>
+        <rightArrow>false</rightArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="133" controlTypeID="com.balsamiq.mockups::StickyNote" x="374" y="447" w="212" h="62" measuredW="109" measuredH="123" zOrder="39" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%F1adir%20nuevo%20alimento</text>
+      </controlProperties>
+    </control>
+    <control controlID="134" controlTypeID="com.balsamiq.mockups::Arrow" x="561" y="471" w="205" h="79" measuredW="150" measuredH="100" zOrder="40" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <direction>top</direction>
+        <leftArrow>false</leftArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="135" controlTypeID="com.balsamiq.mockups::StickyNote" x="374" y="550" w="212" h="74" measuredW="109" measuredH="123" zOrder="41" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Terminar%20edici%F3n%20y%20guardar%20los%20cambios</text>
+      </controlProperties>
+    </control>
+    <control controlID="136" controlTypeID="com.balsamiq.mockups::Arrow" x="576" y="567" w="267" h="40" measuredW="150" measuredH="100" zOrder="42" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <direction>bottom</direction>
+        <leftArrow>false</leftArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="138" controlTypeID="com.balsamiq.mockups::StickyNote" x="1049" y="521" w="212" h="94" measuredW="109" measuredH="123" zOrder="43" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Ver%20alimentos%20favoritos%0A%28Se%20abre%20el%20grid_menu%20con%20la%20opci%F3n%20de%20favoritos%20habilitada%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="139" controlTypeID="com.balsamiq.mockups::Arrow" x="976" y="547" w="84" h="20" measuredW="150" measuredH="100" zOrder="44" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <direction>bottom</direction>
+        <leftArrow>true</leftArrow>
+        <rightArrow>false</rightArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="140" controlTypeID="com.balsamiq.mockups::Icon" x="976" y="276" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="45" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>Trash2Icon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="142" controlTypeID="com.balsamiq.mockups::Icon" x="976" y="330" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="46" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>Trash2Icon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="143" controlTypeID="com.balsamiq.mockups::Icon" x="976" y="388" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="47" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>Trash2Icon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="144" controlTypeID="com.balsamiq.mockups::StickyNote" x="1049" y="362" w="212" h="64" measuredW="109" measuredH="123" zOrder="48" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Elimina%20el%20alimento%20registrado</text>
+      </controlProperties>
+    </control>
+    <control controlID="145" controlTypeID="com.balsamiq.mockups::Arrow" x="997" y="344" w="60" h="52" measuredW="150" measuredH="100" zOrder="49" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <direction>top</direction>
+        <leftArrow>true</leftArrow>
+        <rightArrow>false</rightArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="146" controlTypeID="com.balsamiq.mockups::VRule" x="971" y="260" w="-1" h="54" measuredW="10" measuredH="100" zOrder="50" locked="false" isInGroup="-1"/>
+    <control controlID="147" controlTypeID="com.balsamiq.mockups::VRule" x="971" y="315" w="-1" h="54" measuredW="10" measuredH="100" zOrder="51" locked="false" isInGroup="-1"/>
+    <control controlID="148" controlTypeID="com.balsamiq.mockups::VRule" x="971" y="373" w="-1" h="54" measuredW="10" measuredH="100" zOrder="52" locked="false" isInGroup="-1"/>
+    <control controlID="149" controlTypeID="com.balsamiq.mockups::StickyNote" x="1049" y="426" w="212" h="83" measuredW="109" measuredH="123" zOrder="53" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Al%20pulsar%20se%20abre%20el%20detalle%20de%20alimento%20para%20poder%20editarlo</text>
+      </controlProperties>
+    </control>
+    <control controlID="150" controlTypeID="com.balsamiq.mockups::Arrow" x="903" y="412" w="157" h="70" measuredW="150" measuredH="100" zOrder="54" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <direction>top</direction>
+        <leftArrow>true</leftArrow>
+        <rightArrow>false</rightArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="151" controlTypeID="com.balsamiq.mockups::StickyNote" x="374" y="2" w="319" h="76" measuredW="109" measuredH="123" zOrder="55" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Acci%F3n%20de%20volver%20atr%E1s.%20Abre%20popup%20indicando%20que%20se%20perder%E1n%20los%20cambios%20no%20guardados.</text>
+      </controlProperties>
+    </control>
+    <control controlID="152" controlTypeID="com.balsamiq.mockups::Arrow" x="675" y="63" w="63" h="80" measuredW="150" measuredH="100" zOrder="56" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <direction>top</direction>
+        <leftArrow>false</leftArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="153" controlTypeID="com.balsamiq.mockups::DateChooser" x="880" y="177" w="-1" h="-1" measuredW="119" measuredH="25" zOrder="57" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>13/10/2014%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="154" controlTypeID="com.balsamiq.mockups::Arrow" x="941" y="93" w="115" h="87" measuredW="150" measuredH="100" zOrder="58" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <direction>bottom</direction>
+        <leftArrow>true</leftArrow>
+        <rightArrow>false</rightArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="155" controlTypeID="com.balsamiq.mockups::StickyNote" x="1056" y="48" w="212" h="73" measuredW="109" measuredH="123" zOrder="59" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Por%20defecto%20carga%20la%20fecha%20actual.</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

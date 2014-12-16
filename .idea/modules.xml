@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/DrFood.iml" filepath="$PROJECT_DIR$/DrFood.iml" />
       <module fileurl="file://$PROJECT_DIR$/DrFoodOcasoft.iml" filepath="$PROJECT_DIR$/DrFoodOcasoft.iml" />
       <module fileurl="file://$PROJECT_DIR$/drfood/drfood.iml" filepath="$PROJECT_DIR$/drfood/drfood.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/libs.iml" filepath="$PROJECT_DIR$/libs/libs.iml" />
     </modules>
   </component>
 </project>

@@ -29,4 +29,10 @@
     <string name="title_activity_food_selector">FoodSelectorActivity</string>
     <string name="hint_searcher_food_selector">Search food...</string>
 
+    <!-- ===== ACTIVITY_TRACKFOOD ===== -->
+    <string name="cal_consummed_lunch">Cal consummed at this lunch</string>
+    <string name="cal_consummed_today">Cal consummed today</string>
+    <string name="cal_recommended_today">Cal recommended today</string>
+    <string name="accessibility_delete_icon">delete</string>
+
 </resources>

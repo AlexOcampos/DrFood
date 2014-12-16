@@ -246,6 +246,19 @@ public class HomeActivity extends ActionBarActivity
 				}
 			});
 
+			// Actions for Edit Tracked Food's button (Clickable Linear Layout)
+			LinearLayout buttonEditTrackFood = (LinearLayout) rootView.findViewById(R.id.HomeBody_LinLay_Edit);
+			buttonEditTrackFood.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					// TODO: Start Track food activity (edit option)
+					Context context = v.getContext();
+
+					Intent intent = new Intent(context, TrackFoodActivity.class);
+
+					context.startActivity(intent);
+				}
+			});
+
 			// Actions for ShowHistory's button  (Clickable Linear Layout)
 			LinearLayout buttonShowHistory = (LinearLayout) rootView.findViewById(R.id.HomeBody_LinLay_History);
 			buttonShowHistory.setOnClickListener(new View.OnClickListener() {

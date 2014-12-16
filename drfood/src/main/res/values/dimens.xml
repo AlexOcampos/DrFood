@@ -20,4 +20,8 @@
     <dimen name="height_tile_gridview_food_selector">100dp</dimen>
     <dimen name="width_tile_gridview_food_selector">100dp</dimen>
 
+    <!-- ======== TRACK_FOOD ======== -->
+    <dimen name="cal_summary">12dp</dimen>
+    <dimen name="track_item_separation">20dp</dimen>
+
 </resources>

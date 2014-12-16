@@ -24,7 +24,7 @@
             android:layout_alignParentRight="true"/>
 
         <ImageView
-            android:id="@+id/favourite_item"
+            android:id="@+id/recommended_item"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:src="@drawable/time_recommended"

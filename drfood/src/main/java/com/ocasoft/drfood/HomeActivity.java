@@ -227,7 +227,9 @@ public class HomeActivity extends ActionBarActivity
 //			textView = (TextView) rootView.findViewById(R.id.section_label);
 //			textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
 
-			// Actions for TrackFood's button (Clickable Linear Layout)
+			/* ********************************************************
+			 * Actions for TrackFood's button (Clickable Linear Layout)
+			 * ********************************************************/
 			LinearLayout buttonTrackFood = (LinearLayout) rootView.findViewById(R.id.HomeBody_LinLay_Track);
 			buttonTrackFood.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
@@ -240,26 +242,30 @@ public class HomeActivity extends ActionBarActivity
 //					Toast toast = Toast.makeText(context, text, duration);
 //					toast.show();
 
-					Intent intent = new Intent(context, FoodSelectorActivity.class);
-
-					context.startActivity(intent);
-				}
-			});
-
-			// Actions for Edit Tracked Food's button (Clickable Linear Layout)
-			LinearLayout buttonEditTrackFood = (LinearLayout) rootView.findViewById(R.id.HomeBody_LinLay_Edit);
-			buttonEditTrackFood.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-					// TODO: Start Track food activity (edit option)
-					Context context = v.getContext();
-
 					Intent intent = new Intent(context, TrackFoodActivity.class);
 
 					context.startActivity(intent);
 				}
 			});
 
-			// Actions for ShowHistory's button  (Clickable Linear Layout)
+			/* ********************************************************
+			 * Actions for Edit Tracked Food's button (Clickable Linear Layout)
+			 * ********************************************************/
+			LinearLayout buttonEditTrackFood = (LinearLayout) rootView.findViewById(R.id.HomeBody_LinLay_Edit);
+			buttonEditTrackFood.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					// TODO: Start Track food activity (edit option)
+					Context context = v.getContext();
+
+					Intent intent = new Intent(context, FoodSelectorActivity.class);
+
+					context.startActivity(intent);
+				}
+			});
+
+			/* ********************************************************
+			 * Actions for ShowHistory's button  (Clickable Linear Layout)
+			 * ********************************************************/
 			LinearLayout buttonShowHistory = (LinearLayout) rootView.findViewById(R.id.HomeBody_LinLay_History);
 			buttonShowHistory.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {

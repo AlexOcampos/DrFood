@@ -100,6 +100,28 @@
 
     </LinearLayout>
 
+
+
+    <GridView
+        android:id="@+id/listFoodConsummed"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:drawSelectorOnTop="true"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:verticalSpacing="4dp"
+        android:horizontalSpacing="4dp"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="insideOverlay"
+        android:clickable="false"
+        android:layout_below="@id/trackFoodHeaderLayoutText"
+        android:numColumns="1">
+
+
+    </GridView>
+
+    <!--
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -107,11 +129,19 @@
         android:background="@android:color/holo_orange_dark"
         android:id="@+id/scrollView">
 
-        <LinearLayout
+        <ListView
+            android:id="@+id/listFoodConsummed"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+        &lt;!&ndash;<LinearLayout
+            android:id="@+id/listItemTrackFood"
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
-            <!-- START item -->
+            &lt;!&ndash; START item &ndash;&gt;
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
@@ -125,7 +155,7 @@
                         android:layout_weight="0.9"
                         android:layout_height="fill_parent">
 
-                        <!-- Name of the food -->
+                        &lt;!&ndash; Name of the food &ndash;&gt;
                         <LinearLayout
                             android:layout_width="0dip"
                             android:layout_weight="0.6"
@@ -139,7 +169,7 @@
                                 android:text="chocolate con churros"/>
                         </LinearLayout>
 
-                        <!-- Quantity of the food -->
+                        &lt;!&ndash; Quantity of the food &ndash;&gt;
                         <LinearLayout
                             android:layout_width="0dip"
                             android:layout_weight="0.2"
@@ -153,7 +183,7 @@
                                 android:text="200 gr"/>
                         </LinearLayout>
 
-                        <!-- Calories of the food -->
+                        &lt;!&ndash; Calories of the food &ndash;&gt;
                         <LinearLayout
                             android:layout_width="0dip"
                             android:layout_weight="0.2"
@@ -168,7 +198,7 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <!-- Delete icon -->
+                    &lt;!&ndash; Delete icon &ndash;&gt;
                     <LinearLayout
                         android:layout_width="0dip"
                         android:layout_weight="0.1"
@@ -183,7 +213,7 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-            <!-- END item -->
+            &lt;!&ndash; END item &ndash;&gt;
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -198,7 +228,7 @@
                         android:layout_weight="0.9"
                         android:layout_height="fill_parent">
 
-                        <!-- Name of the food -->
+                        &lt;!&ndash; Name of the food &ndash;&gt;
                         <LinearLayout
                             android:layout_width="0dip"
                             android:layout_weight="0.6"
@@ -212,7 +242,7 @@
                                 android:text="chocolate con churros"/>
                         </LinearLayout>
 
-                        <!-- Quantity of the food -->
+                        &lt;!&ndash; Quantity of the food &ndash;&gt;
                         <LinearLayout
                             android:layout_width="0dip"
                             android:layout_weight="0.2"
@@ -226,7 +256,7 @@
                                 android:text="200 gr"/>
                         </LinearLayout>
 
-                        <!-- Calories of the food -->
+                        &lt;!&ndash; Calories of the food &ndash;&gt;
                         <LinearLayout
                             android:layout_width="0dip"
                             android:layout_weight="0.2"
@@ -241,7 +271,7 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <!-- Delete icon -->
+                    &lt;!&ndash; Delete icon &ndash;&gt;
                     <LinearLayout
                         android:layout_width="0dip"
                         android:layout_weight="0.1"
@@ -269,7 +299,7 @@
                         android:layout_weight="0.9"
                         android:layout_height="fill_parent">
 
-                        <!-- Name of the food -->
+                        &lt;!&ndash; Name of the food &ndash;&gt;
                         <LinearLayout
                             android:layout_width="0dip"
                             android:layout_weight="0.6"
@@ -283,7 +313,7 @@
                                 android:text="chocolate con churros"/>
                         </LinearLayout>
 
-                        <!-- Quantity of the food -->
+                        &lt;!&ndash; Quantity of the food &ndash;&gt;
                         <LinearLayout
                             android:layout_width="0dip"
                             android:layout_weight="0.2"
@@ -297,7 +327,7 @@
                                 android:text="200 gr"/>
                         </LinearLayout>
 
-                        <!-- Calories of the food -->
+                        &lt;!&ndash; Calories of the food &ndash;&gt;
                         <LinearLayout
                             android:layout_width="0dip"
                             android:layout_weight="0.2"
@@ -312,7 +342,7 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <!-- Delete icon -->
+                    &lt;!&ndash; Delete icon &ndash;&gt;
                     <LinearLayout
                         android:layout_width="0dip"
                         android:layout_weight="0.1"
@@ -327,11 +357,8 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
-
-
-        </LinearLayout>
+        </LinearLayout>&ndash;&gt;
     </ScrollView>
 
-
+-->
 </RelativeLayout>

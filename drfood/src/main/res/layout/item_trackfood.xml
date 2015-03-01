@@ -6,7 +6,8 @@
     android:layout_centerHorizontal="true">
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="48dp">
+        android:layout_height="48dp"
+        android:baselineAligned="false">
         <LinearLayout
             android:layout_width="0dip"
             android:layout_weight="0.9"
@@ -16,6 +17,7 @@
             <LinearLayout
                 android:layout_width="0dip"
                 android:layout_weight="0.6"
+                android:paddingLeft="@dimen/left_padding_text"
                 android:layout_height="fill_parent">
                 <TextView
                     android:id="@+id/textViewFoodNameItemX"
@@ -23,7 +25,8 @@
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:layout_marginRight="@dimen/track_item_separation"
-                    android:text="chocolate con churros2"/>
+                    android:text="chocolate con churros2"
+                    android:textSize="@dimen/track_item_textsize"/>
             </LinearLayout>
 
             <!-- Quantity of the food -->
@@ -37,7 +40,8 @@
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:layout_marginRight="@dimen/track_item_separation"
-                    android:text="200 gr"/>
+                    android:text="200 gr"
+                    android:textSize="@dimen/track_item_textsize"/>
             </LinearLayout>
 
             <!-- Calories of the food -->
@@ -51,7 +55,8 @@
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:layout_marginRight="@dimen/track_item_separation"
-                    android:text="20cal"/>
+                    android:text="20cal"
+                    android:textSize="@dimen/track_item_textsize"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -70,4 +75,7 @@
                 android:contentDescription="@string/accessibility_delete_icon"/>
         </LinearLayout>
     </LinearLayout>
+    <View
+        android:layout_alignParentBottom="true"
+        style="@style/Line"/>
 </RelativeLayout>

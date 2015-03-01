@@ -1,4 +1,4 @@
-package com.ocasoft.drfood.objects;
+package com.ocasoft.drfood.uiobjects;
 
 import android.content.Context;
 import android.util.AttributeSet;

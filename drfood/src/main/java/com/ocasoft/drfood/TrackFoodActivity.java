@@ -1,37 +1,64 @@
 package com.ocasoft.drfood;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ocasoft.drfood.infoobjects.Food;
-import com.ocasoft.drfood.objects.TrackFoodListAdapter;
+import com.ocasoft.drfood.uiobjects.TrackFoodListAdapter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+
 public class TrackFoodActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
+	private int mYear, mMonth, mDay;
+	TextView tvDisplayDate;
+	private DatePickerDialog dpd;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_trackfood);
 
 		//======================== Set Spinner values ========================
+		setSpinnerFoodTimes();
+
+		//========================      set date      ========================
+		setDateTrackFood();
+
+		//======================== generate food list ========================
+		generateFoodList();
+
+		//======================== Set button Listeners ========================
+		// Add Button
+		setAddButtonListener();
+
+		// Done Button
+		setDoneButtonListener();
+
+		// Favourite Button
+		setFavouriteListener();
+	}
+
+	/**
+	 * Initialize spinner foodtimes and all the actions related with this
+	 */
+	private void setSpinnerFoodTimes() {
 		Spinner spinner = (Spinner) findViewById(R.id.foodtime_spinner);
 
 		// Spinner click listener
@@ -54,26 +81,60 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 
 		// Apply the adapter to the spinner
 		spinner.setAdapter(foodTimesAdapter);
+	}
 
-		//========================      set date      ========================
-		TextView tvDisplayDate = (TextView) findViewById(R.id.textViewDate);
-		Calendar c = Calendar.getInstance();
-		String year = Integer.toString(c.get(Calendar.YEAR));
-		int monthInt = c.get(Calendar.MONTH) + 1;
-		String month = (monthInt > 9) ? Integer.toString(monthInt) : "0"+Integer.toString(monthInt);
-		int dayInt = c.get(Calendar.DAY_OF_MONTH);
-		String day = (dayInt > 9) ? Integer.toString(dayInt) : "0"+Integer.toString(dayInt);
+	/**
+	 * Actions for Add Button
+	 */
+	private void setAddButtonListener() {
+		findViewById(R.id.buttonAdd).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				//TODO: Launch FoodSelectorActivity
+				Context context = v.getContext();
+				CharSequence text = "Hello Add Button.";
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
+			}
+		});
+	}
 
-		// set current date into textview (dd-mm-yyyy)
-		tvDisplayDate.setText(new StringBuilder()
-				.append(day).append("/")
-				.append(month).append("/") // Month is 0 based, just add 1
-				.append(year));
+	/**
+	 * Actions for Done Button
+	 */
+	private void setDoneButtonListener() {
+		findViewById(R.id.buttonDone).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				//TODO: Launch Save data and exit TrackFoodActivity
+				Context context = v.getContext();
+				CharSequence text = "Hello Done Button.";
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
+			}
+		});
+	}
 
-		//======================== generate food list ========================
+	/**
+	 * Actions for Favourite Button
+	 */
+	private void setFavouriteListener() {
+		findViewById(R.id.buttonFavourite).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				//TODO: Launch FoodSelectorActivity (favourite mode=on)
+				Context context = v.getContext();
+				CharSequence text = "Hello Favourite Button.";
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
+			}
+		});
+	}
+
+	private void generateFoodList() {
 		// TODO: Mockup
 		ArrayList<Food> list = new ArrayList<Food>();
-		for (int i = 1; i < 5; i++) {
+		for (int i = 1; i < 15; i++) {
 			Food object = new Food(i,"Spaghetti Carbonara "+i,"Breakfast",500);
 			list.add(object);
 		}
@@ -84,7 +145,50 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		//handle listview and assign adapter
 		GridView lView = (GridView) findViewById(R.id.listFoodConsummed);
 		lView.setAdapter(adapter);
+	}
 
+	/**
+	 * Set the date to the DateTextView and create DatePickerDialog.
+	 */
+	private void setDateTrackFood() {
+		tvDisplayDate = (TextView) findViewById(R.id.textViewDate);
+		// Set current date in the TextView
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar c = Calendar.getInstance();
+		mYear = c.get(Calendar.YEAR);
+		mMonth = c.get(Calendar.MONTH);
+		mDay = c.get(Calendar.DAY_OF_MONTH);
+		tvDisplayDate.setText(format.format(c.getTime()));
+
+		// Open DatePickerDialog and set user selected date
+		dpd = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+			@Override
+			public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+				// Display Selected date in textbox
+				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+				Calendar cal = Calendar.getInstance();
+				cal.set(Calendar.YEAR, year);
+				cal.set(Calendar.MONTH, monthOfYear);
+				cal.set(Calendar.DATE, dayOfMonth);
+				tvDisplayDate.setText(format.format(cal.getTime()));
+			}
+		}, mYear, mMonth, mDay);
+
+		// Set OnDateSetListener to TextView
+		tvDisplayDate.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// Launch Date Picker Dialog
+				dpd.show();
+			}
+		});
+
+		// Set OnDateSetListener to Calendar Icon
+		findViewById(R.id.imageViewDate).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// Launch Date Picker Dialog
+				dpd.show();
+			}
+		});
 	}
 
 	/**

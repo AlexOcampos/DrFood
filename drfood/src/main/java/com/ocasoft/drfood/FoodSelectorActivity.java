@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
 
-import com.ocasoft.drfood.objects.GridAdapter;
+import com.ocasoft.drfood.uiobjects.GridAdapter;
 
 public class FoodSelectorActivity extends ActionBarActivity {
 

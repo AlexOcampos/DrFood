@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- Based on https://github.com/goodev/SquareGridView/blob/master/SquareGrid/res/layout/item.xml -->
-<com.ocasoft.drfood.objects.SquareLayout
+<com.ocasoft.drfood.uiobjects.SquareLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
@@ -56,4 +56,4 @@
         android:layout_height="match_parent"
         android:background="@drawable/item_press_bg"
         />
-</com.ocasoft.drfood.objects.SquareLayout>
+</com.ocasoft.drfood.uiobjects.SquareLayout>

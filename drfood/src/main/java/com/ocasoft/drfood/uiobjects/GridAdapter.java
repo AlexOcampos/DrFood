@@ -1,4 +1,4 @@
-package com.ocasoft.drfood.objects;
+package com.ocasoft.drfood.uiobjects;
 
 import java.util.ArrayList;
 import java.util.List;

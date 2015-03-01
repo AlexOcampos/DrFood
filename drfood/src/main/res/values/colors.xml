@@ -7,4 +7,7 @@
     <color name="grid_bg_color">#666666</color>
 
     <color name="general_background">#ffd1d1d1</color>
+    <color name="header_background">#ffd7fffd</color>
+
+    <color name="recommended_cal_textcolor">#ff29cd00</color>
 </resources>

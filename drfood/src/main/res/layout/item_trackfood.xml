@@ -17,7 +17,7 @@
             <LinearLayout
                 android:layout_width="0dip"
                 android:layout_weight="0.6"
-                android:paddingLeft="@dimen/left_padding_text"
+                android:paddingLeft="@dimen/min_padding_text"
                 android:layout_height="fill_parent">
                 <TextView
                     android:id="@+id/textViewFoodNameItemX"

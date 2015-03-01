@@ -30,9 +30,9 @@
     <string name="hint_searcher_food_selector">Search food...</string>
 
     <!-- ===== ACTIVITY_TRACKFOOD ===== -->
-    <string name="cal_consumed_lunch">Cal consumed at this lunch</string>
-    <string name="cal_consumed_today">Cal consumed today</string>
-    <string name="cal_recommended_today">Cal recommended today</string>
+    <string name="cal_consumed_lunch">200 cal this lunch</string>
+    <string name="cal_consumed_today">2000 cal today</string>
+    <string name="cal_recommended_today">1500 cal recommended</string>
     <string name="accessibility_delete_icon">delete</string>
 
 </resources>

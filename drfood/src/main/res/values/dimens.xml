@@ -24,6 +24,8 @@
     <dimen name="cal_summary">12dp</dimen>
     <dimen name="track_item_separation">20dp</dimen>
     <dimen name="track_item_textsize">12sp</dimen>
-    <dimen name="left_padding_text">4dp</dimen>
+    <dimen name="min_padding_text">4dp</dimen>
+    <dimen name="max_padding_text">4dp</dimen>
+
 
 </resources>

@@ -11,8 +11,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="96dp"
-        android:background="@android:color/white"
+        android:layout_height="wrap_content"
+        android:background="@color/header_background"
         android:id="@+id/trackFoodHeaderLayoutText"
         android:layout_centerHorizontal="true"
         android:baselineAligned="false"
@@ -26,23 +26,39 @@
             android:layout_height="fill_parent"
             android:id="@+id/linearLayoutLeftHeader" >
 
+            <!-- Date selector -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center"
+                android:paddingTop="@dimen/max_padding_text"
+                android:paddingLeft="@dimen/min_padding_text">
+
+                <TextView
+                    android:id="@+id/textViewDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="29/11/2014"
+                    android:gravity="center"
+                    android:textIsSelectable="false"
+                    android:layout_gravity="left"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:src="@android:drawable/ic_menu_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView2"
+                    android:adjustViewBounds="false" />
+            </LinearLayout>
+
             <!-- Food selector -->
             <Spinner
                 android:id="@+id/foodtime_spinner"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-
-            <!-- Current consumed calories -->
-            <TextView
-                android:id="@+id/textViewCalConsLunch"
-                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/cal_consumed_lunch"
-                android:textSize="@dimen/cal_summary"
-                android:gravity="left"
-                android:textAlignment="gravity"
-                />
+                android:paddingBottom="@dimen/min_padding_text"
+                android:spinnerMode="dialog"/>
 
         </LinearLayout>
 
@@ -54,14 +70,20 @@
             android:layout_height="fill_parent"
             android:id="@+id/linearLayoutRightHeader"
             >
-            <!-- Date selector -->
-            <!-- TODO: put a date selector -->
+
+            <!-- Current consumed calories -->
             <TextView
-                android:id="@+id/textViewRighttest"
+                android:id="@+id/textViewCalConsLunch"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="29/11/2014 [#]"
+                android:paddingTop="@dimen/min_padding_text"
+                android:paddingRight="@dimen/min_padding_text"
+                android:text="@string/cal_consumed_lunch"
+                android:textSize="@dimen/cal_summary"
+                android:gravity="right"
+                android:textAlignment="gravity"
+                android:textStyle="italic"
                 />
 
             <!-- Cal consummed today -->
@@ -70,11 +92,13 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingTop="@dimen/min_padding_text"
+                android:paddingRight="@dimen/min_padding_text"
                 android:text="@string/cal_consumed_today"
                 android:textSize="@dimen/cal_summary"
                 android:gravity="right"
                 android:textAlignment="gravity"
-                />
+                android:textStyle="italic"/>
 
             <!-- Cal recommended today -->
             <TextView
@@ -82,18 +106,19 @@
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingTop="@dimen/min_padding_text"
+                android:paddingRight="@dimen/min_padding_text"
+                android:paddingBottom="@dimen/min_padding_text"
                 android:text="@string/cal_recommended_today"
+                android:textColor="@color/recommended_cal_textcolor"
                 android:textSize="@dimen/cal_summary"
                 android:gravity="right"
                 android:textAlignment="gravity"
-                />
+                android:textStyle="italic"/>
 
         </LinearLayout>
 
-
     </LinearLayout>
-
-
 
     <GridView
         android:id="@+id/listFoodConsummed"
@@ -106,252 +131,11 @@
         android:horizontalSpacing="4dp"
         android:scrollbars="vertical"
         android:scrollbarStyle="insideOverlay"
+        android:background="@android:color/white"
         android:clickable="false"
         android:layout_below="@id/trackFoodHeaderLayoutText"
         android:numColumns="1">
-
-
     </GridView>
 
-    <!--
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/trackFoodHeaderLayoutText"
-        android:background="@android:color/holo_orange_dark"
-        android:id="@+id/scrollView">
-
-        <ListView
-            android:id="@+id/listFoodConsummed"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-        </ListView>
-
-        &lt;!&ndash;<LinearLayout
-            android:id="@+id/listItemTrackFood"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            &lt;!&ndash; START item &ndash;&gt;
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="48dp"
-                android:layout_centerHorizontal="true">
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="48dp">
-                    <LinearLayout
-                        android:layout_width="0dip"
-                        android:layout_weight="0.9"
-                        android:layout_height="fill_parent">
-
-                        &lt;!&ndash; Name of the food &ndash;&gt;
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_weight="0.6"
-                            android:layout_height="fill_parent">
-                            <TextView
-                                android:id="@+id/textViewFoodNameItem1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginRight="@dimen/track_item_separation"
-                                android:text="chocolate con churros"/>
-                        </LinearLayout>
-
-                        &lt;!&ndash; Quantity of the food &ndash;&gt;
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_weight="0.2"
-                            android:layout_height="fill_parent">
-                            <TextView
-                                android:id="@+id/textViewQuantityItem1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginRight="@dimen/track_item_separation"
-                                android:text="200 gr"/>
-                        </LinearLayout>
-
-                        &lt;!&ndash; Calories of the food &ndash;&gt;
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_weight="0.2"
-                            android:layout_height="fill_parent">
-                            <TextView
-                                android:id="@+id/textViewFoodCalItem1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginRight="@dimen/track_item_separation"
-                                android:text="20cal"/>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    &lt;!&ndash; Delete icon &ndash;&gt;
-                    <LinearLayout
-                        android:layout_width="0dip"
-                        android:layout_weight="0.1"
-                        android:padding="8dp"
-                        android:layout_height="fill_parent">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/delete_icon"
-                            android:contentDescription="@string/accessibility_delete_icon"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-            &lt;!&ndash; END item &ndash;&gt;
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="48dp"
-                android:layout_centerHorizontal="true">
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="48dp">
-                    <LinearLayout
-                        android:layout_width="0dip"
-                        android:layout_weight="0.9"
-                        android:layout_height="fill_parent">
-
-                        &lt;!&ndash; Name of the food &ndash;&gt;
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_weight="0.6"
-                            android:layout_height="fill_parent">
-                            <TextView
-                                android:id="@+id/textViewFoodNameItem2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginRight="@dimen/track_item_separation"
-                                android:text="chocolate con churros"/>
-                        </LinearLayout>
-
-                        &lt;!&ndash; Quantity of the food &ndash;&gt;
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_weight="0.2"
-                            android:layout_height="fill_parent">
-                            <TextView
-                                android:id="@+id/textViewQuantityItem2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginRight="@dimen/track_item_separation"
-                                android:text="200 gr"/>
-                        </LinearLayout>
-
-                        &lt;!&ndash; Calories of the food &ndash;&gt;
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_weight="0.2"
-                            android:layout_height="fill_parent">
-                            <TextView
-                                android:id="@+id/textViewFoodCalItem2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginRight="@dimen/track_item_separation"
-                                android:text="20cal"/>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    &lt;!&ndash; Delete icon &ndash;&gt;
-                    <LinearLayout
-                        android:layout_width="0dip"
-                        android:layout_weight="0.1"
-                        android:padding="8dp"
-                        android:layout_height="fill_parent">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/delete_icon"
-                            android:contentDescription="@string/accessibility_delete_icon"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="48dp"
-                android:layout_centerHorizontal="true">
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="48dp">
-                    <LinearLayout
-                        android:layout_width="0dip"
-                        android:layout_weight="0.9"
-                        android:layout_height="fill_parent">
-
-                        &lt;!&ndash; Name of the food &ndash;&gt;
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_weight="0.6"
-                            android:layout_height="fill_parent">
-                            <TextView
-                                android:id="@+id/textViewFoodNameItem3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginRight="@dimen/track_item_separation"
-                                android:text="chocolate con churros"/>
-                        </LinearLayout>
-
-                        &lt;!&ndash; Quantity of the food &ndash;&gt;
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_weight="0.2"
-                            android:layout_height="fill_parent">
-                            <TextView
-                                android:id="@+id/textViewQuantityItem3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginRight="@dimen/track_item_separation"
-                                android:text="200 gr"/>
-                        </LinearLayout>
-
-                        &lt;!&ndash; Calories of the food &ndash;&gt;
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_weight="0.2"
-                            android:layout_height="fill_parent">
-                            <TextView
-                                android:id="@+id/textViewFoodCalItem3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginRight="@dimen/track_item_separation"
-                                android:text="20cal"/>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    &lt;!&ndash; Delete icon &ndash;&gt;
-                    <LinearLayout
-                        android:layout_width="0dip"
-                        android:layout_weight="0.1"
-                        android:padding="8dp"
-                        android:layout_height="fill_parent">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/delete_icon"
-                            android:contentDescription="@string/accessibility_delete_icon"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>&ndash;&gt;
-    </ScrollView>
-
--->
 </RelativeLayout>

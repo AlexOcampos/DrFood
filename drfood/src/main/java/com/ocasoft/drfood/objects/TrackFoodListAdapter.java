@@ -47,16 +47,9 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
-//			if (view == null) {
-//				LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//				view = inflater.inflate(R.id.listFoodConsummed, null);
-//			}
-
 		if(convertView == null) {
 			convertView = LayoutInflater.from(mContext).inflate(R.layout.item_trackfood, null);
 		}
-
-		Log.i("TRACKFOOD", "TrackFoodListActivity - position=" + position);
 
 		// Modify Food Name
 		TextView listItemFoodNameText = (TextView)convertView.findViewById(R.id.textViewFoodNameItemX);
@@ -75,15 +68,6 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 		if (buttonShowHistory != null) {
 			buttonShowHistory.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
-
-					// TODO: Eliminar este codigo de ejemplo
-//					Context context = v.getContext();
-//					CharSequence text = "Hello delete button." + v.getParent().getParent();
-//					int duration = Toast.LENGTH_LONG;
-//					Toast toast = Toast.makeText(context, text, duration);
-//					toast.show();
-					// fin codigo ejemplo
-
 						list.remove(position); //or some other task
 						notifyDataSetChanged();
 				}

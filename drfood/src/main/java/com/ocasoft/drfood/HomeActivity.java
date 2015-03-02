@@ -272,11 +272,14 @@ public class HomeActivity extends ActionBarActivity
 					// TODO: Start Show history activity
 					Context context = v.getContext();
 
-					CharSequence text = "Hello Button2. You will show the food history.";
-					int duration = Toast.LENGTH_LONG;
+					Intent intent = new Intent(context, FoodDetailActivity.class);
+					context.startActivity(intent);
 
-					Toast toast = Toast.makeText(context, text, duration);
-					toast.show();
+//					CharSequence text = "Hello Button2. You will show the food history.";
+//					int duration = Toast.LENGTH_LONG;
+//
+//					Toast toast = Toast.makeText(context, text, duration);
+//					toast.show();
 				}
 			});
 

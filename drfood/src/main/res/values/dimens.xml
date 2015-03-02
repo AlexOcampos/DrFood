@@ -27,5 +27,10 @@
     <dimen name="min_padding_text">4dp</dimen>
     <dimen name="max_padding_text">4dp</dimen>
 
+    <!-- ======== FOOD_DETAIL ======== -->
+    <dimen name="small_vertical_padding_text_fooddet">4dp</dimen>
+    <dimen name="medium_vertical_padding_text_fooddet">18dp</dimen>
+    <dimen name="big_vertical_padding_text_fooddet">48dp</dimen>
+    <dimen name="lateral_padding_fooddet">16dp</dimen>
 
 </resources>

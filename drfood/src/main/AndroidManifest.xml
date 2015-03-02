@@ -19,6 +19,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.ocasoft.drfood.TrackFoodActivity"
+            android:label="@string/title_activity_track_food"
+            android:parentActivityName="com.ocasoft.drfood.HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ocasoft.drfood.HomeActivity" />
+        </activity>
+        <activity
             android:name="com.ocasoft.drfood.FoodSelectorActivity"
             android:label="@string/title_activity_food_selector"
             android:parentActivityName="com.ocasoft.drfood.HomeActivity" >
@@ -28,7 +36,7 @@
 
         </activity>
         <activity
-            android:name="com.ocasoft.drfood.TrackFoodActivity"
+            android:name="com.ocasoft.drfood.FoodDetailActivity"
             android:label="@string/title_activity_track_food"
             android:parentActivityName="com.ocasoft.drfood.HomeActivity" >
             <meta-data

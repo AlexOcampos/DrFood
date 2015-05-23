@@ -62,6 +62,7 @@
 
         <!-- Delete icon -->
         <LinearLayout
+            android:id="@+id/deleteFoodLayout"
             android:layout_width="0dip"
             android:layout_weight="0.1"
             android:padding="8dp"

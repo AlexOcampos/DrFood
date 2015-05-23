@@ -43,6 +43,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ocasoft.drfood.HomeActivity" />
         </activity>
+        <provider
+            android:name=".contentprovider.FoodContentProvider"
+            android:authorities="com.ocasoft.drfood.contentprovider" >
+        </provider>
     </application>
 
 </manifest>

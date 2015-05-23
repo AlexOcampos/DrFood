@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
@@ -62,9 +63,9 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 		listItemCaloriesText.setText("" + list.get(position).getFats());
 
 		//Handle delete button onClickListener
-		ImageView buttonShowHistory = (ImageView) convertView.findViewById(R.id.deleteFoodIcon);
-		if (buttonShowHistory != null) {
-			buttonShowHistory.setOnClickListener(new View.OnClickListener() {
+		LinearLayout buttonDeleteFood = (LinearLayout) convertView.findViewById(R.id.deleteFoodLayout);
+		if (buttonDeleteFood != null) {
+			buttonDeleteFood.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
 						list.remove(position); //or some other task
 						notifyDataSetChanged();

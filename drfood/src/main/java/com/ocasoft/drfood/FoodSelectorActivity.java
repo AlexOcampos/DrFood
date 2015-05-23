@@ -1,23 +1,52 @@
 package com.ocasoft.drfood;
 
+import android.app.LoaderManager;
+import android.content.CursorLoader;
+import android.content.Loader;
+import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
 
+import com.ocasoft.drfood.contentprovider.FoodContentProvider;
+import com.ocasoft.drfood.database.FoodTable;
 import com.ocasoft.drfood.uiobjects.GridAdapter;
 
-public class FoodSelectorActivity extends ActionBarActivity {
+public class FoodSelectorActivity extends ActionBarActivity implements
+        LoaderManager.LoaderCallbacks<Cursor> {
+    private static final String TAG = "DRFOOD_FoodSel";
+    private static final boolean DEBUG = true;
+
+    private static final String[] PROJECTION = new String[] { "id", "name" };
+
+    // The Loader's id (this id is specific to the ListFragment's LoaderManager)
+    private static final int LOADER_ID = 1;
+
+    private GridAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_selector);
 
-		GridView gridview = (GridView) findViewById(R.id.gridview);
+        if (DEBUG) Log.i(TAG, "+++ onCreate() called! +++");
 
-		gridview.setAdapter(new GridAdapter(getBaseContext()));
+        if (DEBUG) {
+            Log.i(TAG, "+++ Calling initLoader()! +++");
+            if (getLoaderManager().getLoader(LOADER_ID) == null) {
+                Log.i(TAG, "+++ Initializing the new Loader... +++");
+            } else {
+                Log.i(TAG, "+++ Reconnecting with existing Loader (id '1')... +++");
+            }
+        }
+        // Initialize a Loader with id '1'. If the Loader with this id already
+        // exists, then the LoaderManager will reuse the existing Loader.
+        getLoaderManager().initLoader(LOADER_ID, null, this);
+
+        fillData();
 
     }
 
@@ -42,4 +71,69 @@ public class FoodSelectorActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    /*
+     *
+     *
+     *
+     */
+    private void fillData() {
+        if (DEBUG) Log.i(TAG, "+++ fillData() called! +++");
+        GridView gridview = (GridView) findViewById(R.id.gridview);
+
+        getLoaderManager().initLoader(0, null, this);
+        adapter = new GridAdapter(getBaseContext());
+        gridview.setAdapter(adapter);
+    }
+
+    /**********************/
+    /** LOADER CALLBACKS **/
+    /**********************/
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        if (DEBUG) Log.i(TAG, "+++ onCreateLoader() called! +++");
+        // Create a new CursorLoader with the following query parameters.
+        return new CursorLoader(FoodSelectorActivity.this, FoodContentProvider.CONTENT_URI,
+                PROJECTION, null, null, null);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        if (DEBUG) Log.i(TAG, "+++ onLoadFinished() called! +++");
+
+
+        // ++++++++++++++++++++++++++++++++++++++++++ DEGUG +++++++++++++++++++++++++++++++++++++++++++++++++++
+//        if (DEBUG) {
+//            int i = 0;
+//            if (data.moveToFirst()) { // move cursor to first row
+//                do {
+//                    // Get version from Cursor
+//                    String foodName = data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_NAME));
+//
+//                    Log.i(TAG, "+++ onLoadFinished() (" + i + ") foodName : "+ foodName + " +++");
+//                    i++;
+//
+//                } while (data.moveToNext()); // move to next row
+//            }
+//        }
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//        adapter.swapCursor(data);
+
+        adapter.setData(data);
+
+//        if (isResumed()) {
+//            setListShown(true);
+//        } else {
+//            setListShownNoAnimation(true);
+//        }
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        if (DEBUG) Log.i(TAG, "+++ onLoadReset() called! +++");
+
+        //adapter.setData(null);
+    }
 }

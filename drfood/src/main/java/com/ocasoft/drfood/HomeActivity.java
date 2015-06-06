@@ -63,33 +63,30 @@ public class HomeActivity extends ActionBarActivity
         /**
          * TODO: Mockup implementation (test DataBase) =================================================================
          */
-//        DatabaseHandler db = new DatabaseHandler(this);
-//        // Inserting Contacts
-//        if (DEBUG) Log.i("Insert: ", "Inserting ..");
+        DatabaseHandler db = new DatabaseHandler(this);
+        // Inserting Contacts
+        if (DEBUG) Log.i("Insert: ", "Inserting ..");
 
-//        (int id, Date registryDate, String timeMoment, int quantity,
-//        int energy, int fats, int proteins, int carbohydrates,
-//        String category, String comments, String unity_measure, int counter, String name)
-//        db.addFood(new Food(1, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"tortilla de patatas"));
-//        db.addFood(new Food(2, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Gazpacho"));
-//        db.addFood(new Food(3, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Paella"));
-//        db.addFood(new Food(4, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Calamares en su tinta"));
-//        db.addFood(new Food(5, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"chicharro al chacolí"));
-//        db.addFood(new Food(6, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Migas de Teruel"));
-//        db.addFood(new Food(7, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Escalibada"));
-//        db.addFood(new Food(8, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Cocido madrileño"));
-//        db.addFood(new Food(9, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Tarta de Santiago"));
-//        db.addFood(new Food(10, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Hojuelas"));
-//        db.addFood(new Food(11, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Pulpo a la gallega"));
-//        db.addFood(new Food(12, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Fabada"));
-//        db.addFood(new Food(13, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Lentejas"));
-//        db.addFood(new Food(14, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Patatas a la riojana"));
-//        db.addFood(new Food(15, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Bacalao a la vizcaina"));
-//        db.addFood(new Food(16, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Caldereta de langosta"));
-//        db.addFood(new Food(17, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Sopa de ajo"));
-//        db.addFood(new Food(18, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida española","comment1","gr",1,"Ajo blanco"));
-//        db.addFood(new Food(19, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida italiana","comment1","gr",1,"Fetuccini a la puttanesca"));
-//        db.addFood(new Food(20, new java.util.Date(),"Afternoon",100,1,1,1,1,"comida italiana","comment1","gr",1,"Spaguett alla Bolognese"));
+        db.addFood(new Food(1, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"tortilla de patatas"));
+        db.addFood(new Food(2, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Gazpacho"));
+        db.addFood(new Food(3, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Paella"));
+        db.addFood(new Food(4, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Calamares en su tinta"));
+        db.addFood(new Food(5, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"chicharro al chacolí"));
+        db.addFood(new Food(6, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Migas de Teruel"));
+        db.addFood(new Food(7, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Escalibada"));
+        db.addFood(new Food(8, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Cocido madrileño"));
+        db.addFood(new Food(9, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Tarta de Santiago"));
+        db.addFood(new Food(10, new java.util.Date(),"Afternoon",100,1,1,1,1,"orange food","comment1","gr",1,"Hojuelas"));
+        db.addFood(new Food(11, new java.util.Date(),"Afternoon",100,1,1,1,1,"orange food","comment1","gr",1,"Pulpo a la gallega"));
+        db.addFood(new Food(12, new java.util.Date(),"Afternoon",100,1,1,1,1,"orange food","comment1","gr",1,"Fabada"));
+        db.addFood(new Food(13, new java.util.Date(),"Afternoon",100,1,1,1,1,"orange food","comment1","gr",1,"Lentejas"));
+        db.addFood(new Food(14, new java.util.Date(),"Afternoon",100,1,1,1,1,"orange food","comment1","gr",1,"Patatas a la riojana"));
+        db.addFood(new Food(15, new java.util.Date(),"Afternoon",100,1,1,1,1,"orange food","comment1","gr",1,"Bacalao a la vizcaina"));
+        db.addFood(new Food(16, new java.util.Date(),"Afternoon",100,1,1,1,1,"red food","comment1","gr",1,"Caldereta de langosta"));
+        db.addFood(new Food(17, new java.util.Date(),"Afternoon",100,1,1,1,1,"red food","comment1","gr",1,"Sopa de ajo"));
+        db.addFood(new Food(18, new java.util.Date(),"Afternoon",100,1,1,1,1,"red food","comment1","gr",1,"Ajo blanco"));
+        db.addFood(new Food(19, new java.util.Date(),"Afternoon",100,1,1,1,1,"red food","comment1","gr",1,"Fetuccini a la puttanesca"));
+        db.addFood(new Food(20, new java.util.Date(),"Afternoon",100,1,1,1,1,"red food","comment1","gr",1,"Spaguett alla Bolognese"));
 
 
         // Reading all contacts

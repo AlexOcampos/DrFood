@@ -20,7 +20,15 @@ public class FoodSelectorActivity extends ActionBarActivity implements
     private static final String TAG = "DRFOOD_FoodSel";
     private static final boolean DEBUG = true;
 
-    private static final String[] PROJECTION = new String[] { "id", "name" };
+    private static final String[] PROJECTION = new String[] {
+    	FoodTable.COLUMN_NAME_FOOD_ID,
+    	FoodTable.COLUMN_NAME_FOOD_NAME,
+		FoodTable.COLUMN_NAME_FOOD_QUANTITY,
+		FoodTable.COLUMN_NAME_FOOD_ENERGY,
+		FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT,
+		FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE,
+		FoodTable.COLUMN_NAME_FOOD_CATEGORY
+	};
 
     // The Loader's id (this id is specific to the ListFragment's LoaderManager)
     private static final int LOADER_ID = 1;

@@ -11,20 +11,20 @@ public class FoodTable {
 	public static final String TABLE_NAME_FOOD = "food";
 
 	// Foods Table Columns names
-	public static final String COLUMN_NAME_FOOD_ID = "id";
+	public static final String COLUMN_NAME_FOOD_ID = "id"; // Id
 	public static final String COLUMN_NAME_FOOD_REGISTRYDATE = "registrydate";
-	public static final String COLUMN_NAME_FOOD_TIMEMOMENT = "timemoment";
-	public static final String COLUMN_NAME_FOOD_QUANTITY = "quantity";
-	public static final String COLUMN_NAME_FOOD_ENERGY = "energy";
+	public static final String COLUMN_NAME_FOOD_TIMEMOMENT = "timemoment"; // Breakfast, Lunch, Snack, Dinner
+	public static final String COLUMN_NAME_FOOD_QUANTITY = "quantity"; // suggested quantity
+	public static final String COLUMN_NAME_FOOD_ENERGY = "energy"; // X approximate calories
 	public static final String COLUMN_NAME_FOOD_FATS = "fats";
 	public static final String COLUMN_NAME_FOOD_PROTEINS = "proteins";
 
 	public static final String COLUMN_NAME_FOOD_CARBOHYDRATES = "carbohydrates";
-	public static final String COLUMN_NAME_FOOD_CATEGORY = "category";
+	public static final String COLUMN_NAME_FOOD_CATEGORY = "category"; // Green Food, Orange Food, Red Food
 	public static final String COLUMN_NAME_FOOD_COMMENTS = "comments";
-	public static final String COLUMN_NAME_FOOD_UNITY_MEASURE = "unitymeasure";
+	public static final String COLUMN_NAME_FOOD_UNITY_MEASURE = "unitymeasure"; // Unity measure (gr, cup, litres...)
 	public static final String COLUMN_NAME_FOOD_COUNTER = "counter";
-	public static final String COLUMN_NAME_FOOD_NAME = "name";
+	public static final String COLUMN_NAME_FOOD_NAME = "name"; // Food name
 
 	private static final String TEXT_TYPE = " TEXT";
 	private static final String COMMA_SEP = ",";

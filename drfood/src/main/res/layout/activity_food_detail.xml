@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Spaghetti Bolognese"
-        android:id="@+id/textView"
+        android:id="@+id/foodNameDetailTV"
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:textIsSelectable="false"
@@ -60,19 +60,19 @@
             android:layout_height="fill_parent"
             android:paddingBottom="@dimen/medium_vertical_padding_text_fooddet">
 
-            <Button
+            <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="0dip"
                 android:layout_weight="0.5"
                 android:text="1"
-                android:id="@+id/button"/>
+                android:id="@+id/quantityDetailTV"/>
 
-            <Button
+            <TextView
                 android:layout_width="0dip"
                 android:layout_weight="0.5"
                 android:layout_height="wrap_content"
                 android:text="Cup"
-                android:id="@+id/button2"
+                android:id="@+id/unityMeasureDetailTV"
                 />
 
         </LinearLayout>
@@ -101,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="X"
-            android:id="@+id/textView3"
+            android:id="@+id/energyDetailTV"
             android:textStyle="bold"/>
 
         <TextView
@@ -144,7 +144,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#ff35cd35"
             android:text="Healthy"
-            android:id="@+id/textView6"
+            android:id="@+id/categoryDetailTV"
             android:gravity="right"
             android:textStyle="bold"/>
     </LinearLayout>

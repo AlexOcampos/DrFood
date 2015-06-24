@@ -2,6 +2,7 @@ package com.ocasoft.drfood;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.v7.app.ActionBarActivity;
@@ -30,6 +31,7 @@ import java.util.List;
 public class HomeActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private static final String TAG = "DRFOOD_HomeAct";
+	public static final String PREFS_NAME = "DrFoodPrefsFile";
     private static final boolean DEBUG = true; //TODO : Disable DEBUG
 
     /**
@@ -63,34 +65,45 @@ public class HomeActivity extends ActionBarActivity
         /**
          * TODO: Mockup implementation (test DataBase) =================================================================
          */
-        DatabaseHandler db = new DatabaseHandler(this);
-        // Inserting Contacts
-        if (DEBUG) Log.i("Insert: ", "Inserting ..");
+        // Restore preferences
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        boolean dbInitialized = settings.getBoolean("dbInitialized", false);
 
-        db.addFood(new Food(1, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"tortilla de patatas"));
-        db.addFood(new Food(2, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Gazpacho"));
-        db.addFood(new Food(3, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Paella"));
-        db.addFood(new Food(4, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Calamares en su tinta"));
-        db.addFood(new Food(5, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"chicharro al chacolí"));
-        db.addFood(new Food(6, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Migas de Teruel"));
-        db.addFood(new Food(7, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Escalibada"));
-        db.addFood(new Food(8, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Cocido madrileño"));
-        db.addFood(new Food(9, new java.util.Date(),"Afternoon",100,1,1,1,1,"green food","comment1","gr",1,"Tarta de Santiago"));
-        db.addFood(new Food(10, new java.util.Date(),"Afternoon",100,1,1,1,1,"orange food","comment1","gr",1,"Hojuelas"));
-        db.addFood(new Food(11, new java.util.Date(),"Afternoon",100,1,1,1,1,"orange food","comment1","gr",1,"Pulpo a la gallega"));
-        db.addFood(new Food(12, new java.util.Date(),"Afternoon",100,1,1,1,1,"orange food","comment1","gr",1,"Fabada"));
-        db.addFood(new Food(13, new java.util.Date(),"Afternoon",100,1,1,1,1,"orange food","comment1","gr",1,"Lentejas"));
-        db.addFood(new Food(14, new java.util.Date(),"Afternoon",100,1,1,1,1,"orange food","comment1","gr",1,"Patatas a la riojana"));
-        db.addFood(new Food(15, new java.util.Date(),"Afternoon",100,1,1,1,1,"orange food","comment1","gr",1,"Bacalao a la vizcaina"));
-        db.addFood(new Food(16, new java.util.Date(),"Afternoon",100,1,1,1,1,"red food","comment1","gr",1,"Caldereta de langosta"));
-        db.addFood(new Food(17, new java.util.Date(),"Afternoon",100,1,1,1,1,"red food","comment1","gr",1,"Sopa de ajo"));
-        db.addFood(new Food(18, new java.util.Date(),"Afternoon",100,1,1,1,1,"red food","comment1","gr",1,"Ajo blanco"));
-        db.addFood(new Food(19, new java.util.Date(),"Afternoon",100,1,1,1,1,"red food","comment1","gr",1,"Fetuccini a la puttanesca"));
-        db.addFood(new Food(20, new java.util.Date(),"Afternoon",100,1,1,1,1,"red food","comment1","gr",1,"Spaguett alla Bolognese"));
 
+
+		if (!dbInitialized) {
+			DatabaseHandler db = new DatabaseHandler(this);
+			// Inserting Contacts
+			if (DEBUG) Log.i("Insert: ", "Inserting ..");
+
+			db.addFood(new Food(1, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "tortilla de patatas"));
+			db.addFood(new Food(2, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Gazpacho"));
+			db.addFood(new Food(3, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Paella"));
+			db.addFood(new Food(4, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Calamares en su tinta"));
+			db.addFood(new Food(5, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "chicharro al chacolí"));
+			db.addFood(new Food(6, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Migas de Teruel"));
+			db.addFood(new Food(7, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Escalibada"));
+			db.addFood(new Food(8, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Cocido madrileño"));
+			db.addFood(new Food(9, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Tarta de Santiago"));
+			db.addFood(new Food(10, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Hojuelas"));
+			db.addFood(new Food(11, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Pulpo a la gallega"));
+			db.addFood(new Food(12, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Fabada"));
+			db.addFood(new Food(13, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Lentejas"));
+			db.addFood(new Food(14, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Patatas a la riojana"));
+			db.addFood(new Food(15, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Bacalao a la vizcaina"));
+			db.addFood(new Food(16, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Caldereta de langosta"));
+			db.addFood(new Food(17, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Sopa de ajo"));
+			db.addFood(new Food(18, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Ajo blanco"));
+			db.addFood(new Food(19, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Fetuccini a la puttanesca"));
+			db.addFood(new Food(20, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Spaguett alla Bolognese"));
+
+			SharedPreferences.Editor editor = settings.edit();
+			editor.putBoolean("dbInitialized", true);
+			editor.commit();
+		}
 
         // Reading all contacts
-        if (DEBUG) {
+//        if (DEBUG) {
 //            Log.i("Reading: ", "Reading all foods..");
 //            List<Food> foods = db.getAllFoods();
 //
@@ -99,7 +112,7 @@ public class HomeActivity extends ActionBarActivity
 //                // Writing Contacts to log
 //                if (DEBUG) Log.i("Name: ", log);
 //            }
-        }
+//        }
 
         /**
          * TODO: Mockup implementation (test DataBase) =================================================================
@@ -112,7 +125,7 @@ public class HomeActivity extends ActionBarActivity
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+				.replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                 .commit();
     }
 

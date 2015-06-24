@@ -23,14 +23,15 @@ public class FoodDatabaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase database) {
 		FoodTable.onCreate(database);
+		TrackFoodTable.onCreate(database);
 	}
 
 	// Method is called during an upgrade of the database,
 	// e.g. if you increase the database version
 	@Override
-	public void onUpgrade(SQLiteDatabase database, int oldVersion,
-						  int newVersion) {
+	public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
 		FoodTable.onUpgrade(database, oldVersion, newVersion);
+		TrackFoodTable.onUpgrade(database, oldVersion, newVersion);
 	}
 
 }

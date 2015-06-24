@@ -101,7 +101,7 @@ public class FoodSelectorActivity extends ActionBarActivity implements
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (DEBUG) Log.i(TAG, "+++ onCreateLoader() called! +++");
         // Create a new CursorLoader with the following query parameters.
-        return new CursorLoader(FoodSelectorActivity.this, FoodContentProvider.CONTENT_URI,
+        return new CursorLoader(FoodSelectorActivity.this, FoodContentProvider.CONTENT_URI_FOOD,
                 PROJECTION, null, null, null);
     }
 

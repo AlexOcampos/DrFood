@@ -13,6 +13,7 @@ import android.util.Log;
 
 import com.ocasoft.drfood.database.FoodDatabaseHelper;
 import com.ocasoft.drfood.database.FoodTable;
+import com.ocasoft.drfood.database.TrackFoodTable;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -29,22 +30,34 @@ public class FoodContentProvider extends ContentProvider {
 	// used for the UriMacher
 	private static final int FOODS = 10;
 	private static final int FOOD_ID = 20;
+	private static final int TRACKS = 30;
+	private static final int TRACK_ID = 40;
 
-	private static final String AUTHORITY = "com.ocasoft.drfood.contentprovider";
-	private static final String BASE_PATH = "foods";
+	private static final String AUTHORITY = "com.ocasoft.drfood.provider";
 
-	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY
-			+ "/" + BASE_PATH);
+	// Tables of the database
+	private static final String BASE_PATH_FOOD = "foods";
+	private static final String BASE_PATH_TRACK = "tracks";
 
+	// Uris
+	public static final Uri CONTENT_URI_FOOD = Uri.parse("content://" + AUTHORITY
+			+ "/" + BASE_PATH_FOOD);
+	public static final Uri CONTENT_URI_TRACK = Uri.parse("content://" + AUTHORITY
+			+ "/" + BASE_PATH_TRACK);
+
+	// ??
 	public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
 			+ "/foods";
 	public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
 			+ "/food";
 
+	// UriMatcher
 	private static final UriMatcher sURIMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 	static {
-		sURIMatcher.addURI(AUTHORITY, BASE_PATH, FOODS);
-		sURIMatcher.addURI(AUTHORITY, BASE_PATH + "/#", FOOD_ID);
+		sURIMatcher.addURI(AUTHORITY, BASE_PATH_FOOD, FOODS);
+		sURIMatcher.addURI(AUTHORITY, BASE_PATH_FOOD + "/#", FOOD_ID);
+		sURIMatcher.addURI(AUTHORITY, BASE_PATH_TRACK, TRACKS);
+		sURIMatcher.addURI(AUTHORITY, BASE_PATH_TRACK + "/#", TRACK_ID);
 	}
 
 	@Override
@@ -61,21 +74,53 @@ public class FoodContentProvider extends ContentProvider {
 		// Uisng SQLiteQueryBuilder instead of query() method
 		SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
 
-		// check if the caller has requested a column which does not exists
-		checkColumns(projection);
-
-		// Set the table
-		queryBuilder.setTables(FoodTable.TABLE_NAME_FOOD);
-
 		int uriType = sURIMatcher.match(uri);
 		switch (uriType) {
 			case FOODS:
 				if (DEBUG) Log.i(TAG, "+++ query() uriType FOODS! +++");
+
+				// check if the caller has requested a column which does not exists
+				checkColumns(projection,FoodTable.TABLE_NAME_FOOD);
+
+				// Set the table
+				queryBuilder.setTables(FoodTable.TABLE_NAME_FOOD);
+
 				break;
 			case FOOD_ID:
 				if (DEBUG) Log.i(TAG, "+++ query() uriType FOOD_ID + " + uri.getLastPathSegment() + "! +++");
+
+				// check if the caller has requested a column which does not exists
+				checkColumns(projection,FoodTable.TABLE_NAME_FOOD);
+
+				// Set the table
+				queryBuilder.setTables(FoodTable.TABLE_NAME_FOOD);
+
 				// adding the ID to the original query
 				queryBuilder.appendWhere(FoodTable.COLUMN_NAME_FOOD_ID + "="
+						+ uri.getLastPathSegment());
+
+				break;
+			case TRACKS:
+				if (DEBUG) Log.i(TAG, "+++ query() uriType TRACKS! +++");
+
+				// check if the caller has requested a column which does not exists
+				checkColumns(projection,TrackFoodTable.TABLE_NAME_TRACKFOOD);
+
+				// Set the table
+				queryBuilder.setTables(TrackFoodTable.TABLE_NAME_TRACKFOOD);
+
+				break;
+			case TRACK_ID:
+				if (DEBUG) Log.i(TAG, "+++ query() uriType TRACK_ID + " + uri.getLastPathSegment() + "! +++");
+
+				// check if the caller has requested a column which does not exists
+				checkColumns(projection,TrackFoodTable.TABLE_NAME_TRACKFOOD);
+
+				// Set the table
+				queryBuilder.setTables(TrackFoodTable.TABLE_NAME_TRACKFOOD);
+
+				// adding the ID to the original query
+				queryBuilder.appendWhere(TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID + "="
 						+ uri.getLastPathSegment());
 				break;
 			default:
@@ -99,19 +144,27 @@ public class FoodContentProvider extends ContentProvider {
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
 		if (DEBUG) Log.i(TAG, "+++ insert() called! +++");
+
 		int uriType = sURIMatcher.match(uri);
 		SQLiteDatabase sqlDB = database.getWritableDatabase();
-		int rowsDeleted = 0;
+		String uriToParse = "";
+
 		long id = 0;
 		switch (uriType) {
 			case FOODS:
 				id = sqlDB.insert(FoodTable.TABLE_NAME_FOOD, null, values);
+				uriToParse = BASE_PATH_FOOD + "/" + id;
+				break;
+			case TRACKS:
+				id = sqlDB.insert(TrackFoodTable.TABLE_NAME_TRACKFOOD, null, values);
+				uriToParse = BASE_PATH_TRACK + "/" + id;
 				break;
 			default:
 				throw new IllegalArgumentException("FoodContentprovider - insert() - Unknown URI: " + uri);
 		}
 		getContext().getContentResolver().notifyChange(uri, null);
-		return Uri.parse(BASE_PATH + "/" + id);
+
+		return Uri.parse(uriToParse);
 	}
 
 	@Override
@@ -120,20 +173,38 @@ public class FoodContentProvider extends ContentProvider {
 		int uriType = sURIMatcher.match(uri);
 		SQLiteDatabase sqlDB = database.getWritableDatabase();
 		int rowsDeleted = 0;
+
 		switch (uriType) {
 			case FOODS:
 				rowsDeleted = sqlDB.delete(FoodTable.TABLE_NAME_FOOD, selection,
 						selectionArgs);
 				break;
 			case FOOD_ID:
-				String id = uri.getLastPathSegment();
+				String idFood = uri.getLastPathSegment();
 				if (TextUtils.isEmpty(selection)) {
 					rowsDeleted = sqlDB.delete(FoodTable.TABLE_NAME_FOOD,
-							FoodTable.COLUMN_NAME_FOOD_ID + "=" + id,
+							FoodTable.COLUMN_NAME_FOOD_ID + "=" + idFood,
 							null);
 				} else {
 					rowsDeleted = sqlDB.delete(FoodTable.TABLE_NAME_FOOD,
-							FoodTable.COLUMN_NAME_FOOD_ID + "=" + id
+							FoodTable.COLUMN_NAME_FOOD_ID + "=" + idFood
+									+ " and " + selection,
+							selectionArgs);
+				}
+				break;
+			case TRACKS:
+				rowsDeleted = sqlDB.delete(TrackFoodTable.TABLE_NAME_TRACKFOOD, selection,
+						selectionArgs);
+				break;
+			case TRACK_ID:
+				String idTrack = uri.getLastPathSegment();
+				if (TextUtils.isEmpty(selection)) {
+					rowsDeleted = sqlDB.delete(TrackFoodTable.TABLE_NAME_TRACKFOOD,
+							TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID + "=" + idTrack,
+							null);
+				} else {
+					rowsDeleted = sqlDB.delete(TrackFoodTable.TABLE_NAME_TRACKFOOD,
+							TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID + "=" + idTrack
 									+ " and " + selection,
 							selectionArgs);
 				}
@@ -159,16 +230,38 @@ public class FoodContentProvider extends ContentProvider {
 						selectionArgs);
 				break;
 			case FOOD_ID:
-				String id = uri.getLastPathSegment();
+				String idFood = uri.getLastPathSegment();
 				if (TextUtils.isEmpty(selection)) {
 					rowsUpdated = sqlDB.update(FoodTable.TABLE_NAME_FOOD,
 							values,
-							FoodTable.COLUMN_NAME_FOOD_ID + "=" + id,
+							FoodTable.COLUMN_NAME_FOOD_ID + "=" + idFood,
 							null);
 				} else {
 					rowsUpdated = sqlDB.update(FoodTable.TABLE_NAME_FOOD,
 							values,
-							FoodTable.COLUMN_NAME_FOOD_ID + "=" + id
+							FoodTable.COLUMN_NAME_FOOD_ID + "=" + idFood
+									+ " and "
+									+ selection,
+							selectionArgs);
+				}
+				break;
+			case TRACKS:
+				rowsUpdated = sqlDB.update(TrackFoodTable.TABLE_NAME_TRACKFOOD,
+						values,
+						selection,
+						selectionArgs);
+				break;
+			case TRACK_ID:
+				String idTrack = uri.getLastPathSegment();
+				if (TextUtils.isEmpty(selection)) {
+					rowsUpdated = sqlDB.update(TrackFoodTable.TABLE_NAME_TRACKFOOD,
+							values,
+							TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID + "=" + idTrack,
+							null);
+				} else {
+					rowsUpdated = sqlDB.update(TrackFoodTable.TABLE_NAME_TRACKFOOD,
+							values,
+							TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID + "=" + idTrack
 									+ " and "
 									+ selection,
 							selectionArgs);
@@ -181,9 +274,12 @@ public class FoodContentProvider extends ContentProvider {
 		return rowsUpdated;
 	}
 
-	private void checkColumns(String[] projection) {
-		if (DEBUG) Log.i(TAG, "+++ checkColumns() called! +++");
-		String[] available = { FoodTable.COLUMN_NAME_FOOD_ID,
+	private void checkColumns(String[] projection, String tableName) {
+		if (DEBUG) Log.i(TAG, "+++ checkColumns() called! - "  + tableName + " +++");
+
+		// Available columns of each table
+		String[] availableFood = {
+				FoodTable.COLUMN_NAME_FOOD_ID,
 				FoodTable.COLUMN_NAME_FOOD_REGISTRYDATE,
 				FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT,
 				FoodTable.COLUMN_NAME_FOOD_QUANTITY,
@@ -196,8 +292,26 @@ public class FoodContentProvider extends ContentProvider {
 				FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE,
 				FoodTable.COLUMN_NAME_FOOD_COUNTER,
 				FoodTable.COLUMN_NAME_FOOD_NAME};
-		if (projection != null) {
 
+		String[] availableTrack = {
+				TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID,
+				TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY,
+				TrackFoodTable.COLUMN_NAME_TRACKFOOD_FOOD_ID,
+				TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID,
+				TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID};
+
+		// Use columns of the selected table
+		String[] available;
+		if (FoodTable.TABLE_NAME_FOOD.compareTo(tableName) == 0) {
+			available = availableFood;
+		} else if (TrackFoodTable.TABLE_NAME_TRACKFOOD.compareTo(tableName) == 0) {
+			available = availableTrack;
+		} else {
+			throw new IllegalArgumentException("FoodContentprovider - checkColumns() - Unknown table");
+		}
+
+
+		if (projection != null) {
 			// ++++++++++++++++++++++++++++++++++++++++++ DEGUG +++++++++++++++++++++++++++++++++++++++++++++++++++
 //			if (DEBUG) {
 //				String projectionsValues = "";

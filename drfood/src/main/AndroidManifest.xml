@@ -38,14 +38,14 @@
         <activity
             android:name="com.ocasoft.drfood.FoodDetailActivity"
             android:label="@string/title_activity_track_food"
-            android:parentActivityName="com.ocasoft.drfood.HomeActivity" >
+            android:parentActivityName="com.ocasoft.drfood.FoodSelectorActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ocasoft.drfood.HomeActivity" />
+                android:value="com.ocasoft.drfood.FoodSelectorActivity" />
         </activity>
         <provider
             android:name=".contentprovider.FoodContentProvider"
-            android:authorities="com.ocasoft.drfood.contentprovider" >
+            android:authorities="com.ocasoft.drfood.provider" >
         </provider>
     </application>
 

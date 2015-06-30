@@ -1,9 +1,12 @@
 package com.ocasoft.drfood;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ocasoft.drfood.database.FoodTable;
 
@@ -119,6 +122,25 @@ public class FoodDetailActivity extends ActionBarActivity {
 			if (DEBUG) Log.i(TAG, "+++ onCreate() loadingOk-category! +++");
 		}
 
+		// Save selected values (TrackFood)
+		setDoneButtonListener();
+
+	}
+
+	/**
+	 * Actions for Add Button
+	 */
+	private void setDoneButtonListener() {
+		findViewById(R.id.buttonDoneFoodDetail).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				//TODO: Save data and return to parent activity
+				Context context = v.getContext();
+				CharSequence text = "Hello Done Button.";
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
+			}
+		});
 	}
 
 	private void handleErrorFood() {

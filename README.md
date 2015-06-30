@@ -3,4 +3,10 @@ DrFood
 
 PFM - DrFood
 
-2014-07-06 First commit
+*General UI*
+Extends BaseAdapter
+
+*Data Base Handler*
+LoaderManager
+Loader
+ContentProvider

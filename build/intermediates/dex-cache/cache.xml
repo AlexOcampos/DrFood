@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Alex\AndroidStudioProjects\DrFoodOcasoft\drfood\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\19.0.1\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="b1701c49371231e0423b7588539f24bdab485019">
+        <dex dex="C:\Users\Alex\AndroidStudioProjects\DrFoodOcasoft\drfood\build\intermediates\pre-dexed\debug\classes-5d3a78a390f145fd3befc8b2c48336901b5c7538.jar" />
+    </item>
+    <item
+        jar="C:\Users\Alex\AndroidStudioProjects\DrFoodOcasoft\drfood\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.0.1\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="f71a6822470c9eb659d4f4a6cb57b780b35f058b">
+        <dex dex="C:\Users\Alex\AndroidStudioProjects\DrFoodOcasoft\drfood\build\intermediates\pre-dexed\debug\classes-9fd5abfd14d19fd96d99df8730343bfcbe4c0c21.jar" />
+    </item>
+    <item
+        jar="C:\Program Files (x86)\Android\android-studio2\sdk\extras\android\m2repository\com\android\support\support-v4\19.0.1\support-v4-19.0.1.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="587da9a481ffd341d2fa091704489b89845ddacd">
+        <dex dex="C:\Users\Alex\AndroidStudioProjects\DrFoodOcasoft\drfood\build\intermediates\pre-dexed\debug\support-v4-19.0.1-654e58290dc6047b5fe64030aaf9fa87279f834d.jar" />
+    </item>
+
+</items>

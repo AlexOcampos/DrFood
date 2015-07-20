@@ -18,7 +18,7 @@
             android:layout_centerHorizontal="true">
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/etSearch"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight=".65"

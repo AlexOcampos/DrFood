@@ -28,6 +28,7 @@
     <!-- ===== ACTIVITY_FOOD_SELECTOR ===== -->
     <string name="title_activity_food_selector">FoodSelectorActivity</string>
     <string name="hint_searcher_food_selector">Search food...</string>
+    <string name="quantity_food_selector">Quantity</string>
 
     <!-- ===== ACTIVITY_TRACKFOOD ===== -->
     <string name="cal_consumed_lunch">200 cal this lunch</string>

@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Quantity"
+            android:text="@string/quantity_food_selector"
             android:paddingBottom="@dimen/small_vertical_padding_text_fooddet"
             android:id="@+id/textView2"
             android:layout_below="@+id/imageView2FoodDetail"
@@ -60,12 +60,20 @@
             android:layout_height="fill_parent"
             android:paddingBottom="@dimen/medium_vertical_padding_text_fooddet">
 
-            <TextView
+            <EditText
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_width="0dip"
-                android:layout_weight="0.5"
-                android:text="1"
-                android:id="@+id/quantityDetailTV"/>
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/quantityDetailET"
+                android:layout_weight="0.5" />
+
+            <!--<TextView-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="0dip"-->
+                <!--android:layout_weight="0.5"-->
+                <!--android:text="1"-->
+                <!--android:id="@+id/quantityDetailTV"/>-->
 
             <TextView
                 android:layout_width="0dip"

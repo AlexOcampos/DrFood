@@ -1,6 +1,7 @@
 package com.ocasoft.drfood.uiobjects;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import android.content.Context;
@@ -11,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,7 +26,7 @@ import com.ocasoft.drfood.database.FoodTable;
 /**
  * Based on https://github.com/goodev/SquareGridView/blob/master/SquareGrid/src/org/goodev/squaregrid/GridAdapter.java
  */
-public class GridAdapter extends BaseAdapter{
+public class GridAdapter extends BaseAdapter implements Filterable {
 	public static class Food {
 		public int id;
 		public String text;
@@ -33,25 +36,37 @@ public class GridAdapter extends BaseAdapter{
 		public String unityMeasure;
 		public String category;
 		public int resId;
+
+		/**
+		 * Checks if the filter value exists in the Food object
+		 * @param filter filter value
+		 * @return true if the Food contains the filter value. If not, false is returned
+		 */
+		public boolean filterResult(CharSequence filter) {
+			return text.contains(filter.toString().toLowerCase());
+		}
 	}
 
 	private static final String TAG = "DRFOOD_GridAdapter";
 	private static final boolean DEBUG = true; //TODO : Disable DEBUG
 
 	private List<Food> mItems = new ArrayList<GridAdapter.Food>();
+    private List<Food> mItemsFiltered = new ArrayList<GridAdapter.Food>();
 	private Context mContext;
+
+
 	public GridAdapter(Context context) {
 		mContext = context;
 	}
 
 	@Override
 	public int getCount() {
-		return mItems.size();
+		return mItemsFiltered.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return mItems.get(position);
+		return mItemsFiltered.get(position);
 	}
 
 	@Override
@@ -121,7 +136,46 @@ public class GridAdapter extends BaseAdapter{
 			} while (data.moveToNext()); // move to next row
 		}
 
-
+        //To start, set both data sources to the incoming data
+        mItemsFiltered = mItems;
 
 	}
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+				FilterResults results = new FilterResults();    // Holds the results of a filtering operation in values
+
+                //If there's nothing to filter on, return the original data for your list
+                if(charSequence == null || charSequence.length() == 0)	{
+                    results.values = mItems;
+                    results.count = mItems.size();
+                } else	{
+                    List<Food> filterResultsData = new ArrayList<Food>();
+
+                    for(Food data : mItems)	{
+                        //In this loop, you'll filter through originalData and compare each item to charSequence.
+                        //If you find a match, add it to your new ArrayList
+						if(data.filterResult(charSequence.toString().toLowerCase())) {
+                            filterResultsData.add(data);
+                        }
+                    }
+
+                    results.values = filterResultsData;
+                    results.count = filterResultsData.size();
+                }
+
+                return results;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+				mItemsFiltered = (List<Food>) filterResults.values;  // has the filtered values
+				notifyDataSetChanged();  // notifies the data with new filtered values
+            }
+        };
+    }
+
 }

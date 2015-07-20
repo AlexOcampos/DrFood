@@ -27,6 +27,8 @@ public class Food {
 	private String name;
 	private final String DATEFORMAT = "yyyy-MM-dd HH:mm:ss";
 
+	public Food() {}
+
 	public Food(int id, String name, String timeMoment, int fats) {
 		this.id = id;
 		this.name = name;

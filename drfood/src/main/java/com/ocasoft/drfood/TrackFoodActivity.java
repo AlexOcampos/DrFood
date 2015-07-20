@@ -1,7 +1,11 @@
 package com.ocasoft.drfood;
 
 import android.app.DatePickerDialog;
+import android.app.LoaderManager;
 import android.content.Context;
+import android.content.CursorLoader;
+import android.content.Loader;
+import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +21,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ocasoft.drfood.contentprovider.FoodContentProvider;
+import com.ocasoft.drfood.database.FoodTable;
+import com.ocasoft.drfood.database.TrackFoodTable;
 import com.ocasoft.drfood.infoobjects.Food;
 import com.ocasoft.drfood.uiobjects.TrackFoodListAdapter;
 
@@ -25,15 +32,44 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 
-public class TrackFoodActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
+public class TrackFoodActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener,
+		LoaderManager.LoaderCallbacks<Cursor>{
+	private static final String TAG = "DRFOOD_TrFoodActi";
+	private static final boolean DEBUG = true;
 	private int mYear, mMonth, mDay;
 	TextView tvDisplayDate;
 	private DatePickerDialog dpd;
+
+	private TrackFoodListAdapter adapter;
+	private static final String[] PROJECTION = new String[] {
+			TrackFoodTable.addPrefix(TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID),
+			TrackFoodTable.addPrefix(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY),
+			TrackFoodTable.addPrefix(TrackFoodTable.COLUMN_NAME_TRACKFOOD_FOOD_ID),
+			TrackFoodTable.addPrefix(TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID),
+			TrackFoodTable.addPrefix(TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID),
+			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_NAME),
+			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT),
+			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_FATS)
+	};
+	// The Loader's id (this id is specific to the ListFragment's LoaderManager)
+	private static final int LOADER_ID = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_trackfood);
+
+		if (DEBUG) {
+			Log.i(TAG, "+++ Calling initLoader()! +++");
+			if (getLoaderManager().getLoader(LOADER_ID) == null) {
+				Log.i(TAG, "+++ Initializing the new Loader... +++");
+			} else {
+				Log.i(TAG, "+++ Reconnecting with existing Loader (id '2')... +++");
+			}
+		}
+		// Initialize a Loader with id '1'. If the Loader with this id already
+		// exists, then the LoaderManager will reuse the existing Loader.
+		getLoaderManager().initLoader(LOADER_ID, null, this);
 
 		//======================== Set Spinner values ========================
 		setSpinnerFoodTimes();
@@ -133,14 +169,25 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 
 	private void generateFoodList() {
 		// TODO: Mockup
-		ArrayList<Food> list = new ArrayList<Food>();
-		for (int i = 1; i < 15; i++) {
-			Food object = new Food(i,"Spaghetti Carbonara "+i,"Breakfast",500);
-			list.add(object);
-		}
+//		ArrayList<Food> list = new ArrayList<Food>();
+//		for (int i = 1; i < 15; i++) {
+//			Food object = new Food(i,"Spaghetti Carbonara "+i,"Breakfast",500);
+//			list.add(object);
+//		}
+
+		// ======================== Load tracked food ========================
+        /*
+            1) Buscar tracked food del contentprovider por los siguientes criterios:
+                - usuario
+                - momento horario
+                - fecha
+
+            2) Inicializar la lista de alimentos "list" con dichos valores
+         */
+
 
 		//instantiate custom adapter
-		TrackFoodListAdapter adapter = new TrackFoodListAdapter(list, this);
+		adapter = new TrackFoodListAdapter(this);
 
 		//handle listview and assign adapter
 		GridView lView = (GridView) findViewById(R.id.listFoodConsummed);
@@ -235,5 +282,35 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 	@Override
 	public void onNothingSelected(AdapterView<?> adapterView) {
 
+	}
+
+	/**********************/
+	/** LOADER CALLBACKS **/
+	/**********************/
+	@Override
+	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+		if (DEBUG) Log.i(TAG, "+++ onCreateLoader() called! +++");
+
+		// Prepare where clause
+		String mSelectionClause = TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID + " = ?";
+		String[] mSelectionArgs = {"1"};
+
+		// Create a new CursorLoader with the following query parameters.
+		return new CursorLoader(TrackFoodActivity.this, FoodContentProvider.CONTENT_URI_TRACKEDFOOD,
+				PROJECTION, mSelectionClause, mSelectionArgs, null);
+	}
+
+	@Override
+	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+		if (DEBUG) Log.i(TAG, "+++ onLoadFinished() called! +++");
+
+		adapter.setData(data);
+	}
+
+	@Override
+	public void onLoaderReset(Loader<Cursor> loader) {
+		if (DEBUG) Log.i(TAG, "+++ onLoadReset() called! +++");
+
+		//adapter.setData(null);
 	}
 }

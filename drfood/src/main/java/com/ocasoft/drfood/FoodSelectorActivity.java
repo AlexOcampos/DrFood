@@ -6,9 +6,12 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.GridView;
 
 import com.ocasoft.drfood.contentprovider.FoodContentProvider;
@@ -54,8 +57,8 @@ public class FoodSelectorActivity extends ActionBarActivity implements
         // exists, then the LoaderManager will reuse the existing Loader.
         getLoaderManager().initLoader(LOADER_ID, null, this);
 
+        // Fill the List
         fillData();
-
     }
 
 
@@ -85,14 +88,33 @@ public class FoodSelectorActivity extends ActionBarActivity implements
      *
      *
      */
-    private void fillData() {
-        if (DEBUG) Log.i(TAG, "+++ fillData() called! +++");
-        GridView gridview = (GridView) findViewById(R.id.gridview);
+	private void fillData() {
+		if (DEBUG) Log.i(TAG, "+++ fillData() called! +++");
+		GridView gridview = (GridView) findViewById(R.id.gridview);
 
-        getLoaderManager().initLoader(0, null, this);
-        adapter = new GridAdapter(getBaseContext());
-        gridview.setAdapter(adapter);
-    }
+		getLoaderManager().initLoader(LOADER_ID, null, this);
+		adapter = new GridAdapter(getBaseContext());
+		gridview.setAdapter(adapter);
+
+		// Add Text Change Listener to EditText
+		EditText etSearch = (EditText) findViewById(R.id.etSearch);
+		etSearch.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				// Call back the Adapter with current character to Filter
+				adapter.getFilter().filter(s.toString());
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+			}
+		});
+	}
 
     /**********************/
     /** LOADER CALLBACKS **/

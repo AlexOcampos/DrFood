@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -68,51 +69,6 @@ public class HomeActivity extends ActionBarActivity
         // Restore preferences
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         boolean dbInitialized = settings.getBoolean("dbInitialized", false);
-
-
-
-		if (!dbInitialized) {
-			DatabaseHandler db = new DatabaseHandler(this);
-			// Inserting Contacts
-			if (DEBUG) Log.i("Insert: ", "Inserting ..");
-
-			db.addFood(new Food(1, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "tortilla de patatas"));
-			db.addFood(new Food(2, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Gazpacho"));
-			db.addFood(new Food(3, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Paella"));
-			db.addFood(new Food(4, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Calamares en su tinta"));
-			db.addFood(new Food(5, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "chicharro al chacolí"));
-			db.addFood(new Food(6, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Migas de Teruel"));
-			db.addFood(new Food(7, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Escalibada"));
-			db.addFood(new Food(8, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Cocido madrileño"));
-			db.addFood(new Food(9, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Tarta de Santiago"));
-			db.addFood(new Food(10, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Hojuelas"));
-			db.addFood(new Food(11, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Pulpo a la gallega"));
-			db.addFood(new Food(12, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Fabada"));
-			db.addFood(new Food(13, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Lentejas"));
-			db.addFood(new Food(14, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Patatas a la riojana"));
-			db.addFood(new Food(15, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Bacalao a la vizcaina"));
-			db.addFood(new Food(16, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Caldereta de langosta"));
-			db.addFood(new Food(17, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Sopa de ajo"));
-			db.addFood(new Food(18, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Ajo blanco"));
-			db.addFood(new Food(19, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Fetuccini a la puttanesca"));
-			db.addFood(new Food(20, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Spaguett alla Bolognese"));
-
-			SharedPreferences.Editor editor = settings.edit();
-			editor.putBoolean("dbInitialized", true);
-			editor.commit();
-		}
-
-        // Reading all contacts
-//        if (DEBUG) {
-//            Log.i("Reading: ", "Reading all foods..");
-//            List<Food> foods = db.getAllFoods();
-//
-//            for (Food f : foods) {
-//                String log = "Id: " + f.getId() + " ,Name: " + f.getName() + " ,Fats: " + f.getFats();
-//                // Writing Contacts to log
-//                if (DEBUG) Log.i("Name: ", log);
-//            }
-//        }
 
         /**
          * TODO: Mockup implementation (test DataBase) =================================================================
@@ -258,6 +214,30 @@ public class HomeActivity extends ActionBarActivity
 					rootView = inflater.inflate(R.layout.fragment_section2, container, false);
 					textView = (TextView) rootView.findViewById(R.id.section_label);
 					textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+
+					Button initDBButton = (Button) rootView.findViewById(R.id.buttonInitDB);
+					initDBButton.setOnClickListener(new View.OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							// Do something in response to button click
+							Context context = v.getContext();
+
+							// Restore preferences
+							SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
+							boolean dbInitialized = settings.getBoolean("dbInitialized", false);
+
+							SharedPreferences.Editor editor = settings.edit();
+							editor.putBoolean("dbInitialized", false);
+							editor.commit();
+
+							CharSequence text = "Next time, application will load the DB";
+							int duration = Toast.LENGTH_LONG;
+
+							Toast toast = Toast.makeText(context, text, duration);
+							toast.show();
+						}
+					});
+
 					break;
 				case 3: // Help Fragment
 					if (DEBUG) Log.i("NavDrawFrag","PlaceholderFragment - onCreateView - Help section");

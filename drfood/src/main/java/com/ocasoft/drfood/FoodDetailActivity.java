@@ -170,7 +170,7 @@ public class FoodDetailActivity extends ActionBarActivity {
                 mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY, mEdit.getText().toString());
                 mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_FOOD_ID, foodId);
                 mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID, "4");
-                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID, "5");
+                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID, "1");
 
 				if (DEBUG) Log.i(TAG, "+++ setDoneButtonListener() newVAlues +++");
 

@@ -25,6 +25,7 @@ public class Food {
 	private String unity_measure;
 	private int counter;
 	private String name;
+	private int trackId;
 	private final String DATEFORMAT = "yyyy-MM-dd HH:mm:ss";
 
 	public Food() {}
@@ -110,6 +111,14 @@ public class Food {
 
 	public String getName() {
 		return name;
+	}
+
+	public int getTrackId() {
+		return trackId;
+	}
+
+	public void setTrackId(int trackId) {
+		this.trackId = trackId;
 	}
 
 	public void setName(String name) {

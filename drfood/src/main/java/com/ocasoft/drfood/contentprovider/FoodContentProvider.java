@@ -240,6 +240,7 @@ public class FoodContentProvider extends ContentProvider {
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
 		if (DEBUG) Log.i(TAG, "+++ delete() called! +++");
 		int uriType = sURIMatcher.match(uri);
+		if (DEBUG) Log.i(TAG, "+++ delete() uriType = " + uriType + " +++");
 		SQLiteDatabase sqlDB = database.getWritableDatabase();
 		int rowsDeleted = 0;
 
@@ -262,20 +263,26 @@ public class FoodContentProvider extends ContentProvider {
 				}
 				break;
 			case TRACKS:
+				if (DEBUG) Log.i(TAG, "+++ delete() TRACKS called! +++");
 				rowsDeleted = sqlDB.delete(TrackFoodTable.TABLE_NAME_TRACKFOOD, selection,
 						selectionArgs);
 				break;
 			case TRACK_ID:
+				if (DEBUG) Log.i(TAG, "+++ delete() TRACK_ID called! +++");
 				String idTrack = uri.getLastPathSegment();
+				if (DEBUG) Log.i(TAG, "+++ delete() TRACK_ID idTrack = " + idTrack + " +++");
 				if (TextUtils.isEmpty(selection)) {
 					rowsDeleted = sqlDB.delete(TrackFoodTable.TABLE_NAME_TRACKFOOD,
 							TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID + "=" + idTrack,
 							null);
+					if (DEBUG) Log.i(TAG, "+++ delete() TRACK_ID-isEmpty rowsDeleted= " + rowsDeleted + " called! +++");
 				} else {
 					rowsDeleted = sqlDB.delete(TrackFoodTable.TABLE_NAME_TRACKFOOD,
 							TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID + "=" + idTrack
 									+ " and " + selection,
 							selectionArgs);
+					if (DEBUG) Log.i(TAG, "+++ delete() TRACK_ID-notEmpty = " + rowsDeleted + " called! +++");
+					if (DEBUG) Log.i(TAG, "+++ delete() TRACK_ID-notEmpty > " + selection + " called! +++");
 				}
 				break;
 			case USERS:

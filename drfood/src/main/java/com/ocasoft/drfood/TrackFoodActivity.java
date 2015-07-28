@@ -168,13 +168,6 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 	}
 
 	private void generateFoodList() {
-		// TODO: Mockup
-//		ArrayList<Food> list = new ArrayList<Food>();
-//		for (int i = 1; i < 15; i++) {
-//			Food object = new Food(i,"Spaghetti Carbonara "+i,"Breakfast",500);
-//			list.add(object);
-//		}
-
 		// ======================== Load tracked food ========================
         /*
             1) Buscar tracked food del contentprovider por los siguientes criterios:
@@ -184,7 +177,6 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 
             2) Inicializar la lista de alimentos "list" con dichos valores
          */
-
 
 		//instantiate custom adapter
 		adapter = new TrackFoodListAdapter(this);

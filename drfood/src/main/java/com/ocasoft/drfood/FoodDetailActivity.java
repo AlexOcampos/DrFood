@@ -166,7 +166,7 @@ public class FoodDetailActivity extends ActionBarActivity {
                  * Sets the values of each column and inserts the word. The arguments to the "put"
                  * method are "column name" and "value"
                  */
-                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID, "1");
+                //mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID, "1");
                 mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY, mEdit.getText().toString());
                 mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_FOOD_ID, foodId);
                 mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID, "4");

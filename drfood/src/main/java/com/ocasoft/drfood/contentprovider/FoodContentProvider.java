@@ -155,7 +155,7 @@ public class FoodContentProvider extends ContentProvider {
 				sb.append(FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_ID));
 				sb.append(")");
 				table = sb.toString();
-				if (DEBUG) Log.i(TAG, "+++ query() table + " + table + "! +++");
+
 				queryBuilder.setTables(table);
 
 				// check if the caller has requested a column which does not exists

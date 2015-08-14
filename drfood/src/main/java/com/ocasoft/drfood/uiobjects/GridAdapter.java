@@ -7,6 +7,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ocasoft.drfood.FoodDetailActivity;
+import com.ocasoft.drfood.FoodSelectorActivity;
 import com.ocasoft.drfood.R;
 import com.ocasoft.drfood.database.FoodTable;
 
@@ -53,10 +55,12 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 	private List<Food> mItems = new ArrayList<GridAdapter.Food>();
     private List<Food> mItemsFiltered = new ArrayList<GridAdapter.Food>();
 	private Context mContext;
+	private int selectedFoodTimeId = -1;
 
 
-	public GridAdapter(Context context) {
+	public GridAdapter(Context context, Bundle extras) {
 		mContext = context;
+		selectedFoodTimeId = extras.getInt(FoodSelectorActivity.selFoodTimeExtraName);
 	}
 
 	@Override
@@ -105,6 +109,7 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT, item.timeMoment);
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE, item.unityMeasure);
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_CATEGORY, item.category);
+					intent.putExtra(FoodSelectorActivity.selFoodTimeExtraName, selectedFoodTimeId);
 					context.startActivity(intent);
 				}
 			}

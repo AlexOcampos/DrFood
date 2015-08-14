@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.LoaderManager;
 import android.content.Context;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
@@ -25,6 +26,7 @@ import com.ocasoft.drfood.contentprovider.FoodContentProvider;
 import com.ocasoft.drfood.database.FoodTable;
 import com.ocasoft.drfood.database.TrackFoodTable;
 import com.ocasoft.drfood.infoobjects.Food;
+import com.ocasoft.drfood.infoobjects.FoodTimeList;
 import com.ocasoft.drfood.uiobjects.TrackFoodListAdapter;
 
 import java.text.SimpleDateFormat;
@@ -39,6 +41,8 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 	private int mYear, mMonth, mDay;
 	TextView tvDisplayDate;
 	private DatePickerDialog dpd;
+	private FoodTimeList foodTimes;
+	private int selectedFoodTimeId = -1;
 
 	private TrackFoodListAdapter adapter;
 	private static final String[] PROJECTION = new String[] {
@@ -64,12 +68,9 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 			if (getLoaderManager().getLoader(LOADER_ID) == null) {
 				Log.i(TAG, "+++ Initializing the new Loader... +++");
 			} else {
-				Log.i(TAG, "+++ Reconnecting with existing Loader (id '2')... +++");
+				Log.i(TAG, "+++ Reconnecting with existing Loader (id '1')... +++");
 			}
 		}
-		// Initialize a Loader with id '1'. If the Loader with this id already
-		// exists, then the LoaderManager will reuse the existing Loader.
-		getLoaderManager().initLoader(LOADER_ID, null, this);
 
 		//======================== Set Spinner values ========================
 		setSpinnerFoodTimes();
@@ -80,7 +81,7 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		//======================== generate food list ========================
 		generateFoodList();
 
-		//======================== Set button Listeners ========================
+		//======================= Set button Listeners =======================
 		// Add Button
 		setAddButtonListener();
 
@@ -89,6 +90,11 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 
 		// Favourite Button
 		setFavouriteListener();
+
+		//======================== Set data FoodList =========================
+		// Initialize a Loader with id '1'. If the Loader with this id already
+		// exists, then the LoaderManager will reuse the existing Loader.
+		getLoaderManager().initLoader(LOADER_ID, null, this);
 	}
 
 	/**
@@ -101,22 +107,29 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		spinner.setOnItemSelectedListener(this);
 
 		// Get foodtime's values
-		ArrayList<String> foodTimes = new ArrayList<String>();
-		// TODO: Mockup
-		foodTimes.add("Breakfast");
-		foodTimes.add("Lunch");
-		foodTimes.add("Snack");
-		foodTimes.add("Dinner");
+		foodTimes = new FoodTimeList();
 
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		ArrayAdapter<String> foodTimesAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, foodTimes);
+				android.R.layout.simple_spinner_item, foodTimes.toArrayList());
 
 		// Specify the layout to use when the list of choices appears
 		foodTimesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		// Apply the adapter to the spinner
 		spinner.setAdapter(foodTimesAdapter);
+
+		// Get current value
+		String item = spinner.getSelectedItem().toString();
+
+		// Save the current foodTimeId
+		selectedFoodTimeId = foodTimes.getByName(item).getId();
+
+		// Showing selected spinner item
+		Log.i(TAG, "Default: " + item + " - " + selectedFoodTimeId);
+
+		// Restart loader (se inicializa en el OnCreate()
+		//getLoaderManager().restartLoader(LOADER_ID, null, this);
 	}
 
 	/**
@@ -143,6 +156,12 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 			public void onClick(View v) {
 				//TODO: Launch Save data and exit TrackFoodActivity
 				Context context = v.getContext();
+
+				// Start FoodSelectorActivity
+				Intent intent = new Intent(context, FoodSelectorActivity.class);
+				intent.putExtra(FoodSelectorActivity.selFoodTimeExtraName, selectedFoodTimeId);
+				context.startActivity(intent);
+
 				CharSequence text = "Hello Done Button.";
 				int duration = Toast.LENGTH_SHORT;
 				Toast toast = Toast.makeText(context, text, duration);
@@ -267,13 +286,18 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		// On selecting a spinner item
 		String item = adapterView.getItemAtPosition(i).toString();
 
-		// Showing selected spinner item
-		Log.i("TRACKFOOD", "Selected: " + item);
+		// Save the current foodTimeId
+		selectedFoodTimeId = foodTimes.getByName(item).getId();
+
+		Log.i(TAG, "Selected: " + item + " - " + selectedFoodTimeId);
+
+		// Restart loader
+		getLoaderManager().restartLoader(LOADER_ID, null, this);
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> adapterView) {
-
+		Log.i(TAG, "Nothing selected. Current: " + selectedFoodTimeId);
 	}
 
 	/**********************/
@@ -284,8 +308,12 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		if (DEBUG) Log.i(TAG, "+++ onCreateLoader() called! +++");
 
 		// Prepare where clause
-		String mSelectionClause = TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID + " = ?";
-		String[] mSelectionArgs = {"1"};
+		String mSelectionClause = TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID + " = ?"
+				+ " AND " + TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID + " = ?";
+		String[] mSelectionArgs = {
+				"1", 	// UserId
+				Integer.toString(selectedFoodTimeId)		// TimemomentId
+		};
 
 		// Create a new CursorLoader with the following query parameters.
 		return new CursorLoader(TrackFoodActivity.this, FoodContentProvider.CONTENT_URI_TRACKEDFOOD,
@@ -303,6 +331,6 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 	public void onLoaderReset(Loader<Cursor> loader) {
 		if (DEBUG) Log.i(TAG, "+++ onLoadReset() called! +++");
 
-		//adapter.setData(null);
+		adapter.clearData();
 	}
 }

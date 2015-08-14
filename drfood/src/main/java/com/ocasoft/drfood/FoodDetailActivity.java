@@ -26,6 +26,7 @@ public class FoodDetailActivity extends ActionBarActivity {
     private int foodId = -1;
     private int foodQuantity = -1;
     private int foodEnergy = -1;
+	private int selectedFoodTimeId = -1;
     private String foodTimeMoment = "";
     private String foodUnityMeasure = "";
     private String foodCategory = "";
@@ -53,6 +54,7 @@ public class FoodDetailActivity extends ActionBarActivity {
 					foodQuantity = -1;
 					foodEnergy = -1;
 					foodTimeMoment = "";
+					selectedFoodTimeId = -1;
 					foodUnityMeasure = "";
 					foodCategory = "";
 
@@ -62,6 +64,7 @@ public class FoodDetailActivity extends ActionBarActivity {
 					foodId = extras.getInt(FoodTable.COLUMN_NAME_FOOD_ID);
 					foodQuantity = extras.getInt(FoodTable.COLUMN_NAME_FOOD_QUANTITY);
 					foodEnergy = extras.getInt(FoodTable.COLUMN_NAME_FOOD_ENERGY);
+					selectedFoodTimeId = extras.getInt(FoodSelectorActivity.selFoodTimeExtraName);
 					foodTimeMoment = extras.getString(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT);
 					foodUnityMeasure = extras.getString(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE);
 					foodCategory = extras.getString(FoodTable.COLUMN_NAME_FOOD_CATEGORY);
@@ -75,6 +78,7 @@ public class FoodDetailActivity extends ActionBarActivity {
 				foodId = (Integer) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_ID);
 				foodQuantity = (Integer) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_QUANTITY);
 				foodEnergy = (Integer) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_ENERGY);
+				selectedFoodTimeId = (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selFoodTimeExtraName);
 				foodTimeMoment = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT);
 				foodUnityMeasure = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE);
 				foodCategory =(String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_CATEGORY);
@@ -141,10 +145,6 @@ public class FoodDetailActivity extends ActionBarActivity {
 		findViewById(R.id.buttonDoneFoodDetail).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Context context = v.getContext();
-                CharSequence text = "Hello Done Button.";
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, text, duration);
-
 
                 // Defines a new Uri object that receives the result of the insertion
                 Uri mNewUri;
@@ -169,17 +169,21 @@ public class FoodDetailActivity extends ActionBarActivity {
                 //mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID, "1");
                 mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY, mEdit.getText().toString());
                 mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_FOOD_ID, foodId);
-                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID, "4");
+                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID, Integer.toString(selectedFoodTimeId));
                 mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID, "1");
-
-				if (DEBUG) Log.i(TAG, "+++ setDoneButtonListener() newVAlues +++");
 
 				mNewUri = context.getContentResolver().insert(
                         FoodContentProvider.CONTENT_URI_TRACK,   // the user dictionary content URI
                         mNewValues                          // the values to insert
                 );
 
-				if (DEBUG) Log.i(TAG, "+++ setDoneButtonListener() nNewUri +++");
+				CharSequence text = "Saving " + foodName + " (Quantity: " + mEdit.getText().toString() + ")"
+						+ ((DEBUG) ? ("\nfoodTime:" + selectedFoodTimeId + "\nnewUri: " + mNewUri.toString()) : "");
+
+				if (DEBUG) Log.i(TAG, "+++ setDoneButtonListener() done! " + text + " +++");
+
+				int duration = Toast.LENGTH_LONG;
+				Toast toast = Toast.makeText(context, text, duration);
 
 				toast.show();
 

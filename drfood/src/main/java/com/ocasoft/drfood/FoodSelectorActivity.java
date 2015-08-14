@@ -37,13 +37,41 @@ public class FoodSelectorActivity extends ActionBarActivity implements
     private static final int LOADER_ID = 1;
 
     private GridAdapter adapter;
+	private int selectedFoodTimeId;
+	public final static String selFoodTimeExtraName = "selectedFoodTimeId";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+		if (DEBUG) Log.i(TAG, "+++ onCreate() called! +++");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_selector);
 
-        if (DEBUG) Log.i(TAG, "+++ onCreate() called! +++");
+		boolean loadingOk = false;
+
+		// Get selectedFoodTimeId
+		try {
+			if (savedInstanceState == null) {
+				Bundle extras = getIntent().getExtras();
+				if(extras == null) {
+					selectedFoodTimeId = -1;
+					loadingOk = false;
+				} else {
+					selectedFoodTimeId = extras.getInt(selFoodTimeExtraName);
+
+					if (DEBUG) Log.i(TAG, "+++ onCreate() selectedFoodTimeId=" + selectedFoodTimeId + " +++");
+					loadingOk = true;
+				}
+			} else {
+				selectedFoodTimeId = (Integer) savedInstanceState.getSerializable(selFoodTimeExtraName);
+
+				if (DEBUG) Log.i(TAG, "+++ onCreate() selectedFoodTimeId=" + selectedFoodTimeId + " +++");
+				loadingOk = true;
+			}
+		} catch (NumberFormatException e) {
+			loadingOk = false;
+			handleErrorSelector(); //not valid foodId value
+		}
+
 
         if (DEBUG) {
             Log.i(TAG, "+++ Calling initLoader()! +++");
@@ -61,8 +89,13 @@ public class FoodSelectorActivity extends ActionBarActivity implements
         fillData();
     }
 
+	private void handleErrorSelector() {
+		if (DEBUG) Log.i(TAG, "+++ handleErrorSelector() called! +++");
+		//TODO: the selector is incorrect. Do something
+	}
 
-    @Override
+
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -93,7 +126,11 @@ public class FoodSelectorActivity extends ActionBarActivity implements
 		GridView gridview = (GridView) findViewById(R.id.gridview);
 
 		getLoaderManager().initLoader(LOADER_ID, null, this);
-		adapter = new GridAdapter(getBaseContext());
+
+		Bundle extras = new Bundle();
+		extras.putInt(selFoodTimeExtraName, selectedFoodTimeId);
+
+		adapter = new GridAdapter(getBaseContext(), extras);
 		gridview.setAdapter(adapter);
 
 		// Add Text Change Listener to EditText

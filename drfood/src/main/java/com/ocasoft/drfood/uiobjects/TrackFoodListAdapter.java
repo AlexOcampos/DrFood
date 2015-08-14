@@ -108,7 +108,12 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 	public void setData(Cursor data) {
 		if (DEBUG) Log.i(TAG, "+++ setData() called! +++");
 		int i = 0;
-		if (data.moveToFirst()) { // move cursor to first row
+
+		// Empty current list
+		clearData();
+
+		// Load new values
+		if (data != null && data.moveToFirst()) { // move cursor to first row
 
 			do {
 				Food object = new Food();
@@ -129,5 +134,11 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 		} else {
 			if (DEBUG) Log.i(TAG, "+++ setData() no-results! +++");
 		}
+		this.notifyDataSetChanged();
+	}
+
+	public void clearData() {
+		list.clear();
+		this.notifyDataSetChanged();
 	}
 }

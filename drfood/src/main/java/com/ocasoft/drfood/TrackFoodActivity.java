@@ -28,6 +28,7 @@ import com.ocasoft.drfood.database.TrackFoodTable;
 import com.ocasoft.drfood.infoobjects.Food;
 import com.ocasoft.drfood.infoobjects.FoodTimeList;
 import com.ocasoft.drfood.uiobjects.TrackFoodListAdapter;
+import com.ocasoft.drfood.utils.DateUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -138,9 +139,14 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 	private void setAddButtonListener() {
 		findViewById(R.id.buttonAdd).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				//TODO: Launch FoodSelectorActivity
 				Context context = v.getContext();
-				CharSequence text = "Hello Add Button.";
+
+				// Start FoodSelectorActivity
+				Intent intent = new Intent(context, FoodSelectorActivity.class);
+				intent.putExtra(FoodSelectorActivity.selFoodTimeExtraName, selectedFoodTimeId);
+				context.startActivity(intent);
+
+				CharSequence text = "Hello ADD Button.";
 				int duration = Toast.LENGTH_SHORT;
 				Toast toast = Toast.makeText(context, text, duration);
 				toast.show();
@@ -154,7 +160,6 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 	private void setDoneButtonListener() {
 		findViewById(R.id.buttonDone).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				//TODO: Launch Save data and exit TrackFoodActivity
 				Context context = v.getContext();
 
 				// Start FoodSelectorActivity
@@ -162,7 +167,7 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 				intent.putExtra(FoodSelectorActivity.selFoodTimeExtraName, selectedFoodTimeId);
 				context.startActivity(intent);
 
-				CharSequence text = "Hello Done Button.";
+				CharSequence text = "DONE Button.";
 				int duration = Toast.LENGTH_SHORT;
 				Toast toast = Toast.makeText(context, text, duration);
 				toast.show();
@@ -211,24 +216,21 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 	private void setDateTrackFood() {
 		tvDisplayDate = (TextView) findViewById(R.id.textViewDate);
 		// Set current date in the TextView
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar c = Calendar.getInstance();
 		mYear = c.get(Calendar.YEAR);
 		mMonth = c.get(Calendar.MONTH);
 		mDay = c.get(Calendar.DAY_OF_MONTH);
-		tvDisplayDate.setText(format.format(c.getTime()));
+		tvDisplayDate.setText(DateUtils.formatDate(mYear, mMonth, mDay, DateUtils.DATE_FORMAT_DAYMONTHYEAR));
 
 		// Open DatePickerDialog and set user selected date
 		dpd = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 			@Override
 			public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 				// Display Selected date in textbox
-				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-				Calendar cal = Calendar.getInstance();
-				cal.set(Calendar.YEAR, year);
-				cal.set(Calendar.MONTH, monthOfYear);
-				cal.set(Calendar.DATE, dayOfMonth);
-				tvDisplayDate.setText(format.format(cal.getTime()));
+				tvDisplayDate.setText(DateUtils.formatDate(year,monthOfYear,dayOfMonth,DateUtils.DATE_FORMAT_DAYMONTHYEAR));
+				mYear = year;
+				mMonth = monthOfYear;
+				mDay = dayOfMonth;
 			}
 		}, mYear, mMonth, mDay);
 
@@ -248,6 +250,8 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 			}
 		});
 	}
+
+
 
 	/**
 	 * Set a text for a TextView
@@ -309,10 +313,12 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 
 		// Prepare where clause
 		String mSelectionClause = TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID + " = ?"
-				+ " AND " + TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID + " = ?";
+				+ " AND " + TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID + " = ?"
+				+ " AND " + TrackFoodTable.COLUMN_NAME_TRACKFOOD_DATE + " = ?";
 		String[] mSelectionArgs = {
 				"1", 	// UserId
-				Integer.toString(selectedFoodTimeId)		// TimemomentId
+				Integer.toString(selectedFoodTimeId),	// TimemomentId
+				DateUtils.formatDate(mYear, mMonth, mDay, DateUtils.DATE_FORMAT_DAYMONTHYEAR) // Date
 		};
 
 		// Create a new CursorLoader with the following query parameters.

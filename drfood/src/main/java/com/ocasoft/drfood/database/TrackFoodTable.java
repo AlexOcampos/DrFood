@@ -18,6 +18,7 @@ public class TrackFoodTable {
 	public static final String COLUMN_NAME_TRACKFOOD_FOOD_ID = "foodId"; // Food id
 	public static final String COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID = "timemomentId"; // Time moment id
 	public static final String COLUMN_NAME_TRACKFOOD_USER_ID = "userId"; // User id
+	public static final String COLUMN_NAME_TRACKFOOD_DATE = "date";
 	public static final String COLUMN_NAME_TRACKFOOD_QUANTITY = "quantity"; // Quantity of food
 
 	private static final String TEXT_TYPE = " TEXT";
@@ -30,6 +31,7 @@ public class TrackFoodTable {
 					COLUMN_NAME_TRACKFOOD_FOOD_ID + TEXT_TYPE + COMMA_SEP +
 					COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID + TEXT_TYPE + COMMA_SEP +
 					COLUMN_NAME_TRACKFOOD_USER_ID + TEXT_TYPE + COMMA_SEP +
+					COLUMN_NAME_TRACKFOOD_DATE + TEXT_TYPE + COMMA_SEP +
 					COLUMN_NAME_TRACKFOOD_QUANTITY + TEXT_TYPE +
 					" )";
 

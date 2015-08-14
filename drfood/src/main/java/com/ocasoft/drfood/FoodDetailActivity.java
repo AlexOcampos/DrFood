@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.ocasoft.drfood.contentprovider.FoodContentProvider;
 import com.ocasoft.drfood.database.FoodTable;
 import com.ocasoft.drfood.database.TrackFoodTable;
+import com.ocasoft.drfood.utils.DateUtils;
 
 /**
  * Created by Alex on 02/03/2015.
@@ -167,10 +168,16 @@ public class FoodDetailActivity extends ActionBarActivity {
                  * method are "column name" and "value"
                  */
                 //mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID, "1");
-                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY, mEdit.getText().toString());
-                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_FOOD_ID, foodId);
-                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID, Integer.toString(selectedFoodTimeId));
-                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID, "1");
+                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY,
+						mEdit.getText().toString());
+                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_FOOD_ID,
+						foodId);
+                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID,
+						Integer.toString(selectedFoodTimeId));
+                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID,
+						"1");
+                mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_DATE,
+						DateUtils.getCurrentDateFormated(DateUtils.DATE_FORMAT_DAYMONTHYEAR));
 
 				mNewUri = context.getContentResolver().insert(
                         FoodContentProvider.CONTENT_URI_TRACK,   // the user dictionary content URI

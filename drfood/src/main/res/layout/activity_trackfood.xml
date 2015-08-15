@@ -10,7 +10,7 @@
 
     <!-- Header-->
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/header_background"
@@ -19,40 +19,75 @@
         android:baselineAligned="false"
         android:showDividers="end">
 
-        <!-- left block -->
+        <!-- Date selector -->
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="0dip"
-            android:layout_weight="0.5"
-            android:layout_height="fill_parent"
-            android:id="@+id/linearLayoutLeftHeader" >
-
-            <!-- Date selector -->
+            android:orientation="horizontal"
+            android:id="@+id/linearLayoutDateSelector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center"
+            android:paddingTop="@dimen/max_padding_text"
+            android:paddingLeft="@dimen/min_padding_text">
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical|center"
-                android:paddingTop="@dimen/max_padding_text"
-                android:paddingLeft="@dimen/min_padding_text">
-
-                <TextView
-                    android:id="@+id/textViewDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:text="29/11/2014"
-                    android:gravity="center"
-                    android:textIsSelectable="false"
-                    android:layout_gravity="left"
-                    android:textStyle="bold"/>
-
+                android:id="@+id/linLayoutDatePrev"
+                android:layout_width="0dip"
+                android:layout_weight="0.1"
+                android:layout_height="match_parent">
                 <ImageView
-                    android:src="@android:drawable/ic_menu_today"
+                    android:src="@drawable/ic_prev"
                     android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageViewDate"
-                    android:adjustViewBounds="false" />
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageViewDatePrev"
+                    android:adjustViewBounds="false"
+                    android:contentDescription="@string/accessibility_previous_icon"
+                    android:layout_gravity="left"
+                    android:baselineAlignBottom="false"
+                    android:clickable="false"/>
             </LinearLayout>
 
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight="0.8"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+                <TextView
+                    android:id="@+id/textViewDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="15/08/2015"
+                    android:gravity="center"
+                    android:textIsSelectable="false"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/date_text"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linLayoutDateNext"
+                android:layout_width="0dip"
+                android:layout_weight="0.1"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:src="@drawable/ic_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageViewDateNext"
+                    android:adjustViewBounds="false"
+                    android:contentDescription="@string/accessibility_next_icon"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center"
+            android:paddingTop="@dimen/max_padding_text"
+            android:paddingLeft="@dimen/min_padding_text"
+            android:layout_below="@id/linearLayoutDateSelector"
+            android:background="@color/header_background">
             <!-- Food selector -->
             <Spinner
                 android:id="@+id/foodtime_spinner"
@@ -60,63 +95,6 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/min_padding_text"
                 android:spinnerMode="dialog"/>
-
-        </LinearLayout>
-
-        <!-- right block -->
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="0dip"
-            android:layout_weight="0.5"
-            android:layout_height="fill_parent"
-            android:id="@+id/linearLayoutRightHeader"
-            >
-
-            <!-- Current consumed calories -->
-            <TextView
-                android:id="@+id/textViewCalConsLunch"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:paddingTop="@dimen/min_padding_text"
-                android:paddingRight="@dimen/min_padding_text"
-                android:text="@string/cal_consumed_lunch"
-                android:textSize="@dimen/cal_summary"
-                android:gravity="right"
-                android:textAlignment="gravity"
-                android:textStyle="italic"
-                />
-
-            <!-- Cal consummed today -->
-            <TextView
-                android:id="@+id/textViewCalConsToday"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:paddingTop="@dimen/min_padding_text"
-                android:paddingRight="@dimen/min_padding_text"
-                android:text="@string/cal_consumed_today"
-                android:textSize="@dimen/cal_summary"
-                android:gravity="right"
-                android:textAlignment="gravity"
-                android:textStyle="italic"/>
-
-            <!-- Cal recommended today -->
-            <TextView
-                android:id="@+id/textViewCalRecToday"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:paddingTop="@dimen/min_padding_text"
-                android:paddingRight="@dimen/min_padding_text"
-                android:paddingBottom="@dimen/min_padding_text"
-                android:text="@string/cal_recommended_today"
-                android:textColor="@color/recommended_cal_textcolor"
-                android:textSize="@dimen/cal_summary"
-                android:gravity="right"
-                android:textAlignment="gravity"
-                android:textStyle="italic"/>
-
         </LinearLayout>
 
     </LinearLayout>
@@ -143,7 +121,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
-        <com.ocasoft.drfood.uiobjects.CircleButton
+        <!--<com.ocasoft.drfood.uiobjects.CircleButton
             android:id="@+id/buttonDone"
             android:layout_width="match_parent"
             android:layout_height="64dip"
@@ -163,7 +141,7 @@
             android:layout_marginBottom="8dip"
             android:src="@drawable/ic_action_tick"
             app:cb_color="#ffff55b9"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"/>-->
 
         <com.ocasoft.drfood.uiobjects.CircleButton
             android:id="@+id/buttonAdd"
@@ -172,9 +150,9 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="8dip"
-            android:src="@drawable/ic_action_tick"
-            app:cb_color="#ff3f7bff"
-            android:layout_alignParentLeft="true"/>
+            android:src="@drawable/ic_action_add"
+            app:cb_color="#ff35cd35"
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
 </RelativeLayout>

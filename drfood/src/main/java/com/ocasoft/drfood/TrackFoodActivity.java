@@ -54,7 +54,8 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 			TrackFoodTable.addPrefix(TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID),
 			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_NAME),
 			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT),
-			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_FATS)
+			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_FATS),
+			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE)
 	};
 	// The Loader's id (this id is specific to the ListFragment's LoaderManager)
 	private static final int LOADER_ID = 1;
@@ -79,18 +80,17 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		//========================      set date      ========================
 		setDateTrackFood();
 
-		//======================== generate food list ========================
+		// Prev Date Button
+		setPrevButtonListener();
+
+		// Next Date Button
+		setNextButtonListener();
+
+		//======================== Generate food list ========================
 		generateFoodList();
 
-		//======================= Set button Listeners =======================
-		// Add Button
+		//====================== Set Add button Listener =====================
 		setAddButtonListener();
-
-		// Done Button
-		setDoneButtonListener();
-
-		// Favourite Button
-		setFavouriteListener();
 
 		//======================== Set data FoodList =========================
 		// Initialize a Loader with id '1'. If the Loader with this id already
@@ -158,38 +158,39 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 	}
 
 	/**
-	 * Actions for Done Button
+	 * Go to the previous day
 	 */
-	private void setDoneButtonListener() {
-		findViewById(R.id.buttonDone).setOnClickListener(new View.OnClickListener() {
+	private void setPrevButtonListener() {
+		findViewById(R.id.linLayoutDatePrev).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Context context = v.getContext();
 
-				// Start FoodSelectorActivity
-				Intent intent = new Intent(context, FoodSelectorActivity.class);
-				intent.putExtra(FoodSelectorActivity.selFoodTimeExtraName, selectedFoodTimeId);
-				context.startActivity(intent);
+				// Previous day
+				mDay--;
 
-				CharSequence text = "DONE Button.";
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
+				// Display Selected date in textbox
+				tvDisplayDate.setText(DateUtils.formatDate(mYear,mMonth,mDay,DateUtils.DATE_FORMAT_DAYMONTHYEAR));
+
+				// Update foodlist (Restart loader)
+				getLoaderManager().restartLoader(LOADER_ID, null, TrackFoodActivity.this);
 			}
 		});
 	}
 
 	/**
-	 * Actions for Favourite Button
+	 * Go to the next day
 	 */
-	private void setFavouriteListener() {
-		findViewById(R.id.buttonFavourite).setOnClickListener(new View.OnClickListener() {
+	private void setNextButtonListener() {
+		findViewById(R.id.linLayoutDateNext).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				//TODO: Launch FoodSelectorActivity (favourite mode=on)
-				Context context = v.getContext();
-				CharSequence text = "Hello Favourite Button.";
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
+				// Previous day
+				mDay++;
+
+				// Display Selected date in textbox
+				tvDisplayDate.setText(DateUtils.formatDate(mYear,mMonth,mDay,DateUtils.DATE_FORMAT_DAYMONTHYEAR));
+
+				// Update foodlist (Restart loader)
+				getLoaderManager().restartLoader(LOADER_ID, null, TrackFoodActivity.this);
 			}
 		});
 	}
@@ -242,14 +243,6 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 
 		// Set OnDateSetListener to TextView
 		tvDisplayDate.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				// Launch Date Picker Dialog
-				dpd.show();
-			}
-		});
-
-		// Set OnDateSetListener to Calendar Icon
-		findViewById(R.id.imageViewDate).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// Launch Date Picker Dialog
 				dpd.show();

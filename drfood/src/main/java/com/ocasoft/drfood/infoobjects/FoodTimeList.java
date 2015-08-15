@@ -11,10 +11,10 @@ public class FoodTimeList {
 
 	public FoodTimeList() {
 		list = new ArrayList<FoodTime>();
-		addFoodTime(new FoodTime("Breakfast", 1));
-		addFoodTime(new FoodTime("Lunch", 2));
-		addFoodTime(new FoodTime("Snack", 3));
-		addFoodTime(new FoodTime("Dinner", 4));
+		addFoodTime(new FoodTime("Desayuno", 1));
+		addFoodTime(new FoodTime("Comida", 2));
+		addFoodTime(new FoodTime("Merienda", 3));
+		addFoodTime(new FoodTime("Cena", 4));
 	}
 
 	/**

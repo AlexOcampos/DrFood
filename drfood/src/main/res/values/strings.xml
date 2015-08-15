@@ -35,5 +35,7 @@
     <string name="cal_consumed_today">2000 cal today</string>
     <string name="cal_recommended_today">1500 cal recommended</string>
     <string name="accessibility_delete_icon">delete</string>
+    <string name="accessibility_previous_icon">previous</string>
+    <string name="accessibility_next_icon">next</string>
 
 </resources>

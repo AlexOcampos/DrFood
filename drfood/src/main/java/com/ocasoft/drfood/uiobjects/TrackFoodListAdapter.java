@@ -67,7 +67,8 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 
 		// Modify Food Quantity
 		TextView listItemQuantityText = (TextView)convertView.findViewById(R.id.textViewQuantityItemX);
-		listItemQuantityText.setText("1 piece");
+		listItemQuantityText.setText(list.get(position).getQuantity() + " "
+				+ list.get(position).getUnity_measure());
 
 		// Modify Food Calories
 		TextView listItemCaloriesText = (TextView)convertView.findViewById(R.id.textViewFoodCalItemX);
@@ -89,9 +90,7 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 					// Use the contentProvider to delete the record with the Id
 					ContentResolver cr = context.getContentResolver();
 					cr.delete(contentUriTrackId,
-							//TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID + "=?",
 							null,
-							//new String[]{Integer.toString(list.get(position).getId())}
 							null
 					);
 
@@ -124,10 +123,12 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 				object.setTimeMoment(data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT)));
 				object.setFats(data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_FATS)));
 				object.setTrackId(data.getInt(data.getColumnIndex(TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID)));
+				object.setQuantity(data.getInt(data.getColumnIndex(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY)));
+				object.setUnity_measure(data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE)));
 
-				if (DEBUG) Log.i(TAG, "+++ setData() id+name+timemoment+fats => [" + object.getTrackId() + "] "
-						+ object.getId() + " - " + object.getName() + " - " + object.getTimeMoment()
-						+ " - " + object.getFats() + " +++");
+//				if (DEBUG) Log.i(TAG, "+++ setData() id+name+timemoment+fats => [" + object.getTrackId() + "] "
+//						+ object.getId() + " - " + object.getName() + " - " + object.getTimeMoment()
+//						+ " - " + object.getFats() + " +++");
 
 				list.add(object);
 			} while (data.moveToNext()); // move to next row

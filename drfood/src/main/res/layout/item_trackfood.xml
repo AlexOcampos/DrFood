@@ -8,6 +8,23 @@
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:baselineAligned="false">
+        <!-- Delete icon -->
+        <LinearLayout
+            android:id="@+id/deleteFoodLayout"
+            android:layout_width="0dip"
+            android:layout_weight="0.1"
+            android:padding="8dp"
+            android:layout_height="fill_parent">
+            <ImageView
+                android:id="@+id/deleteFoodIcon"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_delete"
+                android:contentDescription="@string/accessibility_delete_icon"/>
+        </LinearLayout>
+        <!--android:src="@drawable/delete_icon"-->
+
         <LinearLayout
             android:layout_width="0dip"
             android:layout_weight="0.9"
@@ -58,22 +75,6 @@
                     android:text="20cal"
                     android:textSize="@dimen/track_item_textsize"/>
             </LinearLayout>
-        </LinearLayout>
-
-        <!-- Delete icon -->
-        <LinearLayout
-            android:id="@+id/deleteFoodLayout"
-            android:layout_width="0dip"
-            android:layout_weight="0.1"
-            android:padding="8dp"
-            android:layout_height="fill_parent">
-            <ImageView
-                android:id="@+id/deleteFoodIcon"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_height="wrap_content"
-                android:src="@drawable/delete_icon"
-                android:contentDescription="@string/accessibility_delete_icon"/>
         </LinearLayout>
     </LinearLayout>
     <View

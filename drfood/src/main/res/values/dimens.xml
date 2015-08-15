@@ -26,6 +26,7 @@
     <dimen name="track_item_textsize">12sp</dimen>
     <dimen name="min_padding_text">4dp</dimen>
     <dimen name="max_padding_text">4dp</dimen>
+    <dimen name="date_text">30dp</dimen>
 
     <!-- ======== FOOD_DETAIL ======== -->
     <dimen name="small_vertical_padding_text_fooddet">4dp</dimen>

@@ -448,7 +448,8 @@ public class FoodContentProvider extends ContentProvider {
 				TrackFoodTable.addPrefix(TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID),
 				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_NAME),
 				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT),
-				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_FATS)
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_FATS),
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE)
 		};
 
 		// Use columns of the selected table

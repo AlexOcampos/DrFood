@@ -37,8 +37,19 @@ public class FoodSelectorActivity extends ActionBarActivity implements
     private static final int LOADER_ID = 1;
 
     private GridAdapter adapter;
+
+	// Extras values
 	private int selectedFoodTimeId;
+	private int selectedDay;
+	private int selectedYear;
+	private int selectedMonth;
+
+	// Extras in the beginning of this activity
 	public final static String selFoodTimeExtraName = "selectedFoodTimeId";
+	public final static String selDayExtraName = "selectedDay";
+	public final static String selYearExtraName = "selectedYear";
+	public final static String selMonthExtraName = "selectedMonth";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,15 +65,24 @@ public class FoodSelectorActivity extends ActionBarActivity implements
 				Bundle extras = getIntent().getExtras();
 				if(extras == null) {
 					selectedFoodTimeId = -1;
+					selectedDay = -1;
+					selectedYear = -1;
+					selectedMonth = -1;
 					loadingOk = false;
 				} else {
 					selectedFoodTimeId = extras.getInt(selFoodTimeExtraName);
+					selectedDay = extras.getInt(selDayExtraName);
+					selectedYear = extras.getInt(selYearExtraName);
+					selectedMonth = extras.getInt(selMonthExtraName);
 
 					if (DEBUG) Log.i(TAG, "+++ onCreate() selectedFoodTimeId=" + selectedFoodTimeId + " +++");
 					loadingOk = true;
 				}
 			} else {
 				selectedFoodTimeId = (Integer) savedInstanceState.getSerializable(selFoodTimeExtraName);
+				selectedDay = (Integer) savedInstanceState.getSerializable(selDayExtraName);
+				selectedYear = (Integer) savedInstanceState.getSerializable(selYearExtraName);
+				selectedMonth = (Integer) savedInstanceState.getSerializable(selMonthExtraName);
 
 				if (DEBUG) Log.i(TAG, "+++ onCreate() selectedFoodTimeId=" + selectedFoodTimeId + " +++");
 				loadingOk = true;
@@ -80,6 +100,13 @@ public class FoodSelectorActivity extends ActionBarActivity implements
             } else {
                 Log.i(TAG, "+++ Reconnecting with existing Loader (id '1')... +++");
             }
+
+			Log.i(TAG, "+++ Extras: "
+					+ "selectedFoodTimeId: " + selectedFoodTimeId
+					+ "| selectedDay: " + selectedDay
+					+ "| selectedYear: " + selectedYear
+					+ "| selectedMonth: " + selectedMonth
+					+ " +++");
         }
         // Initialize a Loader with id '1'. If the Loader with this id already
         // exists, then the LoaderManager will reuse the existing Loader.
@@ -129,6 +156,9 @@ public class FoodSelectorActivity extends ActionBarActivity implements
 
 		Bundle extras = new Bundle();
 		extras.putInt(selFoodTimeExtraName, selectedFoodTimeId);
+		extras.putInt(selDayExtraName, selectedDay);
+		extras.putInt(selYearExtraName, selectedYear);
+		extras.putInt(selMonthExtraName, selectedMonth);
 
 		adapter = new GridAdapter(getBaseContext(), extras);
 		gridview.setAdapter(adapter);

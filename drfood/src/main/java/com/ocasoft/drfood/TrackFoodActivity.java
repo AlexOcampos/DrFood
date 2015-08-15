@@ -144,6 +144,9 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 				// Start FoodSelectorActivity
 				Intent intent = new Intent(context, FoodSelectorActivity.class);
 				intent.putExtra(FoodSelectorActivity.selFoodTimeExtraName, selectedFoodTimeId);
+				intent.putExtra(FoodSelectorActivity.selDayExtraName, mDay);
+				intent.putExtra(FoodSelectorActivity.selMonthExtraName, mMonth);
+				intent.putExtra(FoodSelectorActivity.selYearExtraName, mYear);
 				context.startActivity(intent);
 
 				CharSequence text = "Hello ADD Button.";
@@ -231,6 +234,9 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 				mYear = year;
 				mMonth = monthOfYear;
 				mDay = dayOfMonth;
+
+				// Update foodlist (Restart loader)
+				getLoaderManager().restartLoader(LOADER_ID, null, TrackFoodActivity.this);
 			}
 		}, mYear, mMonth, mDay);
 
@@ -250,8 +256,6 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 			}
 		});
 	}
-
-
 
 	/**
 	 * Set a text for a TextView

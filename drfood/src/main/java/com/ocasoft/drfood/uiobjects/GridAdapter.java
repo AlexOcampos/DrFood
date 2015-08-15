@@ -55,12 +55,26 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 	private List<Food> mItems = new ArrayList<GridAdapter.Food>();
     private List<Food> mItemsFiltered = new ArrayList<GridAdapter.Food>();
 	private Context mContext;
+
+	// Extras values
 	private int selectedFoodTimeId = -1;
+	private int selectedDay = -1;
+	private int selectedYear = -1;
+	private int selectedMonth = -1;
 
 
 	public GridAdapter(Context context, Bundle extras) {
 		mContext = context;
-		selectedFoodTimeId = extras.getInt(FoodSelectorActivity.selFoodTimeExtraName);
+
+		if(extras != null) {
+			selectedFoodTimeId = extras.getInt(FoodSelectorActivity.selFoodTimeExtraName);
+			selectedDay = extras.getInt(FoodSelectorActivity.selDayExtraName);
+			selectedYear = extras.getInt(FoodSelectorActivity.selYearExtraName);
+			selectedMonth = extras.getInt(FoodSelectorActivity.selMonthExtraName);
+		} else {
+			Log.e(TAG, "GridAdapter() Extras is null");
+		}
+
 	}
 
 	@Override
@@ -99,7 +113,7 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 				Food item = (Food) getItem(position);
 
 				if (item == null) {
-					// TODO: Manage error (show a toast?)
+					Log.e(TAG, "getView() setOnClickListener() item == null");
 				} else {
 					Intent intent = new Intent(context, FoodDetailActivity.class);
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_ID, item.id);
@@ -110,6 +124,9 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE, item.unityMeasure);
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_CATEGORY, item.category);
 					intent.putExtra(FoodSelectorActivity.selFoodTimeExtraName, selectedFoodTimeId);
+					intent.putExtra(FoodSelectorActivity.selDayExtraName, selectedDay);
+					intent.putExtra(FoodSelectorActivity.selYearExtraName, selectedYear);
+					intent.putExtra(FoodSelectorActivity.selMonthExtraName, selectedMonth);
 					context.startActivity(intent);
 				}
 			}

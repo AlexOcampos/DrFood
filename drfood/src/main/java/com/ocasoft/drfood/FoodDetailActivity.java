@@ -31,7 +31,9 @@ public class FoodDetailActivity extends ActionBarActivity {
     private String foodTimeMoment = "";
     private String foodUnityMeasure = "";
     private String foodCategory = "";
-
+	private int selectedDay;
+	private int selectedYear;
+	private int selectedMonth;
 
 	private static final String[] PROJECTION = new String[] { "id", "name" };
 
@@ -58,7 +60,9 @@ public class FoodDetailActivity extends ActionBarActivity {
 					selectedFoodTimeId = -1;
 					foodUnityMeasure = "";
 					foodCategory = "";
-
+					selectedDay 	= -1;
+					selectedYear 	= -1;
+					selectedMonth 	= -1;
 					loadingOk = false;
 				} else {
 					foodName = extras.getString(FoodTable.COLUMN_NAME_FOOD_NAME);
@@ -69,7 +73,9 @@ public class FoodDetailActivity extends ActionBarActivity {
 					foodTimeMoment = extras.getString(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT);
 					foodUnityMeasure = extras.getString(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE);
 					foodCategory = extras.getString(FoodTable.COLUMN_NAME_FOOD_CATEGORY);
-
+					selectedDay 	= extras.getInt(FoodSelectorActivity.selDayExtraName);
+					selectedYear 	= extras.getInt(FoodSelectorActivity.selYearExtraName);
+					selectedMonth 	= extras.getInt(FoodSelectorActivity.selMonthExtraName);
 
 					if (DEBUG) Log.i(TAG, "+++ onCreate() foodName=" + foodName + " foodId=" + foodId + " +++");
 					loadingOk = true;
@@ -83,6 +89,9 @@ public class FoodDetailActivity extends ActionBarActivity {
 				foodTimeMoment = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT);
 				foodUnityMeasure = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE);
 				foodCategory =(String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_CATEGORY);
+				selectedDay 	= (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selDayExtraName);
+				selectedYear 	= (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selYearExtraName);
+				selectedMonth 	= (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selMonthExtraName);
 
 				if (DEBUG) Log.i(TAG, "+++ onCreate() foodName=" + foodName + " foodId=" + foodId + " +++");
 				loadingOk = true;
@@ -134,6 +143,13 @@ public class FoodDetailActivity extends ActionBarActivity {
 			if (DEBUG) Log.i(TAG, "+++ onCreate() loadingOk-category! +++");
 		}
 
+		if (DEBUG) Log.i(TAG, "+++ Extras: "
+				+ "selectedFoodTimeId: " + selectedFoodTimeId
+				+ "| selectedDay: " + selectedDay
+				+ "| selectedYear: " + selectedYear
+				+ "| selectedMonth: " + selectedMonth
+				+ " +++");
+
 		// Save selected values (TrackFood)
 		setDoneButtonListener();
 
@@ -177,7 +193,7 @@ public class FoodDetailActivity extends ActionBarActivity {
                 mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID,
 						"1");
                 mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_DATE,
-						DateUtils.getCurrentDateFormated(DateUtils.DATE_FORMAT_DAYMONTHYEAR));
+						DateUtils.formatDate(selectedYear,selectedMonth,selectedDay,DateUtils.DATE_FORMAT_DAYMONTHYEAR));
 
 				mNewUri = context.getContentResolver().insert(
                         FoodContentProvider.CONTENT_URI_TRACK,   // the user dictionary content URI
@@ -185,7 +201,11 @@ public class FoodDetailActivity extends ActionBarActivity {
                 );
 
 				CharSequence text = "Saving " + foodName + " (Quantity: " + mEdit.getText().toString() + ")"
-						+ ((DEBUG) ? ("\nfoodTime:" + selectedFoodTimeId + "\nnewUri: " + mNewUri.toString()) : "");
+						+ ((DEBUG) ? ("\nfoodTime:" + selectedFoodTimeId
+									+ "\nnewUri: " + mNewUri.toString()
+									+ "\nDate: " + DateUtils.formatDate(selectedYear,selectedMonth,selectedDay,
+													DateUtils.DATE_FORMAT_DAYMONTHYEAR))
+							: "");
 
 				if (DEBUG) Log.i(TAG, "+++ setDoneButtonListener() done! " + text + " +++");
 

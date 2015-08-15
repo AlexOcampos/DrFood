@@ -29,10 +29,10 @@
         <activity
             android:name="com.ocasoft.drfood.FoodSelectorActivity"
             android:label="@string/title_activity_food_selector"
-            android:parentActivityName="com.ocasoft.drfood.HomeActivity" >
+            android:parentActivityName="com.ocasoft.drfood.TrackFoodActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ocasoft.drfood.HomeActivity" />
+                android:value="com.ocasoft.drfood.TrackFoodActivity" />
 
         </activity>
         <activity

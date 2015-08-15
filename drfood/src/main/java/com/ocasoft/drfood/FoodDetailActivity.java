@@ -159,6 +159,7 @@ public class FoodDetailActivity extends ActionBarActivity {
 	 * Actions for Add Button
 	 */
 	private void setDoneButtonListener() {
+		if (DEBUG) Log.i(TAG, "+++ setDoneButtonListener() +++");
 		findViewById(R.id.buttonDoneFoodDetail).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Context context = v.getContext();
@@ -166,13 +167,12 @@ public class FoodDetailActivity extends ActionBarActivity {
                 // Defines a new Uri object that receives the result of the insertion
                 Uri mNewUri;
 
-				if (DEBUG) Log.i(TAG, "+++ setDoneButtonListener() 1 +++");
                 // Defines an object to contain the new values to insert
                 ContentValues mNewValues = new ContentValues();
-				if (DEBUG) Log.i(TAG, "+++ setDoneButtonListener() 2 +++");
-                //TODO: Read quantity (foodQuantity)
+
+                // Read quantity (foodQuantity)
                 EditText mEdit   = (EditText) findViewById(R.id.quantityDetailET);
-				if (DEBUG) Log.i(TAG, "+++ setDoneButtonListener() 3 +++");
+
 				if (mEdit != null) {
 					if (DEBUG) Log.i(TAG, "+++ setDoneButtonListener() mEdit.getText():" + mEdit.getText() + " +++");
 				} else {

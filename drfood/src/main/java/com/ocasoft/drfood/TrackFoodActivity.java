@@ -7,6 +7,7 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +29,9 @@ import com.ocasoft.drfood.database.TrackFoodTable;
 import com.ocasoft.drfood.infoobjects.Food;
 import com.ocasoft.drfood.infoobjects.FoodTimeList;
 import com.ocasoft.drfood.uiobjects.TrackFoodListAdapter;
+import com.ocasoft.drfood.utils.CursorObserver;
 import com.ocasoft.drfood.utils.DateUtils;
+import com.ocasoft.drfood.utils.SharedPreferencesUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,6 +47,7 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 	private DatePickerDialog dpd;
 	private FoodTimeList foodTimes;
 	private int selectedFoodTimeId = -1;
+	private Context mContext;
 
 	private TrackFoodListAdapter adapter;
 	private static final String[] PROJECTION = new String[] {
@@ -64,6 +68,8 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_trackfood);
+
+		mContext = getBaseContext();
 
 		if (DEBUG) {
 			Log.i(TAG, "+++ Calling initLoader()! +++");
@@ -96,6 +102,9 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		// Initialize a Loader with id '1'. If the Loader with this id already
 		// exists, then the LoaderManager will reuse the existing Loader.
 		getLoaderManager().initLoader(LOADER_ID, null, this);
+
+
+
 	}
 
 	/**
@@ -126,11 +135,14 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		// Save the current foodTimeId
 		selectedFoodTimeId = foodTimes.getByName(item).getId();
 
+		/*
+		 * Save values to use it in the TrackFoodListAdapter, because I need this values.
+		 * I don't know if there is a better way to do this.
+		 */
+		SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTFOODTIME, selectedFoodTimeId);
+
 		// Showing selected spinner item
 		Log.i(TAG, "Default: " + item + " - " + selectedFoodTimeId);
-
-		// Restart loader (se inicializa en el OnCreate()
-		//getLoaderManager().restartLoader(LOADER_ID, null, this);
 	}
 
 	/**
@@ -169,7 +181,13 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 				mDay--;
 
 				// Display Selected date in textbox
-				tvDisplayDate.setText(DateUtils.formatDate(mYear,mMonth,mDay,DateUtils.DATE_FORMAT_DAYMONTHYEAR));
+				tvDisplayDate.setText(DateUtils.formatDate(mYear, mMonth, mDay, DateUtils.DATE_FORMAT_DAYMONTHYEAR));
+
+				/*
+				 * Save values to use it in the TrackFoodListAdapter, because I need this values.
+				 * I don't know if there is a better way to do this.
+				 */
+				SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTDAY, mDay);
 
 				// Update foodlist (Restart loader)
 				getLoaderManager().restartLoader(LOADER_ID, null, TrackFoodActivity.this);
@@ -187,7 +205,13 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 				mDay++;
 
 				// Display Selected date in textbox
-				tvDisplayDate.setText(DateUtils.formatDate(mYear,mMonth,mDay,DateUtils.DATE_FORMAT_DAYMONTHYEAR));
+				tvDisplayDate.setText(DateUtils.formatDate(mYear, mMonth, mDay, DateUtils.DATE_FORMAT_DAYMONTHYEAR));
+
+				/*
+				 * Save values to use it in the TrackFoodListAdapter, because I need this values.
+				 * I don't know if there is a better way to do this.
+				 */
+				SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTDAY, mDay);
 
 				// Update foodlist (Restart loader)
 				getLoaderManager().restartLoader(LOADER_ID, null, TrackFoodActivity.this);
@@ -226,6 +250,14 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		mDay = c.get(Calendar.DAY_OF_MONTH);
 		tvDisplayDate.setText(DateUtils.formatDate(mYear, mMonth, mDay, DateUtils.DATE_FORMAT_DAYMONTHYEAR));
 
+		/*
+		 * Save values to use it in the TrackFoodListAdapter, because I need this values.
+		 * I don't know if there is a better way to do this.
+		 */
+		SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTMONTH, mMonth);
+		SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTYEAR, mYear);
+		SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTDAY, mDay);
+
 		// Open DatePickerDialog and set user selected date
 		dpd = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 			@Override
@@ -235,6 +267,14 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 				mYear = year;
 				mMonth = monthOfYear;
 				mDay = dayOfMonth;
+
+				/*
+				 * Save values to use it in the TrackFoodListAdapter, because I need this values.
+				 * I don't know if there is a better way to do this.
+				 */
+				SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTMONTH, mMonth);
+				SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTYEAR, mYear);
+				SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTDAY, mDay);
 
 				// Update foodlist (Restart loader)
 				getLoaderManager().restartLoader(LOADER_ID, null, TrackFoodActivity.this);
@@ -290,6 +330,12 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		// Save the current foodTimeId
 		selectedFoodTimeId = foodTimes.getByName(item).getId();
 
+		/*
+		 * Save values to use it in the TrackFoodListAdapter, because I need this values.
+		 * I don't know if there is a better way to do this.
+		 */
+		SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTFOODTIME, selectedFoodTimeId);
+
 		Log.i(TAG, "Selected: " + item + " - " + selectedFoodTimeId);
 
 		// Restart loader
@@ -319,8 +365,10 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		};
 
 		// Create a new CursorLoader with the following query parameters.
-		return new CursorLoader(TrackFoodActivity.this, FoodContentProvider.CONTENT_URI_TRACKEDFOOD,
+		CursorLoader cursor = new CursorLoader(TrackFoodActivity.this, FoodContentProvider.CONTENT_URI_TRACKEDFOOD,
 				PROJECTION, mSelectionClause, mSelectionArgs, null);
+
+		return cursor;
 	}
 
 	@Override
@@ -328,6 +376,13 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		if (DEBUG) Log.i(TAG, "+++ onLoadFinished() called! +++");
 
 		adapter.setData(data);
+
+		/**
+		 * Registering content observer for this cursor, When this cursor value will be change
+		 * This will notify our loader to reload its data*/
+		CursorObserver cursorObserver = new CursorObserver(new Handler(), loader);
+		data.registerContentObserver(cursorObserver);
+		data.setNotificationUri(getContentResolver(),FoodContentProvider.CONTENT_URI_TRACK);
 	}
 
 	@Override

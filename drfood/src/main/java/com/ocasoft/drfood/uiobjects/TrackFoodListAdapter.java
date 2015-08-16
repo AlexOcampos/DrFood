@@ -2,6 +2,7 @@ package com.ocasoft.drfood.uiobjects;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
@@ -19,6 +20,7 @@ import com.ocasoft.drfood.contentprovider.FoodContentProvider;
 import com.ocasoft.drfood.database.FoodTable;
 import com.ocasoft.drfood.database.TrackFoodTable;
 import com.ocasoft.drfood.infoobjects.Food;
+import com.ocasoft.drfood.utils.SharedPreferencesUtils;
 
 import java.util.ArrayList;
 
@@ -100,6 +102,45 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 				}
 			});
 		}
+
+		// Handle click on product (update it)
+		LinearLayout productSummaryLL = (LinearLayout) convertView.findViewById(R.id.productSummaryLL);
+		if (productSummaryLL != null) {
+			productSummaryLL.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					if (DEBUG) Log.i(TAG, "+++ editFood => " + list.get(position).getId() + "! +++");
+
+					Context context = v.getContext();
+
+
+					Intent intent = new Intent(context, FoodDetailActivity.class);
+					intent.putExtra(FoodDetailActivity.EDIT_OPERATION, true);
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_ID, list.get(position).getId());
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_NAME, list.get(position).getName());
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_QUANTITY, list.get(position).getQuantity());
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_ENERGY, list.get(position).getEnergy());
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT, list.get(position).getTimeMoment());
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE, list.get(position).getUnity_measure());
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_CATEGORY, list.get(position).getCategory());
+					intent.putExtra(TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID, list.get(position).getTrackId());
+					intent.putExtra(FoodSelectorActivity.selFoodTimeExtraName,
+							SharedPreferencesUtils.getSharedPrefIntValue(context,
+									SharedPreferencesUtils.SP_CURRENTFOODTIME));
+					intent.putExtra(FoodSelectorActivity.selDayExtraName,
+							SharedPreferencesUtils.getSharedPrefIntValue(context,
+									SharedPreferencesUtils.SP_CURRENTDAY));
+					intent.putExtra(FoodSelectorActivity.selYearExtraName,
+							SharedPreferencesUtils.getSharedPrefIntValue(context,
+									SharedPreferencesUtils.SP_CURRENTYEAR));
+					intent.putExtra(FoodSelectorActivity.selMonthExtraName,
+							SharedPreferencesUtils.getSharedPrefIntValue(context,
+									SharedPreferencesUtils.SP_CURRENTMONTH));
+
+					context.startActivity(intent);
+				}
+			});
+		}
+
 
 		return convertView;
 	}

@@ -45,7 +45,7 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 		 * @return true if the Food contains the filter value. If not, false is returned
 		 */
 		public boolean filterResult(CharSequence filter) {
-			return text.contains(filter.toString().toLowerCase());
+			return text.toLowerCase().contains(filter.toString().toLowerCase());
 		}
 	}
 
@@ -180,7 +180,7 @@ public class GridAdapter extends BaseAdapter implements Filterable {
                     for(Food data : mItems)	{
                         //In this loop, you'll filter through originalData and compare each item to charSequence.
                         //If you find a match, add it to your new ArrayList
-						if(data.filterResult(charSequence.toString().toLowerCase())) {
+						if(data.filterResult(charSequence.toString())) {
                             filterResultsData.add(data);
                         }
                     }

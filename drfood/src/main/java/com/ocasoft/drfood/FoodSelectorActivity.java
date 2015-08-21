@@ -143,11 +143,9 @@ public class FoodSelectorActivity extends ActionBarActivity implements
     }
 
 
-    /*
-     *
-     *
-     *
-     */
+	/**
+	 * Fill view with product list
+	 */
 	private void fillData() {
 		if (DEBUG) Log.i(TAG, "+++ fillData() called! +++");
 		GridView gridview = (GridView) findViewById(R.id.gridview);

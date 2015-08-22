@@ -34,7 +34,7 @@
             <!-- Name of the food -->
             <LinearLayout
                 android:layout_width="0dip"
-                android:layout_weight="0.6"
+                android:layout_weight="0.55"
                 android:paddingLeft="@dimen/min_padding_text"
                 android:layout_height="fill_parent">
                 <TextView
@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:layout_marginRight="@dimen/track_item_separation"
+                    android:padding="8dp"
                     android:text="chocolate con churros2"
                     android:textSize="@dimen/track_item_textsize"/>
             </LinearLayout>
@@ -50,15 +50,14 @@
             <!-- Quantity of the food -->
             <LinearLayout
                 android:layout_width="0dip"
-                android:layout_weight="0.2"
+                android:layout_weight="0.25"
                 android:layout_height="fill_parent">
                 <TextView
                     android:id="@+id/textViewQuantityItemX"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:layout_marginRight="@dimen/track_item_separation"
-                    android:text="200 gr"
+                    android:text="1 porción"
                     android:textSize="@dimen/track_item_textsize"/>
             </LinearLayout>
 
@@ -72,8 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:layout_marginRight="@dimen/track_item_separation"
-                    android:text="20cal"
+                    android:text="200 kcal"
                     android:textSize="@dimen/track_item_textsize"/>
             </LinearLayout>
         </LinearLayout>

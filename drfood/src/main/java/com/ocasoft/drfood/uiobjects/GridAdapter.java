@@ -115,10 +115,8 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 		// Counter > 0, set recommended icon
 		ImageView imgView = (ImageView) convertView.findViewById(R.id.recommended_item);
 		if (item.counter > 0) {
-			Log.e(TAG, "getView() " + item.text + " - " + item.counter + " @recommended visible");
-					imgView.setVisibility(View.VISIBLE);
+			imgView.setVisibility(View.VISIBLE);
 		} else {
-			Log.e(TAG, "getView() " + item.text + " - " + item.counter + " @recommended gone");
 			imgView.setVisibility(View.GONE);
 		}
 

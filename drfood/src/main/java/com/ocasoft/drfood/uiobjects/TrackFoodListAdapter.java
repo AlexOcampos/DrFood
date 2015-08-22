@@ -72,11 +72,11 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 		// Modify Food Quantity
 		TextView listItemQuantityText = (TextView)convertView.findViewById(R.id.textViewQuantityItemX);
 		listItemQuantityText.setText(list.get(position).getQuantity() + " "
-				+ list.get(position).getUnity_measure());
+				+ StringEscapeUtils.unescapeJava(list.get(position).getUnity_measure()));
 
 		// Modify Food Calories
 		TextView listItemCaloriesText = (TextView)convertView.findViewById(R.id.textViewFoodCalItemX);
-		listItemCaloriesText.setText("" + list.get(position).getFats());
+		listItemCaloriesText.setText(list.get(position).getEnergy() + " kcal");
 
 		//Handle delete button onClickListener
 		LinearLayout buttonDeleteFood = (LinearLayout) convertView.findViewById(R.id.deleteFoodLayout);

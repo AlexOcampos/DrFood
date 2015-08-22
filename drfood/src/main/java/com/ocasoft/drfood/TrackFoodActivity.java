@@ -126,6 +126,11 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		// Apply the adapter to the spinner
 		spinner.setAdapter(foodTimesAdapter);
 
+		// Select default foodTime
+		String currentTimeMomentName = FoodTimeList.getNameById(FoodTimeList.getCurrentTimeMoment());
+		int positionCurrentTimeMoment = foodTimesAdapter.getPosition(currentTimeMomentName);
+		spinner.setSelection(positionCurrentTimeMoment);
+
 		// Get current value
 		String item = spinner.getSelectedItem().toString();
 
@@ -157,11 +162,6 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 				intent.putExtra(FoodSelectorActivity.selMonthExtraName, mMonth);
 				intent.putExtra(FoodSelectorActivity.selYearExtraName, mYear);
 				context.startActivity(intent);
-
-				CharSequence text = "Hello ADD Button.";
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
 			}
 		});
 	}

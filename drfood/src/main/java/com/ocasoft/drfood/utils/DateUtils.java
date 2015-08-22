@@ -53,4 +53,10 @@ public class DateUtils {
 
 		return formatDate(mYear,mMonth,mDay,DATE_FORMAT_DAYMONTHYEAR);
 	}
+
+	public static int getCurrentHour() {
+		Calendar rightNow = Calendar.getInstance();
+		int hour = rightNow.get(Calendar.HOUR_OF_DAY);
+		return hour;
+	}
 }

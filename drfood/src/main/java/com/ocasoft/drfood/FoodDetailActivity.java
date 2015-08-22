@@ -142,7 +142,7 @@ public class FoodDetailActivity extends ActionBarActivity {
 
 			// Set unityMeasure
 			TextView unityMeasureTV = (TextView) findViewById(R.id.unityMeasureDetailTV);
-			unityMeasureTV.setText(foodUnityMeasure);
+			unityMeasureTV.setText(StringEscapeUtils.unescapeJava(foodUnityMeasure));
 
 			// Set foodEnergy
 			TextView energyTV = (TextView) findViewById(R.id.energyDetailTV);

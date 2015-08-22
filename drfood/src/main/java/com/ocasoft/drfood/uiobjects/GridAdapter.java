@@ -25,11 +25,13 @@ import com.ocasoft.drfood.FoodSelectorActivity;
 import com.ocasoft.drfood.R;
 import com.ocasoft.drfood.database.FoodTable;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 /**
  * Based on https://github.com/goodev/SquareGridView/blob/master/SquareGrid/src/org/goodev/squaregrid/GridAdapter.java
  */
 public class GridAdapter extends BaseAdapter implements Filterable {
-	public static class Food {
+	public static class FoodUI {
 		public int id;
 		public String text;
 		public int quantity;
@@ -38,6 +40,8 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 		public String unityMeasure;
 		public String category;
 		public int resId;
+		public String code;
+		public int counter;
 
 		/**
 		 * Checks if the filter value exists in the Food object
@@ -52,8 +56,8 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 	private static final String TAG = "DRFOOD_GridAdapter";
 	private static final boolean DEBUG = true; //TODO : Disable DEBUG
 
-	private List<Food> mItems = new ArrayList<GridAdapter.Food>();
-    private List<Food> mItemsFiltered = new ArrayList<GridAdapter.Food>();
+	private List<FoodUI> mItems = new ArrayList<GridAdapter.FoodUI>();
+    private List<FoodUI> mItemsFiltered = new ArrayList<GridAdapter.FoodUI>();
 	private Context mContext;
 
 	// Extras values
@@ -102,15 +106,15 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 		ImageView image = (ImageView) convertView.findViewById(R.id.icon);
 		TextView text = (TextView) convertView.findViewById(R.id.text);
 
-		Food item = (Food) getItem(position);
+		FoodUI item = (FoodUI) getItem(position);
 		image.setImageResource(item.resId);
-		text.setText(item.text);
+		text.setText(StringEscapeUtils.unescapeJava(item.text));
 
 
 		convertView.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Context context = v.getContext();
-				Food item = (Food) getItem(position);
+				FoodUI item = (FoodUI) getItem(position);
 
 				if (item == null) {
 					Log.e(TAG, "getView() setOnClickListener() item == null");
@@ -132,7 +136,8 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 			}
 		});
 
-		if (DEBUG) Log.i(TAG, "+++ getView() text: "+ item.text + " || (" + position + ") +++");
+		if (DEBUG) Log.i(TAG, "+++ getView() text: "+ item.text + " || (" + position + ") " +
+				"count: " + item.code + " +++");
 		return convertView;
 	}
 
@@ -142,7 +147,7 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 		if (data.moveToFirst()) { // move cursor to first row
 
 			do {
-				Food object = new Food();
+				FoodUI object = new FoodUI();
 
 				// Get data from Cursor
 				object.id = data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_ID));
@@ -152,7 +157,14 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 				object.timeMoment = data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT));
 				object.unityMeasure = data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE));
 				object.category = data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_CATEGORY));
-				object.resId = R.drawable.spaghetti;
+				object.code = data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_CODE));
+				object.counter = data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_COUNTER));
+
+				// Get the image. The name of them is "food_" + foodCode
+				String nameOfDrawable = "food_" + data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_CODE));
+				int drawableResourceId = mContext.getResources().getIdentifier(nameOfDrawable, "drawable",
+						mContext.getPackageName());
+				object.resId = drawableResourceId;
 
 				mItems.add(object);
 			} while (data.moveToNext()); // move to next row
@@ -175,9 +187,9 @@ public class GridAdapter extends BaseAdapter implements Filterable {
                     results.values = mItems;
                     results.count = mItems.size();
                 } else	{
-                    List<Food> filterResultsData = new ArrayList<Food>();
+                    List<FoodUI> filterResultsData = new ArrayList<FoodUI>();
 
-                    for(Food data : mItems)	{
+                    for(FoodUI data : mItems)	{
                         //In this loop, you'll filter through originalData and compare each item to charSequence.
                         //If you find a match, add it to your new ArrayList
 						if(data.filterResult(charSequence.toString())) {
@@ -194,7 +206,7 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-				mItemsFiltered = (List<Food>) filterResults.values;  // has the filtered values
+				mItemsFiltered = (List<FoodUI>) filterResults.values;  // has the filtered values
 				notifyDataSetChanged();  // notifies the data with new filtered values
             }
         };

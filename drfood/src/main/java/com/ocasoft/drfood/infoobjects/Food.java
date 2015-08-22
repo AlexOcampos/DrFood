@@ -1,12 +1,8 @@
 package com.ocasoft.drfood.infoobjects;
 
-import android.util.Log;
+import com.ocasoft.drfood.utils.DateUtils;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * TODO: Delete this class (only for test)
@@ -14,32 +10,25 @@ import java.util.Locale;
 public class Food {
 	private int id;
 	private Date registryDate;
-	private String timeMoment;
-	private int quantity;
-	private int energy;
-	private int fats;
-	private int proteins;
-	private	int carbohydrates;
-	private String category;
+	private int timeMoment;
+	private int quantity; // Default quantity
+	private double energy;
+	private double fats;
+	private double proteins;
+	private	double carbohydrates;
+	private int category;
 	private String comments;
 	private String unity_measure;
 	private int counter;
 	private String name;
 	private int trackId;
-	private final String DATEFORMAT = "yyyy-MM-dd HH:mm:ss";
+	private String code;
 
 	public Food() {}
 
-	public Food(int id, String name, String timeMoment, int fats) {
-		this.id = id;
-		this.name = name;
-		this.timeMoment = timeMoment;
-		this.fats = fats;
-	}
-
-	public Food(int id, Date registryDate, String timeMoment, int quantity,
-				int energy, int fats, int proteins, int carbohydrates,
-				String category, String comments, String unity_measure, int counter, String name) {
+	public Food(int id, Date registryDate, int timeMoment, int quantity,
+				double energy, double fats, double proteins, double carbohydrates,
+				int category, String comments, String unity_measure, int counter, String name) {
 		this.id = id;
 		this.registryDate = registryDate;
 		this.timeMoment = timeMoment;
@@ -53,64 +42,146 @@ public class Food {
 		this.unity_measure = unity_measure;
 		this.counter = counter;
 		this.name = name;
+		this.code = "1";
+	}
+
+	/**
+	 * Create a new food
+	 * @param id
+	 * @param registryDate
+	 * @param timeMoment
+	 * @param quantity
+	 * @param energy
+	 * @param fats
+	 * @param proteins
+	 * @param carbohydrates
+	 * @param category
+	 * @param comments
+	 * @param unity_measure
+	 * @param counter
+	 * @param name
+	 */
+	public Food(int id, String registryDate, int timeMoment, int quantity,
+				double energy, double fats, double proteins, double carbohydrates,
+				int category, String comments, String unity_measure, int counter, String name, String cod) {
+		this.id = id;
+		this.registryDate = DateUtils.string2Date(registryDate, DateUtils.DATE_FORMAT_DAYMONTHYEAR);
+		this.timeMoment = timeMoment;
+		this.quantity = quantity;
+		this.energy = energy;
+		this.fats = fats;
+		this.proteins = proteins;
+		this.carbohydrates = carbohydrates;
+		this.category = category;
+		this.comments = comments;
+		this.unity_measure = unity_measure;
+		this.counter = counter;
+		this.name = name;
+		this.code = cod;
 	}
 
 	public int getId() {
 		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Date getRegistryDate() {
 		return registryDate;
 	}
 
-	public String getRegistryDateFormat() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat(
-				DATEFORMAT, Locale.getDefault());
-		return dateFormat.format(registryDate);
+	public void setRegistryDate(Date registryDate) {
+		this.registryDate = registryDate;
 	}
 
-	public String getTimeMoment() {
+	public int getTimeMoment() {
 		return timeMoment;
+	}
+
+	public void setTimeMoment(int timeMoment) {
+		this.timeMoment = timeMoment;
 	}
 
 	public int getQuantity() {
 		return quantity;
 	}
 
-	public int getEnergy() {
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public double getEnergy() {
 		return energy;
 	}
 
-	public int getFats() {
+	public void setEnergy(double energy) {
+		this.energy = energy;
+	}
+
+	public double getFats() {
 		return fats;
 	}
 
-	public int getProteins() {
+	public void setFats(double fats) {
+		this.fats = fats;
+	}
+
+	public double getProteins() {
 		return proteins;
 	}
 
-	public int getCarbohydrates() {
+	public void setProteins(double proteins) {
+		this.proteins = proteins;
+	}
+
+	public double getCarbohydrates() {
 		return carbohydrates;
 	}
 
-	public String getCategory() {
+	public void setCarbohydrates(double carbohydrates) {
+		this.carbohydrates = carbohydrates;
+	}
+
+	public int getCategory() {
 		return category;
+	}
+
+	public void setCategory(int category) {
+		this.category = category;
 	}
 
 	public String getComments() {
 		return comments;
 	}
 
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+
 	public String getUnity_measure() {
 		return unity_measure;
+	}
+
+	public void setUnity_measure(String unity_measure) {
+		this.unity_measure = unity_measure;
 	}
 
 	public int getCounter() {
 		return counter;
 	}
 
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
+
 	public String getName() {
 		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getTrackId() {
@@ -121,69 +192,11 @@ public class Food {
 		this.trackId = trackId;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getCode() {
+		return code;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setRegistryDate(Date registryDate) {
-		this.registryDate = registryDate;
-	}
-
-	/**
-	 * It sets the registry date.
-	 * @param registryDate registryDate in format "yyyy-MM-dd HH:mm:ss"
-	 */
-	public void setRegistryDate(String registryDate) {
-		DateFormat format = new SimpleDateFormat(DATEFORMAT, Locale.getDefault());
-		try {
-			this.registryDate = format.parse(registryDate);
-		} catch (ParseException e) {
-			Log.i("FOOD.JAVA", "setRegistryDate : Error parsing Registry Date (Wrong: "
-					+ registryDate + ") [" + DATEFORMAT + "]");
-		}
-	}
-
-	public void setTimeMoment(String timeMoment) {
-		this.timeMoment = timeMoment;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public void setEnergy(int energy) {
-		this.energy = energy;
-	}
-
-	public void setFats(int fats) {
-		this.fats = fats;
-	}
-
-	public void setProteins(int proteins) {
-		this.proteins = proteins;
-	}
-
-	public void setCarbohydrates(int carbohydrates) {
-		this.carbohydrates = carbohydrates;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
-
-	public void setUnity_measure(String unity_measure) {
-		this.unity_measure = unity_measure;
-	}
-
-	public void setCounter(int counter) {
-		this.counter = counter;
+	public void setCod(String cod) {
+		this.code = cod;
 	}
 }

@@ -25,7 +25,7 @@ import java.util.List;
  * Created by Alex on 16/05/2015.
  */
 public class FoodContentProvider extends ContentProvider {
-	private static final String TAG = "DRFOOD_FoodContProv";
+	private static final String TAG = "DRFOOD_FoodCProvider";
 	private static final boolean DEBUG = true; //TODO : Disable DEBUG
 	// database
 	private FoodDatabaseHelper database;
@@ -190,6 +190,8 @@ public class FoodContentProvider extends ContentProvider {
 		}
 
 		SQLiteDatabase db = database.getWritableDatabase();
+
+		Log.i(TAG, "+++ sortOrder sortOrder sortOrder sortOrder : " + sortOrder + " +++");
 		Cursor cursor = queryBuilder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
 
 		// make sure that potential listeners are getting notified
@@ -406,7 +408,8 @@ public class FoodContentProvider extends ContentProvider {
 				FoodTable.COLUMN_NAME_FOOD_COMMENTS,
 				FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE,
 				FoodTable.COLUMN_NAME_FOOD_COUNTER,
-				FoodTable.COLUMN_NAME_FOOD_NAME
+				FoodTable.COLUMN_NAME_FOOD_NAME,
+				FoodTable.COLUMN_NAME_FOOD_CODE
 		};
 
 		String[] availableTrack = {
@@ -446,10 +449,20 @@ public class FoodContentProvider extends ContentProvider {
 				TrackFoodTable.addPrefix(TrackFoodTable.COLUMN_NAME_TRACKFOOD_FOOD_ID),
 				TrackFoodTable.addPrefix(TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID),
 				TrackFoodTable.addPrefix(TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID),
-				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_NAME),
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_ID),
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_REGISTRYDATE),
 				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT),
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_QUANTITY),
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_ENERGY),
 				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_FATS),
-				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE)
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_PROTEINS),
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_CARBOHYDRATES),
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_CATEGORY),
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_COMMENTS),
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE),
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_COUNTER),
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_NAME),
+				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_CODE)
 		};
 
 		// Use columns of the selected table

@@ -1,10 +1,13 @@
 package com.ocasoft.drfood.database;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.ocasoft.drfood.R;
 import com.ocasoft.drfood.infoobjects.Food;
+import com.ocasoft.drfood.utils.FileManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,14 +30,15 @@ public class FoodTable {
 	public static final String COLUMN_NAME_FOOD_ENERGY = "energy"; // X approximate calories
 	public static final String COLUMN_NAME_FOOD_FATS = "fats";
 	public static final String COLUMN_NAME_FOOD_PROTEINS = "proteins";
-
 	public static final String COLUMN_NAME_FOOD_CARBOHYDRATES = "carbohydrates";
 	public static final String COLUMN_NAME_FOOD_CATEGORY = "category"; // Green Food, Orange Food, Red Food
 	public static final String COLUMN_NAME_FOOD_COMMENTS = "comments";
 	public static final String COLUMN_NAME_FOOD_UNITY_MEASURE = "unitymeasure"; // Unity measure (gr, cup, litres...)
 	public static final String COLUMN_NAME_FOOD_COUNTER = "counter";
 	public static final String COLUMN_NAME_FOOD_NAME = "name"; // Food name
+	public static final String COLUMN_NAME_FOOD_CODE = "code";
 
+	// Aux tokens
 	private static final String TEXT_TYPE = " TEXT";
 	private static final String COMMA_SEP = ",";
 
@@ -53,53 +57,36 @@ public class FoodTable {
 					COLUMN_NAME_FOOD_COMMENTS + TEXT_TYPE + COMMA_SEP +
 					COLUMN_NAME_FOOD_UNITY_MEASURE + TEXT_TYPE + COMMA_SEP +
 					COLUMN_NAME_FOOD_COUNTER + TEXT_TYPE + COMMA_SEP +
-					COLUMN_NAME_FOOD_NAME + TEXT_TYPE +
+					COLUMN_NAME_FOOD_NAME + TEXT_TYPE + COMMA_SEP +
+					COLUMN_NAME_FOOD_CODE + TEXT_TYPE +
 					" )";
 
 	private static final String SQL_DELETE_FOODS =
 			"DROP TABLE IF EXISTS " + TABLE_NAME_FOOD;
 
-	public static void onCreate(SQLiteDatabase database) {
+	public static void onCreate(SQLiteDatabase database, Context context) {
 		if (DEBUG) Log.i(TAG, "+++ onCreate() FoodTable called! +++");
 		database.execSQL(SQL_CREATE_FOODS);
 
-		addMockFoods(database);
+//		addMockFoods(database); // Mockup foods
+		readInitialFoods(database, context);
 	}
 
 	public static void onUpgrade(SQLiteDatabase database, int oldVersion,
-								 int newVersion) {
+								 int newVersion, Context context) {
 		Log.w(FoodTable.class.getName(), "Upgrading database from version "
 				+ oldVersion + " to " + newVersion
 				+ ", which will destroy all old data");
 		database.execSQL(SQL_DELETE_FOODS);
-		onCreate(database);
+		onCreate(database, context);
 	}
 
-	// Add a mockupdatabase
-	private static void addMockFoods(SQLiteDatabase database) {
-		if (DEBUG) Log.i(TAG, "Inserting mockup database...");
-		// Mockup data base
-		List<Food> db = new ArrayList<Food>();
-		db.add(new Food(1, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "tortilla de patatas"));
-		db.add(new Food(2, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Gazpacho"));
-		db.add(new Food(3, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Paella"));
-		db.add(new Food(4, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Calamares en su tinta"));
-		db.add(new Food(5, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "chicharro al chacolí"));
-		db.add(new Food(6, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Migas de Teruel"));
-		db.add(new Food(7, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Escalibada"));
-		db.add(new Food(8, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Cocido madrileño"));
-		db.add(new Food(9, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "green food", "comment1", "gr", 1, "Tarta de Santiago"));
-		db.add(new Food(10, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Hojuelas"));
-		db.add(new Food(11, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Pulpo a la gallega"));
-		db.add(new Food(12, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Fabada"));
-		db.add(new Food(13, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Lentejas"));
-		db.add(new Food(14, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Patatas a la riojana"));
-		db.add(new Food(15, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "orange food", "comment1", "gr", 1, "Bacalao a la vizcaina"));
-		db.add(new Food(16, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Caldereta de langosta"));
-		db.add(new Food(17, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Sopa de ajo"));
-		db.add(new Food(18, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Ajo blanco"));
-		db.add(new Food(19, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Fetuccini a la puttanesca"));
-		db.add(new Food(20, new java.util.Date(), "Afternoon", 100, 1, 1, 1, 1, "red food", "comment1", "gr", 1, "Spaguett alla Bolognese"));
+	/**
+	 * Read initial foods from initialFoods_*.txt
+	 * @param context the app context
+	 */
+	private static void readInitialFoods(SQLiteDatabase database, Context context) {
+		List<Food> db = FileManager.LoadText(context, R.raw.initialfoods0es);
 
 		for (Food food : db) {
 			ContentValues values = new ContentValues();
@@ -117,11 +104,11 @@ public class FoodTable {
 			values.put(COLUMN_NAME_FOOD_REGISTRYDATE, food.getRegistryDate().toString());
 			values.put(COLUMN_NAME_FOOD_TIMEMOMENT, food.getTimeMoment());
 			values.put(COLUMN_NAME_FOOD_UNITY_MEASURE, food.getUnity_measure());
+			values.put(COLUMN_NAME_FOOD_CODE, food.getCode());
 
 			// Inserting Row
 			database.insert(TABLE_NAME_FOOD, null, values);
 		}
-//		database.close(); // Closing database connection
 	}
 
 	public static String addPrefix(String column) {

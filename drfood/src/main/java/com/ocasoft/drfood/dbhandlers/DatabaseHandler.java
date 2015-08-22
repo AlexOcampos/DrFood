@@ -14,9 +14,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * TODO: Delete this class (only for test)
- */
+@Deprecated
 public class DatabaseHandler extends SQLiteOpenHelper {
 
 	// If you change the database schema, you must increment the database version.
@@ -37,7 +35,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public static final String COLUMN_NAME_FOOD_ENERGY = "energy";
 	public static final String COLUMN_NAME_FOOD_FATS = "fats";
 	public static final String COLUMN_NAME_FOOD_PROTEINS = "proteins";
-
 	public static final String COLUMN_NAME_FOOD_CARBOHYDRATES = "carbohydrates";
 	public static final String COLUMN_NAME_FOOD_CATEGORY = "category";
 	public static final String COLUMN_NAME_FOOD_COMMENTS = "comments";
@@ -151,18 +148,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		Food food = new Food(
 				Integer.parseInt(cursor.getString(0)),
-				Date.valueOf(cursor.getString(1)),
-				cursor.getString(2),
+				cursor.getString(1),
+				Integer.parseInt(cursor.getString(2)),
 				Integer.parseInt(cursor.getString(3)),
-				Integer.parseInt(cursor.getString(4)),
-				Integer.parseInt(cursor.getString(5)),
-				Integer.parseInt(cursor.getString(6)),
-				Integer.parseInt(cursor.getString(7)),
-				cursor.getString(8),
+				Double.parseDouble(cursor.getString(4)),
+				Double.parseDouble(cursor.getString(5)),
+				Double.parseDouble(cursor.getString(6)),
+				Double.parseDouble(cursor.getString(7)),
+				Integer.parseInt(cursor.getString(8)),
 				cursor.getString(9),
 				cursor.getString(10),
 				Integer.parseInt(cursor.getString(11)),
-				cursor.getString(12));
+				cursor.getString(12),
+				cursor.getString(13));
 
 		// return contact
 		return food;

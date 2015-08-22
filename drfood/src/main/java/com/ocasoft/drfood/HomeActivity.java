@@ -62,17 +62,6 @@ public class HomeActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-
-        /**
-         * TODO: Mockup implementation (test DataBase) =================================================================
-         */
-        // Restore preferences
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        boolean dbInitialized = settings.getBoolean("dbInitialized", false);
-
-        /**
-         * TODO: Mockup implementation (test DataBase) =================================================================
-         */
     }
 
     @Override

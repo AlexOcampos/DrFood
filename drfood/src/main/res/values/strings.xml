@@ -22,7 +22,7 @@
 
     <!-- Test -->
     <string name="Lorem_ipsum_medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consequat purus semper lorem pretium pretium. Phasellus tincidunt mi sed nisl blandit, non dapibus eros pulvinar. Integer non velit aliquet, bibendum arcu eget, vehicula lacus. Sed quis tincidunt mauris, eget pellentesque ante. Morbi neque diam, molestie sed ultrices quis, feugiat at est.</string>
-    <string name="title_activity_track_food">TrackFood</string>
+    <string name="title_activity_track_food">Track your food!</string>
     <string name="hello_world">Hello world!</string>
 
     <!-- ===== ACTIVITY_FOOD_SELECTOR ===== -->
@@ -37,5 +37,12 @@
     <string name="accessibility_delete_icon">delete</string>
     <string name="accessibility_previous_icon">previous</string>
     <string name="accessibility_next_icon">next</string>
+
+    <!-- ====================== OTHERS ====================== -->
+    <!-- ===== FOOD CATEGORIES ===== -->
+    <string name="food_category_green">green</string>
+    <string name="food_category_orange">orange</string>
+    <string name="food_category_red">red</string>
+
 
 </resources>

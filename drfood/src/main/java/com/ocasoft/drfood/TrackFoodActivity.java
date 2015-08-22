@@ -102,9 +102,6 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		// Initialize a Loader with id '1'. If the Loader with this id already
 		// exists, then the LoaderManager will reuse the existing Loader.
 		getLoaderManager().initLoader(LOADER_ID, null, this);
-
-
-
 	}
 
 	/**

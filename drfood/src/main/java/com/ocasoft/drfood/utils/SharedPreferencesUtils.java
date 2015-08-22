@@ -16,6 +16,8 @@ public class SharedPreferencesUtils {
 	public static final String SP_CURRENTMONTH = "currentMonth";
 	public static final String SP_CURRENTYEAR = "currentYear";
 
+	// FoodDatabaseHelper
+	public static final String SP_DBINITIALIZED = "dbInitialized";
 
 	private static SharedPreferences getSettings(Context mContext){
 		return mContext.getSharedPreferences(SHARED_PREFS_FILE, 0);
@@ -30,6 +32,10 @@ public class SharedPreferencesUtils {
 		return getSettings(mContext).getInt(parameter, -1);
 	}
 
+	public  static boolean getSharedPrefBooleanValue(Context mContext, String parameter) {
+		return getSettings(mContext).getBoolean(parameter, false);
+	}
+
 	// ======================================== Setters ========================================
 	public static void setSharedPrefValue(Context mContext, String parameter, String value){
 		SharedPreferences.Editor editor = getSettings(mContext).edit();
@@ -40,6 +46,12 @@ public class SharedPreferencesUtils {
 	public static void setSharedPrefValue(Context mContext, String parameter, int value){
 		SharedPreferences.Editor editor = getSettings(mContext).edit();
 		editor.putInt(parameter, value);
+		editor.commit();
+	}
+
+	public static void setSharedPrefsFile(Context mContext, String parameter, boolean value) {
+		SharedPreferences.Editor editor = getSettings(mContext).edit();
+		editor.putBoolean(parameter, value);
 		editor.commit();
 	}
 }

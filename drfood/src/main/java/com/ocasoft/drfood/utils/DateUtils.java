@@ -1,7 +1,9 @@
 package com.ocasoft.drfood.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Alex on 14/08/2015.
@@ -25,6 +27,17 @@ public class DateUtils {
 		cal.set(Calendar.DATE, dayOfMonth);
 
 		return format.format(cal.getTime());
+	}
+
+	public static Date string2Date(String date, String dateFormat) {
+		SimpleDateFormat format = new SimpleDateFormat(dateFormat);
+		Date result = null;
+		try {
+			result = format.parse(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	/**

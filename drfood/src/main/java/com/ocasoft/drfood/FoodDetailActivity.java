@@ -18,6 +18,8 @@ import com.ocasoft.drfood.database.TrackFoodTable;
 import com.ocasoft.drfood.uiobjects.TrackFoodListAdapter;
 import com.ocasoft.drfood.utils.DateUtils;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 /**
  * Created by Alex on 02/03/2015.
  */
@@ -124,9 +126,9 @@ public class FoodDetailActivity extends ActionBarActivity {
 			TextView foodNameTV = (TextView) findViewById(R.id.foodNameDetailTV);
 
 			if (DEBUG)
-				foodNameTV.setText(foodName + " (id=" + foodId + ")");
+				foodNameTV.setText(StringEscapeUtils.unescapeJava(foodName) + " (id=" + foodId + ")");
 			else
-				foodNameTV.setText(foodName);
+				foodNameTV.setText(StringEscapeUtils.unescapeJava(foodName));
 
 			// Set quantity
             EditText quantityET = (EditText) findViewById(R.id.quantityDetailET);

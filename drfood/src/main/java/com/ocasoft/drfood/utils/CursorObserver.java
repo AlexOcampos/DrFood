@@ -10,8 +10,8 @@ import android.util.Log;
  * Created by Alex on 16/08/2015.
  */
 public class CursorObserver extends ContentObserver {
-
-	private static String TAG = "LOADER";
+	private static final boolean DEBUG = true; //TODO : Disable DEBUG
+	private static String TAG = "DRFOOD_CursorObserver";
 
 	private Loader<Cursor> loader;
 

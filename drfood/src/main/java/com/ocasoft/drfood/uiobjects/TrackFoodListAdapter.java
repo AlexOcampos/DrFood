@@ -22,6 +22,8 @@ import com.ocasoft.drfood.database.TrackFoodTable;
 import com.ocasoft.drfood.infoobjects.Food;
 import com.ocasoft.drfood.utils.SharedPreferencesUtils;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 import java.util.ArrayList;
 
 /**
@@ -65,7 +67,7 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 
 		// Modify Food Name
 		TextView listItemFoodNameText = (TextView)convertView.findViewById(R.id.textViewFoodNameItemX);
-		listItemFoodNameText.setText(list.get(position).getName());
+		listItemFoodNameText.setText(StringEscapeUtils.unescapeJava(list.get(position).getName()));
 
 		// Modify Food Quantity
 		TextView listItemQuantityText = (TextView)convertView.findViewById(R.id.textViewQuantityItemX);
@@ -161,7 +163,7 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 				// Get data from Cursor
 				object.setId(data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_ID)));
 				object.setName(data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_NAME)));
-				object.setTimeMoment(data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT)));
+				object.setTimeMoment(data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT)));
 				object.setFats(data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_FATS)));
 				object.setTrackId(data.getInt(data.getColumnIndex(TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID)));
 				object.setQuantity(data.getInt(data.getColumnIndex(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY)));

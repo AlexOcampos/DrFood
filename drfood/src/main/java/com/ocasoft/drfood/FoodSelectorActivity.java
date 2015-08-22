@@ -16,7 +16,9 @@ import android.widget.GridView;
 
 import com.ocasoft.drfood.contentprovider.FoodContentProvider;
 import com.ocasoft.drfood.database.FoodTable;
+import com.ocasoft.drfood.database.TrackFoodTable;
 import com.ocasoft.drfood.uiobjects.GridAdapter;
+import com.ocasoft.drfood.utils.DateUtils;
 
 public class FoodSelectorActivity extends ActionBarActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
@@ -24,13 +26,19 @@ public class FoodSelectorActivity extends ActionBarActivity implements
     private static final boolean DEBUG = true;
 
     private static final String[] PROJECTION = new String[] {
-    	FoodTable.COLUMN_NAME_FOOD_ID,
-    	FoodTable.COLUMN_NAME_FOOD_NAME,
+		FoodTable.COLUMN_NAME_FOOD_ID,
+		FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT,
 		FoodTable.COLUMN_NAME_FOOD_QUANTITY,
 		FoodTable.COLUMN_NAME_FOOD_ENERGY,
-		FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT,
+		FoodTable.COLUMN_NAME_FOOD_FATS,
+		FoodTable.COLUMN_NAME_FOOD_PROTEINS,
+		FoodTable.COLUMN_NAME_FOOD_CARBOHYDRATES,
+		FoodTable.COLUMN_NAME_FOOD_CATEGORY,
+		FoodTable.COLUMN_NAME_FOOD_COMMENTS,
 		FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE,
-		FoodTable.COLUMN_NAME_FOOD_CATEGORY
+		FoodTable.COLUMN_NAME_FOOD_COUNTER,
+		FoodTable.COLUMN_NAME_FOOD_NAME,
+		FoodTable.COLUMN_NAME_FOOD_CODE
 	};
 
     // The Loader's id (this id is specific to the ListFragment's LoaderManager)
@@ -187,9 +195,15 @@ public class FoodSelectorActivity extends ActionBarActivity implements
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (DEBUG) Log.i(TAG, "+++ onCreateLoader() called! +++");
+
+		String mSelectionClause = FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT + " = ?";
+		String[] mSelectionArgs = {
+				Integer.toString(selectedFoodTimeId),	// TimemomentId
+		};
+
         // Create a new CursorLoader with the following query parameters.
         return new CursorLoader(FoodSelectorActivity.this, FoodContentProvider.CONTENT_URI_FOOD,
-                PROJECTION, null, null, null);
+                PROJECTION, mSelectionClause, mSelectionArgs, FoodTable.COLUMN_NAME_FOOD_COUNTER + " DESC");
     }
 
     @Override

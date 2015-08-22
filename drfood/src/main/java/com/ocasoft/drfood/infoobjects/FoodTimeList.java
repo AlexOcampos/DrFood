@@ -9,12 +9,18 @@ import java.util.List;
 public class FoodTimeList {
 	private List<FoodTime> list;
 
+	// TimeMoment values
+	public static final int TIMEMOMENT_BREAKFAST 	= 1;
+	public static final int TIMEMOMENT_LUNCH 		= 2;
+	public static final int TIMEMOMENT_SNACK 		= 3;
+	public static final int TIMEMOMENT_DINNER 		= 4;
+
 	public FoodTimeList() {
 		list = new ArrayList<FoodTime>();
-		addFoodTime(new FoodTime("Desayuno", 1));
-		addFoodTime(new FoodTime("Comida", 2));
-		addFoodTime(new FoodTime("Merienda", 3));
-		addFoodTime(new FoodTime("Cena", 4));
+		addFoodTime(new FoodTime("Desayuno", TIMEMOMENT_BREAKFAST));
+		addFoodTime(new FoodTime("Comida", TIMEMOMENT_LUNCH));
+		addFoodTime(new FoodTime("Merienda", TIMEMOMENT_SNACK));
+		addFoodTime(new FoodTime("Cena", TIMEMOMENT_DINNER));
 	}
 
 	/**

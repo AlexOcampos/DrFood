@@ -39,6 +39,10 @@ public class FoodDetailActivity extends ActionBarActivity {
     private String foodTimeMoment = "";
     private String foodUnityMeasure = "";
     private String foodCategory = "";
+	private double foodFats = -1;
+	private double foodProteins = -1;
+	private double foodCarbohydrates = -1;
+	private String foodCode = "";
 	private int foodCounter = -1;
 	private int selectedDay = -1;
 	private int selectedYear = -1;
@@ -61,19 +65,6 @@ public class FoodDetailActivity extends ActionBarActivity {
 			if (savedInstanceState == null) {
 				Bundle extras = getIntent().getExtras();
 				if(extras == null) {
-					trackId = -1;
-					foodName = null;
-					foodId = -1;
-					foodQuantity = -1;
-					foodEnergy = -1;
-					foodTimeMoment = "";
-					selectedFoodTimeId = -1;
-					foodUnityMeasure = "";
-					foodCategory = "";
-					foodCounter = -1;
-					selectedDay 	= -1;
-					selectedYear 	= -1;
-					selectedMonth 	= -1;
 					loadingOk = false;
 				} else {
 					trackId = extras.getInt(TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID);
@@ -82,11 +73,15 @@ public class FoodDetailActivity extends ActionBarActivity {
 					foodId = extras.getInt(FoodTable.COLUMN_NAME_FOOD_ID);
 					foodQuantity = extras.getInt(FoodTable.COLUMN_NAME_FOOD_QUANTITY);
 					foodEnergy = extras.getInt(FoodTable.COLUMN_NAME_FOOD_ENERGY);
-					selectedFoodTimeId = extras.getInt(FoodSelectorActivity.selFoodTimeExtraName);
+					foodFats = extras.getDouble(FoodTable.COLUMN_NAME_FOOD_FATS);
+					foodProteins = extras.getDouble(FoodTable.COLUMN_NAME_FOOD_PROTEINS);
+					foodCarbohydrates = extras.getDouble(FoodTable.COLUMN_NAME_FOOD_CARBOHYDRATES);
 					foodTimeMoment = extras.getString(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT);
 					foodUnityMeasure = extras.getString(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE);
 					foodCategory = extras.getString(FoodTable.COLUMN_NAME_FOOD_CATEGORY);
 					foodCounter = extras.getInt(FoodTable.COLUMN_NAME_FOOD_COUNTER);
+					foodCode = extras.getString(FoodTable.COLUMN_NAME_FOOD_CODE);
+					selectedFoodTimeId = extras.getInt(FoodSelectorActivity.selFoodTimeExtraName);
 					selectedDay 	= extras.getInt(FoodSelectorActivity.selDayExtraName);
 					selectedYear 	= extras.getInt(FoodSelectorActivity.selYearExtraName);
 					selectedMonth 	= extras.getInt(FoodSelectorActivity.selMonthExtraName);
@@ -104,8 +99,12 @@ public class FoodDetailActivity extends ActionBarActivity {
 				selectedFoodTimeId = (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selFoodTimeExtraName);
 				foodTimeMoment = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT);
 				foodUnityMeasure = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE);
-				foodCategory =(String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_CATEGORY);
+				foodCategory = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_CATEGORY);
 				foodCounter = (Integer) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_COUNTER);
+				foodFats = (Double) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_FATS);
+				foodProteins = (Double) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_PROTEINS);
+				foodCarbohydrates = (Double) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_CARBOHYDRATES);
+				foodCode = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_CODE);
 				selectedDay 	= (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selDayExtraName);
 				selectedYear 	= (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selYearExtraName);
 				selectedMonth 	= (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selMonthExtraName);

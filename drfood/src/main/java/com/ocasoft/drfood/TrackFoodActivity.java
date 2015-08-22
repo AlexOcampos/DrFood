@@ -57,8 +57,14 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 			TrackFoodTable.addPrefix(TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID),
 			TrackFoodTable.addPrefix(TrackFoodTable.COLUMN_NAME_TRACKFOOD_USER_ID),
 			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_NAME),
-			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT),
 			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_FATS),
+			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_ENERGY),
+			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_CARBOHYDRATES),
+			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_PROTEINS),
+			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_CODE),
+			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_CATEGORY),
+			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_COMMENTS),
+			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_COUNTER),
 			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE)
 	};
 	// The Loader's id (this id is specific to the ListFragment's LoaderManager)

@@ -103,14 +103,26 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 			convertView = LayoutInflater.from(mContext).inflate(R.layout.item, null);
 		}
 
+		// Fill the image
 		ImageView image = (ImageView) convertView.findViewById(R.id.icon);
 		TextView text = (TextView) convertView.findViewById(R.id.text);
 
+		// Fill the name
 		FoodUI item = (FoodUI) getItem(position);
 		image.setImageResource(item.resId);
 		text.setText(StringEscapeUtils.unescapeJava(item.text));
 
+		// Counter > 0, set recommended icon
+		ImageView imgView = (ImageView) convertView.findViewById(R.id.recommended_item);
+		if (item.counter > 0) {
+			Log.e(TAG, "getView() " + item.text + " - " + item.counter + " @recommended visible");
+					imgView.setVisibility(View.VISIBLE);
+		} else {
+			Log.e(TAG, "getView() " + item.text + " - " + item.counter + " @recommended gone");
+			imgView.setVisibility(View.GONE);
+		}
 
+		// Set listener to food detail
 		convertView.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Context context = v.getContext();

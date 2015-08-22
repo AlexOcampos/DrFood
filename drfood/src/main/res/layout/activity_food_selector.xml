@@ -15,7 +15,10 @@
             android:layout_width="fill_parent"
             android:layout_height="48dp"
             android:id="@+id/linearLayoutText"
-            android:layout_centerHorizontal="true">
+            android:layout_centerHorizontal="true"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
+            android:focusable="true">
 
             <EditText
                 android:id="@+id/etSearch"
@@ -23,13 +26,17 @@
                 android:layout_height="48dp"
                 android:layout_weight=".65"
                 android:hint="@string/hint_searcher_food_selector"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:focusable="true"
+                android:focusableInTouchMode="true"/>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:id="@+id/imageView"
-                android:src="@drawable/favourite_blue"/>
+                android:src="@drawable/favourite_blue"
+                android:contentDescription="@string/accesibility_favourite_icon"
+                android:visibility="gone"/>
 
         </LinearLayout>
 

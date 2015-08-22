@@ -38,18 +38,18 @@
 #18; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; red food; comment1; gr; 1; Ajo blanco                 #
 #19; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; red food; comment1; gr; 1; Fetuccini a la puttanesca  #
 #20; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; red food; comment1; gr; 1; Spaguett alla Bolognese    #
-1;21/08/2015;1;1;62;0.16;1.23;15.39;1;Fruta c\u00EDtrica comestible obtenida del naranjo;pieza;2;Naranja;1
-2;21/08/2015;2;1;62;0.16;1.23;15.39;1;Fruta c\u00EDtrica comestible obtenida del naranjo;pieza;2;Naranja;1
-3;21/08/2015;3;1;62;0.16;1.23;15.39;1;Fruta c\u00EDtrica comestible obtenida del naranjo;pieza;2;Naranja;1
-4;21/08/2015;4;1;62;0.16;1.23;15.39;1;Fruta c\u00EDtrica comestible obtenida del naranjo;pieza;2;Naranja;1
-5;21/08/2015;1;1;72;0.23;0.36;19.06;1;Fruta pom\u00E1cea comestible, fruto del manzano;pieza;3;Manzana;2
-6;21/08/2015;2;1;72;0.23;0.36;19.06;1;Fruta pom\u00E1cea comestible, fruto del manzano;pieza;3;Manzana;2
-7;21/08/2015;3;1;72;0.23;0.36;19.06;1;Fruta pom\u00E1cea comestible, fruto del manzano;pieza;3;Manzana;2
-8;21/08/2015;4;1;72;0.23;0.36;19.06;1;Fruta pom\u00E1cea comestible, fruto del manzano;pieza;3;Manzana;2
-9;21/08/2015;1;1;105;0.39;1.29;26.95;1;Fruto del platanero, comestible, de forma alargada y algo curvada.;pieza;1;Pl\u00E1tano;3
-10;21/08/2015;2;1;105;0.39;1.29;26.95;1;Fruto del platanero, comestible, de forma alargada y algo curvada.;pieza;1;Pl\u00E1tano;3
-11;21/08/2015;3;1;105;0.39;1.29;26.95;1;Fruto del platanero, comestible, de forma alargada y algo curvada.;pieza;1;Pl\u00E1tano;3
-12;21/08/2015;4;1;105;0.39;1.29;26.95;1;Fruto del platanero, comestible, de forma alargada y algo curvada.;pieza;1;Pl\u00E1tano;3
+1;21/08/2015;1;1;62;0.16;1.23;15.39;1;Fruta c\u00EDtrica comestible obtenida del naranjo;pieza;0;Naranja;1
+2;21/08/2015;2;1;62;0.16;1.23;15.39;1;Fruta c\u00EDtrica comestible obtenida del naranjo;pieza;0;Naranja;1
+3;21/08/2015;3;1;62;0.16;1.23;15.39;1;Fruta c\u00EDtrica comestible obtenida del naranjo;pieza;0;Naranja;1
+4;21/08/2015;4;1;62;0.16;1.23;15.39;1;Fruta c\u00EDtrica comestible obtenida del naranjo;pieza;0;Naranja;1
+5;21/08/2015;1;1;72;0.23;0.36;19.06;1;Fruta pom\u00E1cea comestible, fruto del manzano;pieza;0;Manzana;2
+6;21/08/2015;2;1;72;0.23;0.36;19.06;1;Fruta pom\u00E1cea comestible, fruto del manzano;pieza;0;Manzana;2
+7;21/08/2015;3;1;72;0.23;0.36;19.06;1;Fruta pom\u00E1cea comestible, fruto del manzano;pieza;0;Manzana;2
+8;21/08/2015;4;1;72;0.23;0.36;19.06;1;Fruta pom\u00E1cea comestible, fruto del manzano;pieza;0;Manzana;2
+9;21/08/2015;1;1;105;0.39;1.29;26.95;1;Fruto del platanero, comestible, de forma alargada y algo curvada.;pieza;0;Pl\u00E1tano;3
+10;21/08/2015;2;1;105;0.39;1.29;26.95;1;Fruto del platanero, comestible, de forma alargada y algo curvada.;pieza;0;Pl\u00E1tano;3
+11;21/08/2015;3;1;105;0.39;1.29;26.95;1;Fruto del platanero, comestible, de forma alargada y algo curvada.;pieza;0;Pl\u00E1tano;3
+12;21/08/2015;4;1;105;0.39;1.29;26.95;1;Fruto del platanero, comestible, de forma alargada y algo curvada.;pieza;0;Pl\u00E1tano;3
 13;21/08/2015;2;1;149;8.18;7.82;10.93;2;Plato t\u00EDpico espa\u00F1ol, hecho a base de huevo y patata fritos;porci\u00F3n;0;Tortilla de patatas;4
 14;21/08/2015;4;1;149;8.18;7.82;10.93;2;Plato t\u00EDpico espa\u00F1ol, hecho a base de huevo y patata fritos;porci\u00F3n;0;Tortilla de patatas;4
 15;21/08/2015;2;1;46;0.24;7.08;4.39;2;Sopa fr\u00EDa a base de aceite de oliva, vinagre y hortalizas crudas: generalmente tomates, pepinos, pimientos, cebollas y ajo;taza;0;Gazpacho;5

@@ -158,8 +158,6 @@ public class FoodSelectorActivity extends ActionBarActivity implements
 		if (DEBUG) Log.i(TAG, "+++ fillData() called! +++");
 		GridView gridview = (GridView) findViewById(R.id.gridview);
 
-		getLoaderManager().initLoader(LOADER_ID, null, this);
-
 		Bundle extras = new Bundle();
 		extras.putInt(selFoodTimeExtraName, selectedFoodTimeId);
 		extras.putInt(selDayExtraName, selectedDay);
@@ -245,4 +243,16 @@ public class FoodSelectorActivity extends ActionBarActivity implements
 
         //adapter.setData(null);
     }
+
+	/************************/
+	/** ACTIVITY LIFECYCLE **/
+	/************************/
+	@Override
+	public void onResume() {
+		super.onResume();  // Always call the superclass method first
+		if (DEBUG) Log.i(TAG, "+++ onResume() called! +++");
+
+//		getLoaderManager().initLoader(LOADER_ID, null, this);
+//		getLoaderManager().restartLoader(LOADER_ID, null, this);
+	}
 }

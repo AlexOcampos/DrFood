@@ -86,7 +86,6 @@ public class FoodContentProvider extends ContentProvider {
 	@Override
 	public Cursor query(Uri uri, String[] projection, String selection,
 						String[] selectionArgs, String sortOrder) {
-		if (DEBUG) Log.i(TAG, "+++ query() called! +++");
 
 		// Uisng SQLiteQueryBuilder instead of query() method
 		SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
@@ -191,7 +190,6 @@ public class FoodContentProvider extends ContentProvider {
 
 		SQLiteDatabase db = database.getWritableDatabase();
 
-		Log.i(TAG, "+++ sortOrder sortOrder sortOrder sortOrder : " + sortOrder + " +++");
 		Cursor cursor = queryBuilder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
 
 		// make sure that potential listeners are getting notified
@@ -210,8 +208,6 @@ public class FoodContentProvider extends ContentProvider {
 		if (DEBUG) Log.i(TAG, "+++ insert() called! +++");
 
 		int uriType = sURIMatcher.match(uri);
-
-		if (DEBUG) Log.i(TAG, "+++ insert() uriType = " + uriType + " <=> tracks = " + TRACKS + " +++");
 
 		SQLiteDatabase sqlDB = database.getWritableDatabase();
 		String uriToParse = "";

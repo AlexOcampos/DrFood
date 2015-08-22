@@ -127,6 +127,7 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT, item.timeMoment);
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE, item.unityMeasure);
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_CATEGORY, item.category);
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_COUNTER, item.counter);
 					intent.putExtra(FoodSelectorActivity.selFoodTimeExtraName, selectedFoodTimeId);
 					intent.putExtra(FoodSelectorActivity.selDayExtraName, selectedDay);
 					intent.putExtra(FoodSelectorActivity.selYearExtraName, selectedYear);
@@ -137,13 +138,17 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 		});
 
 		if (DEBUG) Log.i(TAG, "+++ getView() text: "+ item.text + " || (" + position + ") " +
-				"count: " + item.code + " +++");
+				"count: " + item.counter + " +++");
 		return convertView;
 	}
 
 	public void setData(Cursor data) {
 		if (DEBUG) Log.i(TAG, "+++ setData() called! +++");
 		int i = 0;
+		if (DEBUG) Log.i(TAG, "+++ setData() called! " + mItems.size() + " +++");
+		mItems.clear();
+		if (DEBUG) Log.i(TAG, "+++ setData() called! " + mItems.size() + " +++");
+
 		if (data.moveToFirst()) { // move cursor to first row
 
 			do {
@@ -173,6 +178,10 @@ public class GridAdapter extends BaseAdapter implements Filterable {
         //To start, set both data sources to the incoming data
         mItemsFiltered = mItems;
 
+		// Refresh the view
+		notifyDataSetChanged();
+
+		if (DEBUG) Log.i(TAG, "+++ setData() finished! " + mItems.size() + " +++");
 	}
 
     @Override

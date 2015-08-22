@@ -39,6 +39,7 @@ public class FoodDetailActivity extends ActionBarActivity {
     private String foodTimeMoment = "";
     private String foodUnityMeasure = "";
     private String foodCategory = "";
+	private int foodCounter = -1;
 	private int selectedDay = -1;
 	private int selectedYear = -1;
 	private int selectedMonth = -1;
@@ -69,6 +70,7 @@ public class FoodDetailActivity extends ActionBarActivity {
 					selectedFoodTimeId = -1;
 					foodUnityMeasure = "";
 					foodCategory = "";
+					foodCounter = -1;
 					selectedDay 	= -1;
 					selectedYear 	= -1;
 					selectedMonth 	= -1;
@@ -84,6 +86,7 @@ public class FoodDetailActivity extends ActionBarActivity {
 					foodTimeMoment = extras.getString(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT);
 					foodUnityMeasure = extras.getString(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE);
 					foodCategory = extras.getString(FoodTable.COLUMN_NAME_FOOD_CATEGORY);
+					foodCounter = extras.getInt(FoodTable.COLUMN_NAME_FOOD_COUNTER);
 					selectedDay 	= extras.getInt(FoodSelectorActivity.selDayExtraName);
 					selectedYear 	= extras.getInt(FoodSelectorActivity.selYearExtraName);
 					selectedMonth 	= extras.getInt(FoodSelectorActivity.selMonthExtraName);
@@ -102,6 +105,7 @@ public class FoodDetailActivity extends ActionBarActivity {
 				foodTimeMoment = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT);
 				foodUnityMeasure = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE);
 				foodCategory =(String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_CATEGORY);
+				foodCounter = (Integer) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_COUNTER);
 				selectedDay 	= (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selDayExtraName);
 				selectedYear 	= (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selYearExtraName);
 				selectedMonth 	= (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selMonthExtraName);
@@ -155,6 +159,7 @@ public class FoodDetailActivity extends ActionBarActivity {
 				+ "| selectedYear: " + selectedYear
 				+ "| selectedMonth: " + selectedMonth
 				+ "| trackId: " + trackId
+				+ "| foodCounter: " + foodCounter
 				+ " +++");
 
 		// Save selected values (TrackFood)
@@ -171,12 +176,6 @@ public class FoodDetailActivity extends ActionBarActivity {
 			public void onClick(View v) {
 				Context context = v.getContext();
 
-                // Defines a new Uri object that receives the result of the insertion
-                Uri mNewUri;
-
-                // Defines an object to contain the new values to insert
-                ContentValues mNewValues = new ContentValues();
-
                 // Read quantity (foodQuantity)
                 EditText mEdit   = (EditText) findViewById(R.id.quantityDetailET);
 
@@ -189,6 +188,12 @@ public class FoodDetailActivity extends ActionBarActivity {
 
 
 				if (editOperation) {
+					// Defines a new Uri object that receives the result of the insertion
+					Uri mNewUri;
+
+					// Defines an object to contain the new values to insert
+					ContentValues mNewValues = new ContentValues();
+
 					// ================== UPDATE AND EXISTING FOOD ==================
 					mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY,
 							mEdit.getText().toString());
@@ -218,11 +223,33 @@ public class FoodDetailActivity extends ActionBarActivity {
 
 					toast.show();
 				} else {
+					// ====================== UPDATE FOOD COUNTER =======================
+					ContentValues mUpdateValues = new ContentValues();
+					foodCounter++;
+					mUpdateValues.put(FoodTable.COLUMN_NAME_FOOD_COUNTER,
+							Integer.toString(foodCounter));
+
+					// Generate the URI (append the Id)
+					Uri contentUriFoodId = Uri.withAppendedPath(
+							FoodContentProvider.CONTENT_URI_FOOD,
+							Integer.toString(foodId));
+
+					// Use the contentProvider to update the record with the trackId
+					context.getContentResolver().update(contentUriFoodId, mUpdateValues, null, null);
+
+
+
 					// ====================== INSERT NEW FOOD =======================
 					/*
 					 * Sets the values of each column and inserts the word. The arguments to the "put"
 					 * method are "column name" and "value"
 					 */
+					// Defines a new Uri object that receives the result of the insertion
+					Uri mNewUri;
+
+					// Defines an object to contain the new values to insert
+					ContentValues mNewValues = new ContentValues();
+
 					mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY,
 							mEdit.getText().toString());
 					mNewValues.put(TrackFoodTable.COLUMN_NAME_TRACKFOOD_FOOD_ID,
@@ -239,12 +266,14 @@ public class FoodDetailActivity extends ActionBarActivity {
 							mNewValues                          // the values to insert
 					);
 
-					CharSequence text = "Inserting " + foodName + " (Quantity: " + mEdit.getText().toString() + ")"
+					CharSequence text = "Saving " + StringEscapeUtils.unescapeJava(foodName)
 							+ ((DEBUG) ? ("\n==================DEBUG==================="
+							+ "\nfoodCounter: " + foodCounter
+							+ "\nQuantity: " + mEdit.getText().toString()
 							+ "\nfoodTime:" + selectedFoodTimeId
 							+ "\nnewUri: " + mNewUri.toString()
 							+ "\nDate: " + DateUtils.formatDate(selectedYear,selectedMonth,selectedDay,
-							DateUtils.DATE_FORMAT_DAYMONTHYEAR))
+												DateUtils.DATE_FORMAT_DAYMONTHYEAR))
 							: "");
 
 					if (DEBUG) Log.i(TAG, "+++ setDoneButtonListener() done! " + text + " +++");

@@ -29,9 +29,15 @@
     <dimen name="date_text">30dp</dimen>
 
     <!-- ======== FOOD_DETAIL ======== -->
+    <dimen name="food_detail_name">25dp</dimen>
+    <dimen name="food_detail_summary">12sp</dimen>
+    <dimen name="food_detail_cal_value">24dp</dimen>
+    <dimen name="food_detail_cal_metric">16dp</dimen>
+    <dimen name="food_detail_lateral_padding">16dp</dimen>
+    <dimen name="food_detail_padding_text">4dp</dimen>
+
     <dimen name="small_vertical_padding_text_fooddet">4dp</dimen>
     <dimen name="medium_vertical_padding_text_fooddet">18dp</dimen>
     <dimen name="big_vertical_padding_text_fooddet">48dp</dimen>
-    <dimen name="lateral_padding_fooddet">16dp</dimen>
 
 </resources>

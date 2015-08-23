@@ -42,6 +42,10 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 		public int resId;
 		public String code;
 		public int counter;
+		public double carbohydrates;
+		public double fats;
+		public double proteins;
+		public String comments;
 
 		/**
 		 * Checks if the filter value exists in the Food object
@@ -105,11 +109,11 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 
 		// Fill the image
 		ImageView image = (ImageView) convertView.findViewById(R.id.icon);
-		TextView text = (TextView) convertView.findViewById(R.id.text);
-
-		// Fill the name
 		FoodUI item = (FoodUI) getItem(position);
 		image.setImageResource(item.resId);
+
+		// Fill the name
+		TextView text = (TextView) convertView.findViewById(R.id.text);
 		text.setText(StringEscapeUtils.unescapeJava(item.text));
 
 		// Counter > 0, set recommended icon
@@ -138,10 +142,16 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE, item.unityMeasure);
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_CATEGORY, item.category);
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_COUNTER, item.counter);
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_CODE, item.code);
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_FATS, item.fats);
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_CARBOHYDRATES, item.carbohydrates);
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_PROTEINS, item.proteins);
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_COMMENTS, item.comments);
 					intent.putExtra(FoodSelectorActivity.selFoodTimeExtraName, selectedFoodTimeId);
 					intent.putExtra(FoodSelectorActivity.selDayExtraName, selectedDay);
 					intent.putExtra(FoodSelectorActivity.selYearExtraName, selectedYear);
 					intent.putExtra(FoodSelectorActivity.selMonthExtraName, selectedMonth);
+
 					context.startActivity(intent);
 				}
 			}
@@ -174,6 +184,10 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 				object.category = data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_CATEGORY));
 				object.code = data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_CODE));
 				object.counter = data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_COUNTER));
+				object.carbohydrates = data.getDouble(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_CARBOHYDRATES));
+				object.proteins = data.getDouble(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_PROTEINS));
+				object.fats = data.getDouble(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_FATS));
+				object.comments = data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_COMMENTS));
 
 				// Get the image. The name of them is "food_" + foodCode
 				String nameOfDrawable = "food_" + data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_CODE));

@@ -72,7 +72,8 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 		// Modify Food Quantity
 		TextView listItemQuantityText = (TextView)convertView.findViewById(R.id.textViewQuantityItemX);
 		listItemQuantityText.setText(list.get(position).getQuantity() + " "
-				+ StringEscapeUtils.unescapeJava(list.get(position).getUnity_measure()));
+				+ StringEscapeUtils.unescapeJava(list.get(position).getUnity_measure())
+				+ ((list.get(position).getQuantity() > 1) ? "s" : ""));
 
 		// Modify Food Calories
 		TextView listItemCaloriesText = (TextView)convertView.findViewById(R.id.textViewFoodCalItemX);
@@ -165,25 +166,21 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 				Food object = new Food();
 
 				// Get data from Cursor
-				object.setName(data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_NAME)));
-				object.setFats(data.getDouble(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_FATS)));
-				object.setEnergy(data.getDouble(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_ENERGY)));
-				object.setProteins(data.getDouble(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_PROTEINS)));
 				object.setCarbohydrates(data.getDouble(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_CARBOHYDRATES)));
 				object.setCategory(data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_CATEGORY)));
-				object.setComments(data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_COMMENTS)));
-				object.setUnity_measure(data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE)));
-				object.setCounter(data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_COUNTER)));
 				object.setCod(data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_CODE)));
+				object.setComments(data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_COMMENTS)));
+				object.setCounter(data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_COUNTER)));
+				object.setEnergy(data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_ENERGY)));
+				object.setFats(data.getDouble(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_FATS)));
+				object.setName(data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_NAME)));
+				object.setProteins(data.getDouble(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_PROTEINS)));
+				object.setUnity_measure(data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE)));
 
 				object.setQuantity(data.getInt(data.getColumnIndex(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY)));
 				object.setTrackId(data.getInt(data.getColumnIndex(TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID)));
 				object.setTimeMoment(data.getInt(data.getColumnIndex(TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID)));
 				object.setId(data.getInt(data.getColumnIndex(TrackFoodTable.COLUMN_NAME_TRACKFOOD_FOOD_ID)));
-
-//				if (DEBUG) Log.i(TAG, "+++ setData() id+name+timemoment+fats => [" + object.getTrackId() + "] "
-//						+ object.getId() + " - " + object.getName() + " - " + object.getTimeMoment()
-//						+ " - " + object.getFats() + " +++");
 
 				list.add(object);
 			} while (data.moveToNext()); // move to next row

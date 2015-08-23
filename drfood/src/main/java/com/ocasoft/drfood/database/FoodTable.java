@@ -26,7 +26,7 @@ public class FoodTable {
 	public static final String COLUMN_NAME_FOOD_ID = "foodId"; // Id
 	public static final String COLUMN_NAME_FOOD_REGISTRYDATE = "registrydate";
 	public static final String COLUMN_NAME_FOOD_TIMEMOMENT = "timemoment"; // Breakfast, Lunch, Snack, Dinner
-	public static final String COLUMN_NAME_FOOD_QUANTITY = "quantity"; // suggested quantity
+	public static final String COLUMN_NAME_FOOD_QUANTITY = "quantityDef"; // suggested quantity
 	public static final String COLUMN_NAME_FOOD_ENERGY = "energy"; // X approximate calories
 	public static final String COLUMN_NAME_FOOD_FATS = "fats";
 	public static final String COLUMN_NAME_FOOD_PROTEINS = "proteins";

@@ -40,7 +40,8 @@
         <activity
             android:name="com.ocasoft.drfood.FoodDetailActivity"
             android:label="@string/title_activity_track_food"
-            android:parentActivityName="com.ocasoft.drfood.FoodSelectorActivity" >
+            android:parentActivityName="com.ocasoft.drfood.FoodSelectorActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ocasoft.drfood.FoodSelectorActivity" />

@@ -151,7 +151,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				cursor.getString(1),
 				Integer.parseInt(cursor.getString(2)),
 				Integer.parseInt(cursor.getString(3)),
-				Double.parseDouble(cursor.getString(4)),
+				Integer.parseInt(cursor.getString(4)),
 				Double.parseDouble(cursor.getString(5)),
 				Double.parseDouble(cursor.getString(6)),
 				Double.parseDouble(cursor.getString(7)),

@@ -28,7 +28,6 @@
     <!-- ===== ACTIVITY_FOOD_SELECTOR ===== -->
     <string name="title_activity_food_selector">Select a food</string>
     <string name="hint_searcher_food_selector">Search food...</string>
-    <string name="quantity_food_selector">Quantity</string>
     <string name="accesibility_favourite_icon">Favourites</string>
 
     <!-- ===== ACTIVITY_TRACKFOOD ===== -->
@@ -38,6 +37,13 @@
     <string name="accessibility_delete_icon">delete</string>
     <string name="accessibility_previous_icon">previous</string>
     <string name="accessibility_next_icon">next</string>
+
+    <!-- ===== ACTIVITY_FOOD_DETAIL ===== -->
+    <string name="quantity_food_selector">Quantity: </string>
+    <string name="calories_measure">kcal </string>
+    <string name="proteins_text">proteins</string>
+    <string name="carbohydrates_text">carbohydrates</string>
+    <string name="fats_text">fats</string>
 
     <!-- ====================== OTHERS ====================== -->
     <!-- ===== FOOD CATEGORIES ===== -->

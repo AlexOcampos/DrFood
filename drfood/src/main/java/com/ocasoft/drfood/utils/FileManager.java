@@ -80,7 +80,7 @@ public class FileManager {
 				if (DEBUG) Log.i(TAG,"quantity = " + quantity);
 
 				// energy = double (kcal)
-				Double energy = Double.parseDouble(array[4]);
+				int energy = Integer.parseInt(array[4]);
 				if (DEBUG) Log.i(TAG,"energy = " + energy);
 
 				// fats = double (gr)

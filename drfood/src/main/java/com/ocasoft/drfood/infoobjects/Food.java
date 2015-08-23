@@ -12,7 +12,7 @@ public class Food {
 	private Date registryDate;
 	private int timeMoment;
 	private int quantity; // Default quantity
-	private double energy;
+	private int energy;
 	private double fats;
 	private double proteins;
 	private	double carbohydrates;
@@ -27,7 +27,7 @@ public class Food {
 	public Food() {}
 
 	public Food(int id, Date registryDate, int timeMoment, int quantity,
-				double energy, double fats, double proteins, double carbohydrates,
+				int energy, double fats, double proteins, double carbohydrates,
 				int category, String comments, String unity_measure, int counter, String name) {
 		this.id = id;
 		this.registryDate = registryDate;
@@ -62,7 +62,7 @@ public class Food {
 	 * @param name
 	 */
 	public Food(int id, String registryDate, int timeMoment, int quantity,
-				double energy, double fats, double proteins, double carbohydrates,
+				int energy, double fats, double proteins, double carbohydrates,
 				int category, String comments, String unity_measure, int counter, String name, String cod) {
 		this.id = id;
 		this.registryDate = DateUtils.string2Date(registryDate, DateUtils.DATE_FORMAT_DAYMONTHYEAR);
@@ -112,11 +112,11 @@ public class Food {
 		this.quantity = quantity;
 	}
 
-	public double getEnergy() {
+	public int getEnergy() {
 		return energy;
 	}
 
-	public void setEnergy(double energy) {
+	public void setEnergy(int energy) {
 		this.energy = energy;
 	}
 

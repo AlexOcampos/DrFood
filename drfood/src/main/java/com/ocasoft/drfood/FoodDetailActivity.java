@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ public class FoodDetailActivity extends ActionBarActivity {
     private String foodTimeMoment = "";
     private String foodUnityMeasure = "";
     private String foodCategory = "";
+	private String foodComments = "";
 	private double foodFats = -1;
 	private double foodProteins = -1;
 	private double foodCarbohydrates = -1;
@@ -76,6 +78,7 @@ public class FoodDetailActivity extends ActionBarActivity {
 					foodFats = extras.getDouble(FoodTable.COLUMN_NAME_FOOD_FATS);
 					foodProteins = extras.getDouble(FoodTable.COLUMN_NAME_FOOD_PROTEINS);
 					foodCarbohydrates = extras.getDouble(FoodTable.COLUMN_NAME_FOOD_CARBOHYDRATES);
+					foodComments = extras.getString(FoodTable.COLUMN_NAME_FOOD_COMMENTS);
 					foodTimeMoment = extras.getString(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT);
 					foodUnityMeasure = extras.getString(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE);
 					foodCategory = extras.getString(FoodTable.COLUMN_NAME_FOOD_CATEGORY);
@@ -104,6 +107,7 @@ public class FoodDetailActivity extends ActionBarActivity {
 				foodFats = (Double) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_FATS);
 				foodProteins = (Double) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_PROTEINS);
 				foodCarbohydrates = (Double) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_CARBOHYDRATES);
+				foodComments = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_COMMENTS);
 				foodCode = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_CODE);
 				selectedDay 	= (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selDayExtraName);
 				selectedYear 	= (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selYearExtraName);
@@ -126,12 +130,9 @@ public class FoodDetailActivity extends ActionBarActivity {
 		// If loadingOk then set the food data in the layout
 		if (loadingOk) {
 			// Set title (food name)
-			TextView foodNameTV = (TextView) findViewById(R.id.foodNameDetailTV);
+			TextView foodNameTV = (TextView) findViewById(R.id.nameFoodTextView);
 
-			if (DEBUG)
-				foodNameTV.setText(StringEscapeUtils.unescapeJava(foodName) + " (id=" + foodId + ")");
-			else
-				foodNameTV.setText(StringEscapeUtils.unescapeJava(foodName));
+			foodNameTV.setText(StringEscapeUtils.unescapeJava(foodName));
 
 			// Set quantity
             EditText quantityET = (EditText) findViewById(R.id.quantityDetailET);
@@ -144,12 +145,36 @@ public class FoodDetailActivity extends ActionBarActivity {
 			unityMeasureTV.setText(StringEscapeUtils.unescapeJava(foodUnityMeasure));
 
 			// Set foodEnergy
-			TextView energyTV = (TextView) findViewById(R.id.energyDetailTV);
+			TextView energyTV = (TextView) findViewById(R.id.caloriesValue);
 			energyTV.setText(foodEnergy+"");
 
+			// Set Carbs
+			TextView carbsTV = (TextView) findViewById(R.id.carbsValue);
+			carbsTV.setText(foodCarbohydrates + " " + getString(R.string.carbohydrates_text));
+
+			// Set Proteins
+			TextView proteinsTV = (TextView) findViewById(R.id.proteinValue);
+			proteinsTV.setText(foodProteins + " " + getString(R.string.proteins_text));
+
+			// Set Fats
+			TextView fatsTV = (TextView) findViewById(R.id.fatValue);
+			fatsTV.setText(foodFats + " " + getString(R.string.fats_text));
+
+			// Set Image
+			String nameOfDrawable = "food_" + foodCode;
+			int drawableResourceId = getResources().getIdentifier(nameOfDrawable, "drawable", getPackageName());
+			ImageView foodImageView = (ImageView) findViewById(R.id.circularFoodImageView);
+			if (drawableResourceId != 0) {
+				foodImageView.setImageResource(drawableResourceId);
+			}
+
+			// Set Comments
+			TextView summaryFoodTV = (TextView) findViewById(R.id.summaryFoodTextView);
+			summaryFoodTV.setText(StringEscapeUtils.unescapeJava(foodComments));
+
 			// Set foodCategory
-			TextView categoryTV = (TextView) findViewById(R.id.categoryDetailTV);
-			categoryTV.setText(foodCategory);
+//			TextView categoryTV = (TextView) findViewById(R.id.categoryDetailTV);
+//			categoryTV.setText(foodCategory);
 		}
 
 		if (DEBUG) Log.i(TAG, "+++ Extras: "

@@ -4,6 +4,7 @@
     <!-- ======== COMMON ======== -->
     <color name="general_background">#ffd1d1d1</color>
     <color name="header_background">#ffd7fffd</color>
+    <color name="text_black">#000000</color>
 
     <!-- ======== TRACK FOOD ======== -->
     <color name="primary">#00cd1b</color>

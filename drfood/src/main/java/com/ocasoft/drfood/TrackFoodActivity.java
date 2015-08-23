@@ -19,10 +19,12 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.melnykov.fab.FloatingActionButton;
 import com.ocasoft.drfood.contentprovider.FoodContentProvider;
 import com.ocasoft.drfood.database.FoodTable;
 import com.ocasoft.drfood.database.TrackFoodTable;
@@ -157,7 +159,13 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 	 * Actions for Add Button
 	 */
 	private void setAddButtonListener() {
-		findViewById(R.id.buttonAdd).setOnClickListener(new View.OnClickListener() {
+
+		GridView listView = (GridView) findViewById(R.id.listFoodConsummed);
+		FloatingActionButton addFAB = (FloatingActionButton) findViewById(R.id.buttonAdd);
+		addFAB.attachToListView(listView);
+
+
+		addFAB.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Context context = v.getContext();
 

@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- ======== COMMON ======== -->
+    <color name="general_background">#ffd1d1d1</color>
+    <color name="header_background">#ffd7fffd</color>
+
+    <!-- ======== TRACK FOOD ======== -->
+    <color name="primary">#3f51b5</color>
+    <color name="primary_pressed">#fff600</color>
+    <color name="primary_dark">#ff001b</color>
+    <color name="ripple">#F06292</color>
+
     <!-- ======== FOOD SELECTOR ======== -->
     <color name="list_divider">#AA66CC</color>
     <color name="focus_color">#aa000000</color>
     <color name="grid_bg_color">#666666</color>
 
-    <color name="general_background">#ffd1d1d1</color>
-    <color name="header_background">#ffd7fffd</color>
+
 
     <color name="recommended_cal_textcolor">#ff29cd00</color>
 </resources>

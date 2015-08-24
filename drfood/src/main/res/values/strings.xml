@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Dr Food</string>
+    <string name="app_name">Dr. Food</string>
 
     <!-- NavigationDrawerFragment titles -->
     <string name="title_section1">Dr. Food</string>
@@ -45,11 +45,15 @@
     <string name="carbohydrates_text">carbohydrates</string>
     <string name="fats_text">fats</string>
 
+    <!-- ===== ACTIVITY_HISTORY ===== -->
+    <string name="title_activity_history">HistoryActivity</string>
+
     <!-- ====================== OTHERS ====================== -->
     <!-- ===== FOOD CATEGORIES ===== -->
     <string name="food_category_green">green</string>
     <string name="food_category_orange">orange</string>
     <string name="food_category_red">red</string>
+
 
 
 </resources>

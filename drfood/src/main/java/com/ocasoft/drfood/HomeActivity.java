@@ -1,7 +1,10 @@
 package com.ocasoft.drfood;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.ocasoft.drfood.fragments.AboutFragment;
 import com.ocasoft.drfood.fragments.HomeFragment;
@@ -23,9 +26,9 @@ public class HomeActivity extends MaterialNavigationDrawer {
 		if (DEBUG) Log.i(TAG,"onCreate");
 //		setContentView(R.layout.activity_home);
 
-		account = new MaterialAccount(this.getResources(),"Ocampos","alexocampos@gmail.com",R.drawable.account_image,
-				R.drawable.spaghettihd);
-		this.addAccount(account);
+		// create and set the header
+		View view = LayoutInflater.from(this).inflate(R.layout.custom_fragment_header,null);
+		setDrawerHeaderCustom(view);
 
 		// create sections
 		target = newSection("Home", R.drawable.ic_action_tick, new HomeFragment());

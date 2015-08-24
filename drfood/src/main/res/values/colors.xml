@@ -6,6 +6,10 @@
     <color name="header_background">#ffd7fffd</color>
     <color name="text_black">#000000</color>
 
+    <!-- ======== COMMON ======== -->
+    <color name="home_user_name">#000000</color>
+    <color name="home_user_email">#ffffff</color>
+
     <!-- ======== TRACK FOOD ======== -->
     <color name="primary">#00cd1b</color>
     <color name="primary_pressed">#008c12</color>

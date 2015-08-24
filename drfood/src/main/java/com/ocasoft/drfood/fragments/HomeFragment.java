@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.ocasoft.drfood.HistoryActivity;
 import com.ocasoft.drfood.R;
 import com.ocasoft.drfood.TrackFoodActivity;
 import com.ocasoft.drfood.utils.SharedPreferencesUtils;
@@ -36,10 +37,16 @@ public class HomeFragment extends Fragment {
 
 		initProgressBar(rootView);
 		initTrackFoodButton(rootView);
+		initEditTrackedFoodButton(rootView);
+		initHistoryButton(rootView);
 
 		return rootView;
 	}
 
+	/**
+	 * Init he progress bar with the current calories
+	 * @param rootView
+	 */
 	private void initProgressBar(View rootView) {
 		//Progress bar
 		if (DEBUG) Log.i("NavDrawFrag", "PlaceholderFragment - onCreateView - Home section - ProgressBar init");
@@ -52,10 +59,11 @@ public class HomeFragment extends Fragment {
 		mProgress.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN); // -1700
 	}
 
+	/**
+	 * Actions for TrackFood's button (Clickable Linear Layout)
+	 * @param rootView
+	 */
 	private void initTrackFoodButton (View rootView) {
-		/* ********************************************************
-			 * Actions for TrackFood's button (Clickable Linear Layout)
-			 * ********************************************************/
 		LinearLayout buttonTrackFood = (LinearLayout) rootView.findViewById(R.id.HomeBody_LinLay_Track);
 		buttonTrackFood.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -65,6 +73,42 @@ public class HomeFragment extends Fragment {
 
 				SharedPreferencesUtils.setSharedPrefValue(context, SharedPreferencesUtils.SP_TFA_CALLED_FROM_HOME, true);
 
+				context.startActivity(intent);
+			}
+		});
+	}
+
+	/**
+	 * Actions for Edit Tracked Food's button (Clickable Linear Layout)
+	 * @param rootView
+	 */
+	private void initEditTrackedFoodButton (View rootView) {
+		LinearLayout buttonEditTrackFood = (LinearLayout) rootView.findViewById(R.id.HomeBody_LinLay_Edit);
+		buttonEditTrackFood.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Context context = v.getContext();
+
+				Intent intent = new Intent(context, TrackFoodActivity.class);
+
+				// We want to load the last used day & foodTime
+				SharedPreferencesUtils.setSharedPrefValue(context, SharedPreferencesUtils.SP_TFA_CALLED_FROM_HOME, false);
+
+				context.startActivity(intent);
+			}
+		});
+	}
+
+	/**
+	 * Actions for ShowHistory's button  (Clickable Linear Layout)
+	 * @param rootView
+	 */
+	private void initHistoryButton (View rootView) {
+		LinearLayout buttonShowHistory = (LinearLayout) rootView.findViewById(R.id.HomeBody_LinLay_History);
+		buttonShowHistory.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Context context = v.getContext();
+
+				Intent intent = new Intent(context, HistoryActivity.class);
 				context.startActivity(intent);
 			}
 		});

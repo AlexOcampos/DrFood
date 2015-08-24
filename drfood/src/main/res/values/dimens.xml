@@ -8,6 +8,9 @@
     <dimen name="navigation_drawer_width">350dp</dimen>
 
     <!-- ======== HOME ======== -->
+    <dimen name="home_header_padding">4dp</dimen>
+    <dimen name="home_header_size_name">25sp</dimen>
+    <dimen name="home_header_size_email">12sp</dimen>
     <dimen name="home_header_height">60dp</dimen>
     <dimen name="home_progressBar">200dp</dimen>
     <dimen name="height_home_card">150dp</dimen>

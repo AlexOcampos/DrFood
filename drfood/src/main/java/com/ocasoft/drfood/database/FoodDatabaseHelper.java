@@ -32,7 +32,7 @@ public class FoodDatabaseHelper extends SQLiteOpenHelper {
 			// Create DataBase and initilize FoodTable
 			Log.i(TAG, "+++ Initializing the DB... +++");
 			FoodTable.onCreate(this.getWritableDatabase(), mContext);
-			SharedPreferencesUtils.setSharedPrefsFile(mContext,SharedPreferencesUtils.SP_DBINITIALIZED,true);
+			SharedPreferencesUtils.setSharedPrefValue(mContext,SharedPreferencesUtils.SP_DBINITIALIZED,true);
 			Log.i(TAG, "+++ DB initialized! +++");
 		}
 

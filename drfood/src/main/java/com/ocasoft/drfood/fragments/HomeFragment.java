@@ -17,6 +17,7 @@ import android.widget.ProgressBar;
 
 import com.ocasoft.drfood.R;
 import com.ocasoft.drfood.TrackFoodActivity;
+import com.ocasoft.drfood.utils.SharedPreferencesUtils;
 
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 
@@ -61,6 +62,8 @@ public class HomeFragment extends Fragment {
 				Context context = v.getContext();
 
 				Intent intent = new Intent(context, TrackFoodActivity.class);
+
+				SharedPreferencesUtils.setSharedPrefValue(context, SharedPreferencesUtils.SP_TFA_CALLED_FROM_HOME, true);
 
 				context.startActivity(intent);
 			}

@@ -10,7 +10,14 @@ public class SharedPreferencesUtils {
 	private static final String SHARED_PREFS_FILE = "drfood_prefs_file";
 
 	// ======================================== Saved Values ========================================
-	// TrackFoodActivity & TrackFoodListAdapter
+	// HomeFragment => TrackFoodActivity
+	/**
+	 * Boolean - True if TrackFoodActivity was called from HomeFragment. In this case, it will display current Day and
+	 * current FoodTime.
+	 */
+	public static final String SP_TFA_CALLED_FROM_HOME = "tfaCalledFromHome";
+
+	// TrackFoodActivity => TrackFoodListAdapter
 	public static final String SP_CURRENTFOODTIME = "currentFoodTime";
 	public static final String SP_CURRENTDAY = "currentDay";
 	public static final String SP_CURRENTMONTH = "currentMonth";
@@ -49,7 +56,7 @@ public class SharedPreferencesUtils {
 		editor.commit();
 	}
 
-	public static void setSharedPrefsFile(Context mContext, String parameter, boolean value) {
+	public static void setSharedPrefValue(Context mContext, String parameter, boolean value) {
 		SharedPreferences.Editor editor = getSettings(mContext).edit();
 		editor.putBoolean(parameter, value);
 		editor.commit();

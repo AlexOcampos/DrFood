@@ -88,11 +88,20 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 			}
 		}
 
+		//===================== Check if called from home ====================
+		// Get the value
+		boolean calledFromHome = SharedPreferencesUtils.getSharedPrefBooleanValue(mContext,
+				SharedPreferencesUtils.SP_TFA_CALLED_FROM_HOME);
+
+		// Delete current value
+		SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_TFA_CALLED_FROM_HOME, false);
+
+
 		//======================== Set Spinner values ========================
-		setSpinnerFoodTimes();
+		setSpinnerFoodTimes(calledFromHome);
 
 		//========================      set date      ========================
-		setDateTrackFood();
+		setDateTrackFood(calledFromHome);
 
 		// Prev Date Button
 		setPrevButtonListener();
@@ -115,7 +124,7 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 	/**
 	 * Initialize spinner foodtimes and all the actions related with this
 	 */
-	private void setSpinnerFoodTimes() {
+	private void setSpinnerFoodTimes(boolean calledFromHome) {
 		Spinner spinner = (Spinner) findViewById(R.id.foodtime_spinner);
 
 		// Spinner click listener
@@ -135,8 +144,19 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 		spinner.setAdapter(foodTimesAdapter);
 
 		// Select default foodTime
-		String currentTimeMomentName = FoodTimeList.getNameById(FoodTimeList.getCurrentTimeMoment());
+		String currentTimeMomentName;
+		if (!calledFromHome) {
+			Log.i(TAG, "+++ calledFromHome +++");
+			currentTimeMomentName = FoodTimeList.getNameById(
+					SharedPreferencesUtils.getSharedPrefIntValue(mContext, SharedPreferencesUtils.SP_CURRENTFOODTIME));
+			Log.i(TAG, "+++ calledFromHome : " + currentTimeMomentName + "+++");
+		} else {
+			Log.i(TAG, "+++ not calledFromHome +++");
+			currentTimeMomentName = FoodTimeList.getNameById(FoodTimeList.getCurrentTimeMoment());
+			Log.i(TAG, "+++ not calledFromHome : " + currentTimeMomentName + "+++");
+		}
 		int positionCurrentTimeMoment = foodTimesAdapter.getPosition(currentTimeMomentName);
+		Log.i(TAG, "+++ positionCurrentTimeMoment " + positionCurrentTimeMoment + " +++ ");
 		spinner.setSelection(positionCurrentTimeMoment);
 
 		// Get current value
@@ -252,22 +272,31 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 	/**
 	 * Set the date to the DateTextView and create DatePickerDialog.
 	 */
-	private void setDateTrackFood() {
+	private void setDateTrackFood(boolean calledFromHome) {
 		tvDisplayDate = (TextView) findViewById(R.id.textViewDate);
-		// Set current date in the TextView
-		Calendar c = Calendar.getInstance();
-		mYear = c.get(Calendar.YEAR);
-		mMonth = c.get(Calendar.MONTH);
-		mDay = c.get(Calendar.DAY_OF_MONTH);
-		tvDisplayDate.setText(DateUtils.formatDate(mYear, mMonth, mDay, DateUtils.DATE_FORMAT_DAYMONTHYEAR));
 
-		/*
-		 * Save values to use it in the TrackFoodListAdapter, because I need this values.
-		 * I don't know if there is a better way to do this.
-		 */
-		SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTMONTH, mMonth);
-		SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTYEAR, mYear);
-		SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTDAY, mDay);
+		if (calledFromHome) {
+			// Set current date in the TextView
+			Calendar c = Calendar.getInstance();
+			mYear = c.get(Calendar.YEAR);
+			mMonth = c.get(Calendar.MONTH);
+			mDay = c.get(Calendar.DAY_OF_MONTH);
+
+			/*
+			 * Save values to use it in the TrackFoodListAdapter, because I need this values.
+			 * I don't know if there is a better way to do this.
+			 */
+			SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTMONTH, mMonth);
+			SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTYEAR, mYear);
+			SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_CURRENTDAY, mDay);
+		} else {
+			mYear = SharedPreferencesUtils.getSharedPrefIntValue(mContext, SharedPreferencesUtils.SP_CURRENTYEAR);
+			mMonth = SharedPreferencesUtils.getSharedPrefIntValue(mContext, SharedPreferencesUtils.SP_CURRENTMONTH);
+			mDay = SharedPreferencesUtils.getSharedPrefIntValue(mContext, SharedPreferencesUtils.SP_CURRENTDAY);
+		}
+
+		// Set display date to the calendar
+		tvDisplayDate.setText(DateUtils.formatDate(mYear, mMonth, mDay, DateUtils.DATE_FORMAT_DAYMONTHYEAR));
 
 		// Open DatePickerDialog and set user selected date
 		dpd = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
@@ -275,6 +304,8 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 			public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 				// Display Selected date in textbox
 				tvDisplayDate.setText(DateUtils.formatDate(year,monthOfYear,dayOfMonth,DateUtils.DATE_FORMAT_DAYMONTHYEAR));
+
+				// Update global values
 				mYear = year;
 				mMonth = monthOfYear;
 				mDay = dayOfMonth;

@@ -38,6 +38,7 @@
     <dimen name="food_detail_cal_metric">16dp</dimen>
     <dimen name="food_detail_lateral_padding">16dp</dimen>
     <dimen name="food_detail_padding_text">4dp</dimen>
+    <dimen name="food_detail_nutrition_text_size">12sp</dimen>
 
     <dimen name="small_vertical_padding_text_fooddet">4dp</dimen>
     <dimen name="medium_vertical_padding_text_fooddet">18dp</dimen>

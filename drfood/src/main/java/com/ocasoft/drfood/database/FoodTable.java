@@ -100,7 +100,7 @@ public class FoodTable {
 			values.put(COLUMN_NAME_FOOD_FATS, food.getFats());
 			values.put(COLUMN_NAME_FOOD_NAME, food.getName());
 			values.put(COLUMN_NAME_FOOD_PROTEINS, food.getProteins());
-			values.put(COLUMN_NAME_FOOD_QUANTITY, food.getQuantity());
+			values.put(COLUMN_NAME_FOOD_QUANTITY, food.getQuantityDefault());
 			values.put(COLUMN_NAME_FOOD_REGISTRYDATE, food.getRegistryDate().toString());
 			values.put(COLUMN_NAME_FOOD_TIMEMOMENT, food.getTimeMoment());
 			values.put(COLUMN_NAME_FOOD_UNITY_MEASURE, food.getUnity_measure());

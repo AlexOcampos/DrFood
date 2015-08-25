@@ -144,7 +144,9 @@
                 android:id="@+id/viewNutritionInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/food_detail_lateral_padding"
+                android:paddingRight="@dimen/food_detail_lateral_padding">
                     <LinearLayout
                         android:layout_width="0dip"
                         android:layout_weight="0.33"
@@ -158,7 +160,8 @@
                             android:id="@+id/carbsValue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Carbs 10.93"
+                            android:text="10.93 Carbohydrates"
+                            android:textSize="@dimen/food_detail_nutrition_text_size"
                             android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
@@ -175,6 +178,7 @@
                             android:layout_height="wrap_content"
                             android:text="Proteins 7.82"
                             android:id="@+id/proteinValue"
+                            android:textSize="@dimen/food_detail_nutrition_text_size"
                             android:gravity="center"/>
 
                     </LinearLayout>
@@ -192,6 +196,7 @@
                             android:layout_height="wrap_content"
                             android:text="Fats 8.18"
                             android:id="@+id/fatValue"
+                            android:textSize="@dimen/food_detail_nutrition_text_size"
                             android:gravity="center"
                             />
 
@@ -222,7 +227,9 @@
                     android:text="@string/quantity_food_selector"
                     android:layout_weight="0.25"
                     android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"/>
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/food_detail_lateral_padding"
+                    android:paddingRight="@dimen/food_detail_lateral_padding"/>
 
                 <EditText
                     android:id="@+id/quantityDetailET"
@@ -231,8 +238,11 @@
                     android:inputType="number"
                     android:layout_alignParentRight="true"
                     android:layout_weight="0.5"
+                    android:maxLength="4"
                     android:autoText="false"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/food_detail_lateral_padding"
+                    android:paddingRight="@dimen/food_detail_lateral_padding"/>
 
                 <TextView
                     android:id="@+id/unityMeasureDetailTV"
@@ -241,7 +251,9 @@
                     android:text="porcion"
                     android:layout_weight="0.25"
                     android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"/>
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/food_detail_lateral_padding"
+                    android:paddingRight="@dimen/food_detail_lateral_padding"/>
             </LinearLayout>
 
 

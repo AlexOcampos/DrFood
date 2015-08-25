@@ -27,6 +27,7 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import java.util.ArrayList;
 
 /**
+ * Dr Food
  * Created by Alex on 31/01/2015.
  */
 public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
@@ -71,9 +72,9 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 
 		// Modify Food Quantity
 		TextView listItemQuantityText = (TextView)convertView.findViewById(R.id.textViewQuantityItemX);
-		listItemQuantityText.setText(list.get(position).getQuantity() + " "
+		listItemQuantityText.setText(list.get(position).getQuantitySelected() + " "
 				+ StringEscapeUtils.unescapeJava(list.get(position).getUnity_measure())
-				+ ((list.get(position).getQuantity() > 1) ? "s" : ""));
+				+ ((list.get(position).getQuantitySelected() > 1) ? "s" : ""));
 
 		// Modify Food Calories
 		TextView listItemCaloriesText = (TextView)convertView.findViewById(R.id.textViewFoodCalItemX);
@@ -120,7 +121,7 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 					intent.putExtra(FoodDetailActivity.EDIT_OPERATION, true);
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_ID, list.get(position).getId());
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_NAME, list.get(position).getName());
-					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_QUANTITY, list.get(position).getQuantity());
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_QUANTITY, list.get(position).getQuantityDefault());
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_ENERGY, list.get(position).getEnergy());
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_FATS, list.get(position).getFats());
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_CARBOHYDRATES, list.get(position).getCarbohydrates());
@@ -130,6 +131,8 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE, list.get(position).getUnity_measure());
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_CATEGORY, list.get(position).getCategory());
 					intent.putExtra(TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID, list.get(position).getTrackId());
+					intent.putExtra(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY,
+							list.get(position).getQuantitySelected());
 					intent.putExtra(FoodSelectorActivity.selFoodTimeExtraName,
 							SharedPreferencesUtils.getSharedPrefIntValue(context,
 									SharedPreferencesUtils.SP_CURRENTFOODTIME));
@@ -176,8 +179,9 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 				object.setName(data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_NAME)));
 				object.setProteins(data.getDouble(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_PROTEINS)));
 				object.setUnity_measure(data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE)));
+				object.setQuantityDefault(data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_QUANTITY)));
 
-				object.setQuantity(data.getInt(data.getColumnIndex(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY)));
+				object.setQuantitySelected(data.getInt(data.getColumnIndex(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY)));
 				object.setTrackId(data.getInt(data.getColumnIndex(TrackFoodTable.COLUMN_NAME_TRACKFOOD_ID)));
 				object.setTimeMoment(data.getInt(data.getColumnIndex(TrackFoodTable.COLUMN_NAME_TRACKFOOD_TIMEMOMENT_ID)));
 				object.setId(data.getInt(data.getColumnIndex(TrackFoodTable.COLUMN_NAME_TRACKFOOD_FOOD_ID)));

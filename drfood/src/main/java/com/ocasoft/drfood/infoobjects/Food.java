@@ -11,7 +11,8 @@ public class Food {
 	private int id;
 	private Date registryDate;
 	private int timeMoment;
-	private int quantity; // Default quantity
+	private int quantityDefault;
+	private int quantitySelected;
 	private int energy;
 	private double fats;
 	private double proteins;
@@ -26,13 +27,14 @@ public class Food {
 
 	public Food() {}
 
-	public Food(int id, Date registryDate, int timeMoment, int quantity,
+	public Food(int id, Date registryDate, int timeMoment, int quantityDefault, int quantitySelected,
 				int energy, double fats, double proteins, double carbohydrates,
 				int category, String comments, String unity_measure, int counter, String name) {
 		this.id = id;
 		this.registryDate = registryDate;
 		this.timeMoment = timeMoment;
-		this.quantity = quantity;
+		this.quantityDefault = quantityDefault;
+		this.quantitySelected = quantitySelected;
 		this.energy = energy;
 		this.fats = fats;
 		this.proteins = proteins;
@@ -50,7 +52,8 @@ public class Food {
 	 * @param id
 	 * @param registryDate
 	 * @param timeMoment
-	 * @param quantity
+	 * @param quantityDefault
+	 * @param quantitySelected
 	 * @param energy
 	 * @param fats
 	 * @param proteins
@@ -61,13 +64,14 @@ public class Food {
 	 * @param counter
 	 * @param name
 	 */
-	public Food(int id, String registryDate, int timeMoment, int quantity,
+	public Food(int id, String registryDate, int timeMoment, int quantityDefault, int quantitySelected,
 				int energy, double fats, double proteins, double carbohydrates,
 				int category, String comments, String unity_measure, int counter, String name, String cod) {
 		this.id = id;
 		this.registryDate = DateUtils.string2Date(registryDate, DateUtils.DATE_FORMAT_DAYMONTHYEAR);
 		this.timeMoment = timeMoment;
-		this.quantity = quantity;
+		this.quantityDefault = quantityDefault;
+		this.quantitySelected = quantitySelected;
 		this.energy = energy;
 		this.fats = fats;
 		this.proteins = proteins;
@@ -104,12 +108,20 @@ public class Food {
 		this.timeMoment = timeMoment;
 	}
 
-	public int getQuantity() {
-		return quantity;
+	public int getQuantityDefault() {
+		return quantityDefault;
 	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public int getQuantitySelected() {
+		return quantitySelected;
+	}
+
+	public void setQuantityDefault(int quantityDefault) {
+		this.quantityDefault = quantityDefault;
+	}
+
+	public void setQuantitySelected(int quantitySelected) {
+		this.quantitySelected = quantitySelected;
 	}
 
 	public int getEnergy() {

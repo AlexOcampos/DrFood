@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,8 +40,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-
-public class TrackFoodActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener,
+public class TrackFoodActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener,
 		LoaderManager.LoaderCallbacks<Cursor>{
 	private static final String TAG = "DRFOOD_TrFoodActi";
 	private static final boolean DEBUG = true;
@@ -67,6 +67,7 @@ public class TrackFoodActivity extends ActionBarActivity implements AdapterView.
 			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_CATEGORY),
 			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_COMMENTS),
 			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_COUNTER),
+			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_QUANTITY),
 			FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE)
 	};
 	// The Loader's id (this id is specific to the ListFragment's LoaderManager)

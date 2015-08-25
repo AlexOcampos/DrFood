@@ -119,7 +119,7 @@ public class FileManager {
 				String cod = array[13];
 				if (DEBUG) Log.i(TAG,"cod = " + cod);
 
-				db.add(new Food(id,registryDate,timeMoment,quantity,energy,fats,proteins,carbohydrates,
+				db.add(new Food(id,registryDate,timeMoment,quantity,0,energy,fats,proteins,carbohydrates,
 						category,comments,unity_measure,counter,name,cod));
 
 			}

@@ -6,6 +6,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -18,8 +20,11 @@ import com.ocasoft.drfood.database.FoodTable;
 import com.ocasoft.drfood.database.TrackFoodTable;
 import com.ocasoft.drfood.uiobjects.TrackFoodListAdapter;
 import com.ocasoft.drfood.utils.DateUtils;
+import com.ocasoft.drfood.utils.MathUtils;
+import com.ocasoft.drfood.utils.SharedPreferencesUtils;
 
 import org.apache.commons.lang3.StringEscapeUtils;
+import org.w3c.dom.Text;
 
 /**
  * Created by Alex on 02/03/2015.
@@ -34,7 +39,8 @@ public class FoodDetailActivity extends ActionBarActivity {
 	private int trackId = -1;
     private String foodName = "";
     private int foodId = -1;
-    private int foodQuantity = -1;
+    private int foodQuantityDefault = -1;
+    private int foodQuantitySelected = -1;
     private int foodEnergy = -1;
 	private int selectedFoodTimeId = -1;
     private String foodTimeMoment = "";
@@ -73,7 +79,8 @@ public class FoodDetailActivity extends ActionBarActivity {
 					editOperation = extras.getBoolean(EDIT_OPERATION);
 					foodName = extras.getString(FoodTable.COLUMN_NAME_FOOD_NAME);
 					foodId = extras.getInt(FoodTable.COLUMN_NAME_FOOD_ID);
-					foodQuantity = extras.getInt(FoodTable.COLUMN_NAME_FOOD_QUANTITY);
+					foodQuantityDefault = extras.getInt(FoodTable.COLUMN_NAME_FOOD_QUANTITY);
+					foodQuantitySelected = extras.getInt(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY);
 					foodEnergy = extras.getInt(FoodTable.COLUMN_NAME_FOOD_ENERGY);
 					foodFats = extras.getDouble(FoodTable.COLUMN_NAME_FOOD_FATS);
 					foodProteins = extras.getDouble(FoodTable.COLUMN_NAME_FOOD_PROTEINS);
@@ -97,7 +104,8 @@ public class FoodDetailActivity extends ActionBarActivity {
 				editOperation = (Boolean) savedInstanceState.getSerializable(EDIT_OPERATION);
 				foodName = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_NAME);
 				foodId = (Integer) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_ID);
-				foodQuantity = (Integer) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_QUANTITY);
+				foodQuantityDefault = (Integer) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_QUANTITY);
+				foodQuantitySelected = (Integer) savedInstanceState.getSerializable(TrackFoodTable.COLUMN_NAME_TRACKFOOD_QUANTITY);
 				foodEnergy = (Integer) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_ENERGY);
 				selectedFoodTimeId = (Integer) savedInstanceState.getSerializable(FoodSelectorActivity.selFoodTimeExtraName);
 				foodTimeMoment = (String) savedInstanceState.getSerializable(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT);
@@ -121,7 +129,7 @@ public class FoodDetailActivity extends ActionBarActivity {
 			handleErrorFood(); //not valid foodId value
 		}
 
-		if (foodId == -1 || foodQuantity == -1 || foodEnergy == -1 || trackId == -1 || selectedDay == -1
+		if (foodId == -1 || foodQuantityDefault == -1 || foodEnergy == -1 || trackId == -1 || selectedDay == -1
 				|| selectedYear == -1 || selectedMonth == -1 || selectedFoodTimeId == -1) {//not valid values
 			loadingOk = false;
 			handleErrorFood();
@@ -129,38 +137,72 @@ public class FoodDetailActivity extends ActionBarActivity {
 
 		// If loadingOk then set the food data in the layout
 		if (loadingOk) {
-			// Set title (food name)
+			// Set title (food name) ===================================================================================
 			TextView foodNameTV = (TextView) findViewById(R.id.nameFoodTextView);
 
 			foodNameTV.setText(StringEscapeUtils.unescapeJava(foodName));
 
-			// Set quantity
+			// Set quantity ============================================================================================
             EditText quantityET = (EditText) findViewById(R.id.quantityDetailET);
-
 			//quantityTV.setText(foodQuantity); // +"" because we want a string
-            quantityET.setText(foodQuantity + "");
+			if (editOperation) {
+				quantityET.setText(foodQuantitySelected + "");
+			} else {
+				quantityET.setText(foodQuantityDefault + "");
+				foodQuantitySelected = foodQuantityDefault;
+			}
 
-			// Set unityMeasure
+			// Set unityMeasure ========================================================================================
 			TextView unityMeasureTV = (TextView) findViewById(R.id.unityMeasureDetailTV);
 			unityMeasureTV.setText(StringEscapeUtils.unescapeJava(foodUnityMeasure));
 
-			// Set foodEnergy
-			TextView energyTV = (TextView) findViewById(R.id.caloriesValue);
-			energyTV.setText(foodEnergy+"");
+			// Set foodEnergy ==========================================================================================
+			final TextView energyTV = (TextView) findViewById(R.id.caloriesValue);
+			energyTV.setText((foodEnergy*foodQuantitySelected/foodQuantityDefault)+"");
 
-			// Set Carbs
-			TextView carbsTV = (TextView) findViewById(R.id.carbsValue);
-			carbsTV.setText(foodCarbohydrates + " " + getString(R.string.carbohydrates_text));
+			// Set Carbs ===============================================================================================
+			final TextView carbsTV = (TextView) findViewById(R.id.carbsValue);
+			carbsTV.setText((foodCarbohydrates*foodQuantitySelected/foodQuantityDefault) + " "
+					+ getString(R.string.carbohydrates_text));
 
-			// Set Proteins
-			TextView proteinsTV = (TextView) findViewById(R.id.proteinValue);
-			proteinsTV.setText(foodProteins + " " + getString(R.string.proteins_text));
+			// Set Proteins ============================================================================================
+			final TextView proteinsTV = (TextView) findViewById(R.id.proteinValue);
+			proteinsTV.setText((foodProteins*foodQuantitySelected/foodQuantityDefault) + " "
+					+ getString(R.string.proteins_text));
 
-			// Set Fats
-			TextView fatsTV = (TextView) findViewById(R.id.fatValue);
-			fatsTV.setText(foodFats + " " + getString(R.string.fats_text));
+			// Set Fats ================================================================================================
+			final TextView fatsTV = (TextView) findViewById(R.id.fatValue);
+			fatsTV.setText((foodFats*foodQuantitySelected/foodQuantityDefault) + " " + getString(R.string.fats_text));
 
-			// Set Image
+
+			// Set on text change listener to update energy, fats, proteins and carbohydrates
+			quantityET.addTextChangedListener(new TextWatcher() {
+				public void afterTextChanged(Editable s) {
+					if (s.toString().length() > 0) {
+						foodQuantitySelected = Integer.parseInt(s.toString());
+
+						double carbsTVValue = MathUtils.round(
+								(foodCarbohydrates*foodQuantitySelected/foodQuantityDefault), 2);
+						double proteinsTVValue = MathUtils.round(
+								(foodProteins*foodQuantitySelected/foodQuantityDefault), 2);
+						double fatsTVValue = MathUtils.round(
+								(foodFats*foodQuantitySelected/foodQuantityDefault), 2);
+
+						energyTV.setText((foodEnergy*foodQuantitySelected/foodQuantityDefault) + "");
+						carbsTV.setText(carbsTVValue + " " + getString(R.string.carbohydrates_text));
+						proteinsTV.setText(proteinsTVValue + " " + getString(R.string.proteins_text));
+						fatsTV.setText(fatsTVValue + " " + getString(R.string.fats_text));
+					}
+				}
+
+				public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+				}
+
+				public void onTextChanged(CharSequence s, int start, int before, int count) {
+				}
+			});
+
+			// Set Image ===============================================================================================
 			String nameOfDrawable = "food_" + foodCode;
 			int drawableResourceId = getResources().getIdentifier(nameOfDrawable, "drawable", getPackageName());
 			ImageView foodImageView = (ImageView) findViewById(R.id.circularFoodImageView);
@@ -168,7 +210,7 @@ public class FoodDetailActivity extends ActionBarActivity {
 				foodImageView.setImageResource(drawableResourceId);
 			}
 
-			// Set Comments
+			// Set Comments ============================================================================================
 			TextView summaryFoodTV = (TextView) findViewById(R.id.summaryFoodTextView);
 			summaryFoodTV.setText(StringEscapeUtils.unescapeJava(foodComments));
 

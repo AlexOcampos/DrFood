@@ -162,17 +162,21 @@ public class FoodDetailActivity extends ActionBarActivity {
 
 			// Set Carbs ===============================================================================================
 			final TextView carbsTV = (TextView) findViewById(R.id.carbsValue);
-			carbsTV.setText((foodCarbohydrates*foodQuantitySelected/foodQuantityDefault) + " "
-					+ getString(R.string.carbohydrates_text));
+			double carbsTVValue = MathUtils.round(
+					(foodCarbohydrates*foodQuantitySelected/foodQuantityDefault), 2);
+			carbsTV.setText(carbsTVValue + " " + getString(R.string.carbohydrates_text));
 
 			// Set Proteins ============================================================================================
 			final TextView proteinsTV = (TextView) findViewById(R.id.proteinValue);
-			proteinsTV.setText((foodProteins*foodQuantitySelected/foodQuantityDefault) + " "
-					+ getString(R.string.proteins_text));
+			double proteinsTVValue = MathUtils.round(
+					(foodProteins*foodQuantitySelected/foodQuantityDefault), 2);
+			proteinsTV.setText(proteinsTVValue + " " + getString(R.string.proteins_text));
 
 			// Set Fats ================================================================================================
 			final TextView fatsTV = (TextView) findViewById(R.id.fatValue);
-			fatsTV.setText((foodFats*foodQuantitySelected/foodQuantityDefault) + " " + getString(R.string.fats_text));
+			double fatsTVValue = MathUtils.round(
+					(foodFats*foodQuantitySelected/foodQuantityDefault), 2);
+			fatsTV.setText(fatsTVValue + " " + getString(R.string.fats_text));
 
 
 			// Set on text change listener to update energy, fats, proteins and carbohydrates

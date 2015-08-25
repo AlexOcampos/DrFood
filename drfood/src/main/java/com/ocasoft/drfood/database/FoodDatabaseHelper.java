@@ -69,6 +69,7 @@ public class FoodDatabaseHelper extends SQLiteOpenHelper {
 		//FoodTable.onCreate(database,mContext);
 		TrackFoodTable.onCreate(database);
 		UserTable.onCreate(database);
+		TrackDiaryTable.onCreate(database);
 		if (DEBUG) Log.i(TAG, "+++ onCreate() finished! +++");
 	}
 
@@ -80,6 +81,7 @@ public class FoodDatabaseHelper extends SQLiteOpenHelper {
 		FoodTable.onUpgrade(database, oldVersion, newVersion, mContext);
 		TrackFoodTable.onUpgrade(database, oldVersion, newVersion);
 		UserTable.onUpgrade(database, oldVersion, newVersion);
+		TrackDiaryTable.onUpgrade(database, oldVersion, newVersion);
 		if (DEBUG) Log.i(TAG, "+++ onUpgrade() finished! +++");
 	}
 }

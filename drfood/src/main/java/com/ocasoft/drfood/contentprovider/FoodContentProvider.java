@@ -13,6 +13,7 @@ import android.util.Log;
 
 import com.ocasoft.drfood.database.FoodDatabaseHelper;
 import com.ocasoft.drfood.database.FoodTable;
+import com.ocasoft.drfood.database.TrackDiaryTable;
 import com.ocasoft.drfood.database.TrackFoodTable;
 import com.ocasoft.drfood.database.UserTable;
 
@@ -38,6 +39,8 @@ public class FoodContentProvider extends ContentProvider {
 	private static final int TRACK_FOOD = 50;
 	private static final int USERS = 60;
 	private static final int USER_ID = 70;
+	private static final int DIARIES = 80;
+	private static final int DIARY_ID = 90;
 
 	private static final String AUTHORITY = "com.ocasoft.drfood.provider";
 
@@ -46,6 +49,7 @@ public class FoodContentProvider extends ContentProvider {
 	private static final String BASE_PATH_TRACK = "tracks";
 	private static final String BASE_PATH_TRACK_FOODS = "tracksfoods";
 	private static final String BASE_PATH_USER = "user";
+	private static final String BASE_PATH_DIARY = "diary";
 
 	// Uris
 	public static final Uri CONTENT_URI_FOOD = Uri.parse("content://" + AUTHORITY
@@ -56,6 +60,8 @@ public class FoodContentProvider extends ContentProvider {
 			+ "/" + BASE_PATH_TRACK_FOODS);
 	public static final Uri CONTENT_URI_USER = Uri.parse("content://" + AUTHORITY
 			+ "/" + BASE_PATH_USER);
+	public static final Uri CONTENT_URI_DIARY = Uri.parse("content://" + AUTHORITY
+			+ "/" + BASE_PATH_DIARY);
 
 	// ??
 	public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
@@ -73,6 +79,8 @@ public class FoodContentProvider extends ContentProvider {
 		sURIMatcher.addURI(AUTHORITY, BASE_PATH_TRACK_FOODS, TRACK_FOOD); //Returns info tracks+food
 		sURIMatcher.addURI(AUTHORITY, BASE_PATH_USER, USERS);
 		sURIMatcher.addURI(AUTHORITY, BASE_PATH_USER + "/#", USER_ID);
+		sURIMatcher.addURI(AUTHORITY, BASE_PATH_DIARY, DIARIES);
+		sURIMatcher.addURI(AUTHORITY, BASE_PATH_DIARY + "/#", DIARY_ID);
 	}
 
 	@Override
@@ -184,6 +192,30 @@ public class FoodContentProvider extends ContentProvider {
 				queryBuilder.appendWhere(UserTable.COLUMN_NAME_USER_ID + "="
 						+ uri.getLastPathSegment());
 				break;
+			case DIARIES:
+				if (DEBUG) Log.i(TAG, "+++ query() uriType DIARIES! +++");
+
+				// check if the caller has requested a column which does not exists
+				checkColumns(projection,TrackDiaryTable.TABLE_NAME_DIARY);
+
+				// Set the table
+				queryBuilder.setTables(TrackDiaryTable.TABLE_NAME_DIARY);
+
+				break;
+			case DIARY_ID:
+				if (DEBUG) Log.i(TAG, "+++ query() uriType DIARY_ID + " + uri.getLastPathSegment() + "! +++");
+
+				// check if the caller has requested a column which does not exists
+				checkColumns(projection,TrackDiaryTable.TABLE_NAME_DIARY);
+
+				// Set the table
+				queryBuilder.setTables(TrackDiaryTable.TABLE_NAME_DIARY);
+
+				// adding the ID to the original query
+				queryBuilder.appendWhere(TrackDiaryTable.TABLE_NAME_DIARY + "="
+						+ uri.getLastPathSegment());
+
+				break;
 			default:
 				throw new IllegalArgumentException("FoodContentprovider - query() - Unknown URI: " + uri);
 		}
@@ -225,6 +257,10 @@ public class FoodContentProvider extends ContentProvider {
 			case USERS:
 				id = sqlDB.insert(UserTable.TABLE_NAME_USER, null, values);
 				uriToParse = BASE_PATH_USER + "/" + id;
+				break;
+			case DIARIES:
+				id = sqlDB.insert(TrackDiaryTable.TABLE_NAME_DIARY, null, values);
+				uriToParse = BASE_PATH_DIARY + "/" + id;
 				break;
 			default:
 				throw new IllegalArgumentException("FoodContentprovider - insert() - Unknown URI: " + uri);
@@ -296,6 +332,23 @@ public class FoodContentProvider extends ContentProvider {
 				} else {
 					rowsDeleted = sqlDB.delete(UserTable.TABLE_NAME_USER,
 							UserTable.COLUMN_NAME_USER_ID + "=" + idUser
+									+ " and " + selection,
+							selectionArgs);
+				}
+				break;
+			case DIARIES:
+				rowsDeleted = sqlDB.delete(TrackDiaryTable.TABLE_NAME_DIARY, selection,
+						selectionArgs);
+				break;
+			case DIARY_ID:
+				String idDiary = uri.getLastPathSegment();
+				if (TextUtils.isEmpty(selection)) {
+					rowsDeleted = sqlDB.delete(TrackDiaryTable.TABLE_NAME_DIARY,
+							TrackDiaryTable.COLUMN_NAME_DIARY_DATE + "=" + idDiary,
+							null);
+				} else {
+					rowsDeleted = sqlDB.delete(TrackDiaryTable.TABLE_NAME_DIARY,
+							TrackDiaryTable.COLUMN_NAME_DIARY_DATE + "=" + idDiary
 									+ " and " + selection,
 							selectionArgs);
 				}
@@ -375,6 +428,28 @@ public class FoodContentProvider extends ContentProvider {
 					rowsUpdated = sqlDB.update(UserTable.TABLE_NAME_USER,
 							values,
 							UserTable.COLUMN_NAME_USER_ID + "=" + idUser
+									+ " and "
+									+ selection,
+							selectionArgs);
+				}
+				break;
+			case DIARIES:
+				rowsUpdated = sqlDB.update(TrackDiaryTable.TABLE_NAME_DIARY,
+						values,
+						selection,
+						selectionArgs);
+				break;
+			case DIARY_ID:
+				String idDiary = uri.getLastPathSegment();
+				if (TextUtils.isEmpty(selection)) {
+					rowsUpdated = sqlDB.update(TrackDiaryTable.TABLE_NAME_DIARY,
+							values,
+							TrackDiaryTable.COLUMN_NAME_DIARY_DATE + "=" + idDiary,
+							null);
+				} else {
+					rowsUpdated = sqlDB.update(TrackDiaryTable.TABLE_NAME_DIARY,
+							values,
+							TrackDiaryTable.COLUMN_NAME_DIARY_DATE + "=" + idDiary
 									+ " and "
 									+ selection,
 							selectionArgs);
@@ -461,6 +536,16 @@ public class FoodContentProvider extends ContentProvider {
 				FoodTable.addPrefix(FoodTable.COLUMN_NAME_FOOD_CODE)
 		};
 
+		String[] availableTrackDiary = {
+				TrackDiaryTable.COLUMN_NAME_DIARY_DATE,
+				TrackDiaryTable.COLUMN_NAME_DIARY_TIMEFOOD,
+				TrackDiaryTable.COLUMN_NAME_DIARY_CALORIES,
+				TrackDiaryTable.COLUMN_NAME_DIARY_CARBOHYDRATES,
+				TrackDiaryTable.COLUMN_NAME_DIARY_FATS,
+				TrackDiaryTable.COLUMN_NAME_DIARY_PROTEINS,
+				TrackDiaryTable.COLUMN_NAME_DIARY_USERID
+		};
+
 		// Use columns of the selected table
 		String[] available;
 		if (FoodTable.TABLE_NAME_FOOD.compareTo(tableName) == 0) {
@@ -471,29 +556,14 @@ public class FoodContentProvider extends ContentProvider {
 			available = availableUser;
 		} else if (Integer.toString(TRACK_FOOD).compareTo(tableName) == 0) {
 			available = availableTrackFood;
+		} else if (TrackDiaryTable.TABLE_NAME_DIARY.compareTo(tableName) == 0) {
+			available = availableTrackDiary;
 		} else {
 			throw new IllegalArgumentException("FoodContentprovider - checkColumns() - Unknown table");
 		}
 
 
 		if (projection != null) {
-			// ++++++++++++++++++++++++++++++++++++++++++ DEGUG +++++++++++++++++++++++++++++++++++++++++++++++++++
-//			if (DEBUG) {
-//				String projectionsValues = "";
-//				String availableValues = "";
-//				for (String p : projection) {
-//					projectionsValues += (p + ",");
-//				}
-//				for (String a : available) {
-//					availableValues += (a + ",");
-//				}
-//				Log.i(TAG, "+++ checkColumns() projections: " + projectionsValues + "+++");
-//				Log.i(TAG, "+++ checkColumns() availables: " + availableValues + "+++");
-//			}
-			// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
 			HashSet<String> requestedColumns = new HashSet<String>(Arrays.asList(projection));
 			HashSet<String> availableColumns = new HashSet<String>(Arrays.asList(available));
 

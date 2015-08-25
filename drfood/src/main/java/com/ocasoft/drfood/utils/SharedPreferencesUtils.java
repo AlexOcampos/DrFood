@@ -23,6 +23,17 @@ public class SharedPreferencesUtils {
 	public static final String SP_CURRENTMONTH = "currentMonth";
 	public static final String SP_CURRENTYEAR = "currentYear";
 
+	// ConfigurationFragment
+	/**
+	 * String - User name
+	 */
+	public static final String SP_USER_NAME = "userName";
+	/**
+	 * String - User email
+	 */
+	public static final String SP_USER_EMAIL = "userEmail";
+
+
 	// FoodDatabaseHelper
 	public static final String SP_DBINITIALIZED = "dbInitialized";
 

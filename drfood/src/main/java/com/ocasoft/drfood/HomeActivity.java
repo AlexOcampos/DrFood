@@ -1,13 +1,17 @@
 package com.ocasoft.drfood;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.ocasoft.drfood.fragments.AboutFragment;
+import com.ocasoft.drfood.fragments.ConfigurationFragment;
 import com.ocasoft.drfood.fragments.HomeFragment;
+import com.ocasoft.drfood.utils.SharedPreferencesUtils;
 
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 import it.neokree.materialnavigationdrawer.elements.MaterialAccount;
@@ -20,19 +24,23 @@ public class HomeActivity extends MaterialNavigationDrawer {
 	private MaterialAccount account;
 	private MaterialSection target;
 
+	private Context mContext;
 
 	@Override
 	public void init(Bundle bundle) {
 		if (DEBUG) Log.i(TAG,"onCreate");
-//		setContentView(R.layout.activity_home);
 
 		// create and set the header
-		View view = LayoutInflater.from(this).inflate(R.layout.custom_fragment_header,null);
+		View view = LayoutInflater.from(this).inflate(R.layout.custom_fragment_header, null);
 		setDrawerHeaderCustom(view);
+
+		// Save the context
+		mContext = view.getContext();
 
 		// create sections
 		target = newSection("Home", R.drawable.ic_action_tick, new HomeFragment());
 		this.addSection(target);
+		this.addSection(newSection("Configurations", R.drawable.ic_action_tick, new ConfigurationFragment()));
 		this.addSection(newSection("About", R.drawable.ic_action_tick, new AboutFragment()));
 
 		enableToolbarElevation();
@@ -40,6 +48,15 @@ public class HomeActivity extends MaterialNavigationDrawer {
 		thread.start();
 	}
 
+	@Override
+	public void onResume() {
+		super.onResume();  // Always call the superclass method first
+		TextView emailTV = (TextView) findViewById(R.id.emailUserTextView);
+		TextView nameTV = (TextView) findViewById(R.id.nameUserTextView);
+
+		emailTV.setText(SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_USER_EMAIL));
+		nameTV.setText(SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_USER_NAME));
+	}
 
 	private Thread thread = new Thread(new Runnable() {
 		@Override
@@ -52,9 +69,6 @@ public class HomeActivity extends MaterialNavigationDrawer {
 			runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
-//                    removeAccount(account);
-//                    notifyAccountDataChanged();
-//                    removeSection(target);
 					setSection(target);
 				}
 			});

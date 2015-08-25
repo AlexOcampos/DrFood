@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/general_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/section_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="User Details"
+        android:id="@+id/helpF_textView"
+        android:layout_below="@+id/section_label"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center_horizontal"/>
+    <View
+        android:layout_marginTop="@dimen/food_detail_lateral_padding"
+        android:layout_marginLeft="@dimen/food_detail_lateral_padding"
+        android:layout_marginRight="@dimen/food_detail_lateral_padding"
+        android:layout_marginBottom="@dimen/food_detail_lateral_padding"
+        style="@style/Line"/>
+
+    <EditText
+        android:id="@+id/editTextUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:layout_below="@+id/helpF_textView"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/editTextUserEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"/>
+
+    <View
+        android:layout_marginTop="@dimen/food_detail_lateral_padding"
+        android:layout_marginLeft="@dimen/food_detail_lateral_padding"
+        android:layout_marginRight="@dimen/food_detail_lateral_padding"
+        android:layout_marginBottom="1dp"
+        style="@style/Line"/>
+    <View
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="@dimen/food_detail_lateral_padding"
+        android:layout_marginRight="@dimen/food_detail_lateral_padding"
+        android:layout_marginBottom="@dimen/food_detail_lateral_padding"
+        style="@style/Line"/>
+
+
+</LinearLayout>

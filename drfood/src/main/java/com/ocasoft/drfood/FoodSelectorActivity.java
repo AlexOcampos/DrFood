@@ -6,6 +6,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -20,7 +21,7 @@ import com.ocasoft.drfood.database.TrackFoodTable;
 import com.ocasoft.drfood.uiobjects.GridAdapter;
 import com.ocasoft.drfood.utils.DateUtils;
 
-public class FoodSelectorActivity extends ActionBarActivity implements
+public class FoodSelectorActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = "DRFOOD_FoodSel";
     private static final boolean DEBUG = true;

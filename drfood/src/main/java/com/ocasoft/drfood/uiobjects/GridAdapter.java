@@ -36,7 +36,7 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 		public String text;
 		public int quantity;
 		public int energy;
-		public String timeMoment;
+		public int timeMoment;
 		public String unityMeasure;
 		public String category;
 		public int resId;
@@ -58,7 +58,7 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 	}
 
 	private static final String TAG = "DRFOOD_GridAdapter";
-	private static final boolean DEBUG = true; //TODO : Disable DEBUG
+	private static final boolean DEBUG = false; //TODO : Disable DEBUG
 
 	private List<FoodUI> mItems = new ArrayList<GridAdapter.FoodUI>();
     private List<FoodUI> mItemsFiltered = new ArrayList<GridAdapter.FoodUI>();
@@ -179,7 +179,7 @@ public class GridAdapter extends BaseAdapter implements Filterable {
 				object.text = data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_NAME));
 				object.quantity = data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_QUANTITY));
 				object.energy = data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_ENERGY));
-				object.timeMoment = data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT));
+				object.timeMoment = data.getInt(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT));
 				object.unityMeasure = data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE));
 				object.category = data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_CATEGORY));
 				object.code = data.getString(data.getColumnIndex(FoodTable.COLUMN_NAME_FOOD_CODE));

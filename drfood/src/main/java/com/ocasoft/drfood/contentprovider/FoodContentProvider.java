@@ -261,6 +261,7 @@ public class FoodContentProvider extends ContentProvider {
 			case DIARIES:
 				id = sqlDB.insert(TrackDiaryTable.TABLE_NAME_DIARY, null, values);
 				uriToParse = BASE_PATH_DIARY + "/" + id;
+				if (DEBUG) Log.i(TAG, "+++ DIARIES called! - "  + id + " +++" + values + "###");
 				break;
 			default:
 				throw new IllegalArgumentException("FoodContentprovider - insert() - Unknown URI: " + uri);
@@ -438,6 +439,8 @@ public class FoodContentProvider extends ContentProvider {
 						values,
 						selection,
 						selectionArgs);
+				if (DEBUG) Log.i(TAG, "+++ DIARIES UPDATE called! - "  + rowsUpdated + " +++" + values + "###"
+						+ selection + "###" + selectionArgs);
 				break;
 			case DIARY_ID:
 				String idDiary = uri.getLastPathSegment();

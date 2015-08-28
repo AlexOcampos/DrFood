@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:background="@color/login_background"
+                tools:context="com.ocasoft.drfood.PreGuestActivity">
+
+    <!-- Login progress -->
+    <ImageView
+        android:layout_width="174dp"
+        android:layout_height="205dp"
+        android:id="@+id/imageViewIconGuest"
+        android:src="@drawable/ic_launcher"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <ScrollView
+        android:id="@+id/guest_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imageViewIconGuest"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/guest_hint_textview"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/skip_login_margin"
+                android:text="@string/action_guest_summary"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/nameGuestET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/guest_name_hint"
+                android:maxLines="1"
+                android:singleLine="true"/>
+
+            <EditText
+                android:id="@+id/emailGuestET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/guest_email_hint"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true"/>
+
+            <Button
+                android:id="@+id/skip_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/guest_done_button"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

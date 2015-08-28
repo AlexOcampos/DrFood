@@ -18,6 +18,9 @@
     <dimen name="padding_home_card_text">10dp</dimen>
     <dimen name="text_home_card">18dp</dimen>
 
+    <!-- ======== LOGIN ======== -->
+    <dimen name="skip_login_margin">32dp</dimen>
+
     <!-- ======== FOOD_SELECTOR ======== -->
     <dimen name="height_searcher_food_selector">64dp</dimen>
     <dimen name="height_tile_gridview_food_selector">100dp</dimen>

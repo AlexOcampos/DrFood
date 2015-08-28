@@ -5,10 +5,12 @@
     <color name="general_background">#ffd1d1d1</color>
     <color name="header_background">#ffd7fffd</color>
     <color name="text_black">#000000</color>
-
-    <!-- ======== COMMON ======== -->
     <color name="home_user_name">#000000</color>
     <color name="home_user_email">#ffffff</color>
+    <color name="general_header">#9c27b0</color>
+
+    <!-- ======== LOGIN ======== -->
+    <color name="login_background">#9c27b0</color>
 
     <!-- ======== TRACK FOOD ======== -->
     <color name="primary">#00cd1b</color>

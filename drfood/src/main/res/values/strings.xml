@@ -48,11 +48,31 @@
     <!-- ===== ACTIVITY_HISTORY ===== -->
     <string name="title_activity_history">HistoryActivity</string>
 
+    <!-- ===== LOGIN_ACTIVITY ===== -->
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="action_skip">Skip</string>
+    <string name="action_skip_summary">You can login as anonymous user...</string>
+
+    <!-- GUEST PREFROM -->
+    <string name="guest_done_button">Done</string>
+    <string name="guest_name_hint">Name</string>
+    <string name="guest_email_hint">Email</string>
+    <string name="action_guest_summary">Please, fill the following fields:</string>
+
     <!-- ====================== OTHERS ====================== -->
     <!-- ===== FOOD CATEGORIES ===== -->
     <string name="food_category_green">green</string>
     <string name="food_category_orange">orange</string>
     <string name="food_category_red">red</string>
+    <string name="title_activity_pre_guest">PreGuestActivity</string>
 
 
 

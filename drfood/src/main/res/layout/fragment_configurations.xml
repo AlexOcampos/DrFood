@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -14,56 +13,237 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="User Details"
-        android:id="@+id/helpF_textView"
-        android:layout_below="@+id/section_label"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:layout_gravity="center_horizontal"/>
-    <View
-        android:layout_marginTop="@dimen/food_detail_lateral_padding"
-        android:layout_marginLeft="@dimen/food_detail_lateral_padding"
-        android:layout_marginRight="@dimen/food_detail_lateral_padding"
-        android:layout_marginBottom="@dimen/food_detail_lateral_padding"
-        style="@style/Line"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/settings_userdetailstittle"
+                android:id="@+id/helpF_textView"
+                android:layout_below="@+id/section_label"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"/>
 
-    <EditText
-        android:id="@+id/editTextUserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:layout_below="@+id/helpF_textView"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"/>
+            <View
+                android:layout_marginTop="@dimen/food_detail_lateral_padding"
+                android:layout_marginLeft="@dimen/food_detail_lateral_padding"
+                android:layout_marginRight="@dimen/food_detail_lateral_padding"
+                android:layout_marginBottom="@dimen/food_detail_lateral_padding"
+                style="@style/Line"/>
 
-    <EditText
-        android:id="@+id/editTextUserEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="@dimen/settings_icon_size"
+                    android:layout_height="@dimen/settings_icon_size"
+                    android:layout_marginRight="@dimen/settings_icon_marginright"
+                    android:id="@+id/imageViewNameUser"
+                    android:src="@drawable/user"/>
 
-    <View
-        android:layout_marginTop="@dimen/food_detail_lateral_padding"
-        android:layout_marginLeft="@dimen/food_detail_lateral_padding"
-        android:layout_marginRight="@dimen/food_detail_lateral_padding"
-        android:layout_marginBottom="1dp"
-        style="@style/Line"/>
-    <View
-        android:layout_marginTop="1dp"
-        android:layout_marginLeft="@dimen/food_detail_lateral_padding"
-        android:layout_marginRight="@dimen/food_detail_lateral_padding"
-        android:layout_marginBottom="@dimen/food_detail_lateral_padding"
-        style="@style/Line"/>
+                <EditText
+                    android:id="@+id/editTextUserName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="@string/settings_name"
+                    android:ems="10"
+                    android:layout_below="@+id/helpF_textView"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:lines="1"
+                    android:textColor="@color/text_black"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="@dimen/settings_icon_size"
+                    android:layout_height="@dimen/settings_icon_size"
+                    android:layout_marginRight="@dimen/settings_icon_marginright"
+                    android:id="@+id/imageViewEmailUser"
+                    android:src="@drawable/message"/>
+
+                <EditText
+                    android:id="@+id/editTextUserEmail"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_email"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:layout_below="@+id/editText"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:lines="1"
+                    android:textColor="@color/text_black"/>
+            </LinearLayout>
+
+            <View
+                android:layout_marginTop="@dimen/food_detail_lateral_padding"
+                android:layout_marginLeft="@dimen/food_detail_lateral_padding"
+                android:layout_marginRight="@dimen/food_detail_lateral_padding"
+                android:layout_marginBottom="1dp"
+                style="@style/Line"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/settings_conffoods"
+                android:id="@+id/settings_textView2"
+                android:layout_below="@+id/section_label"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"/>
 
 
+            <View
+                android:layout_marginTop="1dp"
+                android:layout_marginLeft="@dimen/food_detail_lateral_padding"
+                android:layout_marginRight="@dimen/food_detail_lateral_padding"
+                android:layout_marginBottom="@dimen/food_detail_lateral_padding"
+                style="@style/Line"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="60dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/food_time_morning"
+                    android:id="@+id/textView"
+                    android:layout_below="@+id/section_label"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:ems="10"
+                    android:id="@+id/editTextMorningInit"
+                    android:textColor="@color/text_black"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:ems="10"
+                    android:id="@+id/editTextMorningEnd"
+                    android:textColor="@color/text_black"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="60dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/food_time_lunch"
+                    android:id="@+id/textViewLunch"
+                    android:gravity="center_vertical|center_horizontal"
+                    />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:ems="10"
+                    android:id="@+id/editTextLunchInit"
+                    android:textColor="@color/text_black"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:ems="10"
+                    android:id="@+id/editTextLunchEnd"
+                    android:textColor="@color/text_black"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="60dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/food_time_snack"
+                    android:id="@+id/textViewSnack"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:ems="10"
+                    android:id="@+id/editTextSnackInit"
+                    android:textColor="@color/text_black"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:ems="10"
+                    android:id="@+id/editTextSnackEnd"
+                    android:textColor="@color/text_black"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="60dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/food_time_dinner"
+                    android:id="@+id/textViewDinner"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:ems="10"
+                    android:id="@+id/editTextDinnerInit"
+                    android:textColor="@color/text_black"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:ems="10"
+                    android:id="@+id/editTextDinnerEnd"
+                    android:textColor="@color/text_black"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -14,6 +14,7 @@ public class DateUtils {
 	private static final String TAG = "DRFOOD_DateUtils";
 	private static final boolean DEBUG = true;
 	public final static String DATE_FORMAT_DAYMONTHYEAR = "dd/MM/yyyy";
+	public final static String DATE_FORMAT_HOURMINUTE = "HH:mm";
 
 	/**
 	 * Format a date in the selected format
@@ -29,6 +30,15 @@ public class DateUtils {
 		cal.set(Calendar.YEAR, year);
 		cal.set(Calendar.MONTH, monthOfYear);
 		cal.set(Calendar.DATE, dayOfMonth);
+
+		return format.format(cal.getTime());
+	}
+
+	public static String formatDate(int hour, int minute, String dateFormat) {
+		SimpleDateFormat format = new SimpleDateFormat(dateFormat);
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.HOUR_OF_DAY, hour);
+		cal.set(Calendar.MINUTE, minute);
 
 		return format.format(cal.getTime());
 	}
@@ -76,6 +86,33 @@ public class DateUtils {
 	}
 
 	/**
+	 * Check if a time is between other two hours
+	 * @param init
+	 * @param end
+	 * @param current
+	 * @return
+	 */
+	public static boolean compareTimeBetweenStrings(String init, String end, String current, String format) {
+		boolean result = false;
+		if (DEBUG) Log.i(TAG, "+++ compareTimeBetweenStrings: o1=" + init + " o2=" + end + " ===> " + current + " +++ ");
+		Date initDate = DateUtils.string2Date(init,format);
+		Date endDate = DateUtils.string2Date(end,format);
+		Date currentDate = DateUtils.string2Date(current,format);
+
+		if (initDate.after(endDate)) {
+			result = (currentDate.after(endDate) && currentDate.after(initDate))
+					|| (currentDate.before(endDate) && currentDate.before(initDate));
+			if (DEBUG) Log.i(TAG, "+++ compareTimeBetweenStrings initDate.after(endDate) => " + result);
+		} else {
+			result = currentDate.after(initDate) && currentDate.before(endDate);
+			if (DEBUG) Log.i(TAG, "+++ compareTimeBetweenStrings endDate.after(initDate) => " + result);
+		}
+
+		return result;
+	}
+
+
+	/**
 	 * Converts a Date to a String in the selected format
 	 * @param date the date
 	 * @param dateFormat the date format (use DATE_FORMAT_* constants
@@ -107,5 +144,11 @@ public class DateUtils {
 		Calendar rightNow = Calendar.getInstance();
 		int hour = rightNow.get(Calendar.HOUR_OF_DAY);
 		return hour;
+	}
+
+	public static int getCurrentMinute() {
+		Calendar rightNow = Calendar.getInstance();
+		int minute = rightNow.get(Calendar.MINUTE);
+		return minute;
 	}
 }

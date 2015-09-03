@@ -153,7 +153,7 @@ public class TrackFoodActivity extends AppCompatActivity implements AdapterView.
 			Log.i(TAG, "+++ calledFromHome : " + currentTimeMomentName + "+++");
 		} else {
 			Log.i(TAG, "+++ not calledFromHome +++");
-			currentTimeMomentName = FoodTimeList.getNameById(FoodTimeList.getCurrentTimeMoment());
+			currentTimeMomentName = FoodTimeList.getNameById(FoodTimeList.getCurrentTimeMoment(mContext));
 			Log.i(TAG, "+++ not calledFromHome : " + currentTimeMomentName + "+++");
 		}
 		int positionCurrentTimeMoment = foodTimesAdapter.getPosition(currentTimeMomentName);
@@ -346,24 +346,24 @@ public class TrackFoodActivity extends AppCompatActivity implements AdapterView.
 		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.food_selector, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//		// Inflate the menu; this adds items to the action bar if it is present.
+//		getMenuInflater().inflate(R.menu.food_selector, menu);
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		// Handle action bar item clicks here. The action bar will
+//		// automatically handle clicks on the Home/Up button, so long
+//		// as you specify a parent activity in AndroidManifest.xml.
+//		int id = item.getItemId();
+//		if (id == R.id.action_settings) {
+//			return true;
+//		}
+//		return super.onOptionsItemSelected(item);
+//	}
 
 	@Override
 	public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

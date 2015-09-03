@@ -34,7 +34,7 @@
     <string name="hint_searcher_food_selector">Buscar alimento...</string>
     <string name="home_button_name_editfood">Editar comida registrada</string>
     <string name="home_button_name_showhistory">Mostrar histórico</string>
-    <string name="home_button_name_trackfood">Registrar comida!</string>
+    <string name="home_button_name_trackfood">¡Registrar comida!</string>
     <string name="http_status_authentication_ko">Fallo en la autenticación. Combinación de usuario/contraseña incorrectos</string>
     <string name="http_status_authentication_ok">Auntenticación correcta!</string>
     <string name="http_status_connection_timeout">Ha ocurrido un error. Tiempo de conexión expirado</string>
@@ -72,5 +72,14 @@
     <string name="title_section1">Dr. Food</string>
     <string name="title_section2">Configuración</string>
     <string name="title_section3">Información</string>
-    <string name="home_first_steps">¿Eres nuevo? Comienza registrando una comida?</string>
+    <string name="home_first_steps">¿Eres nuevo? ¡Comienza registrando una comida!</string>
+    <string name="food_time_dinner">Cena</string>
+    <string name="food_time_lunch">Comida</string>
+    <string name="food_time_morning">Desayuno</string>
+    <string name="food_time_snack">Merienda</string>
+    <string name="settings_conffoods">Configurar horarios de comidas</string>
+    <string name="settings_confreminders">Configurar recordatorios</string>
+    <string name="settings_email">Email</string>
+    <string name="settings_name">Nombre</string>
+    <string name="settings_userdetailstittle">Detalles de usuario</string>
 </resources>

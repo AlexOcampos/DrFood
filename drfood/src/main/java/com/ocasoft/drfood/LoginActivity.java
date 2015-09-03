@@ -166,7 +166,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 	}
 
 	private boolean isEmailValid(String email) {
-		return email.contains("@");
+//		return email.contains("@");
+		return true;
 	}
 
 	private boolean isPasswordValid(String password) {

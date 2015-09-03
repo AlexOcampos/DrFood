@@ -1,6 +1,9 @@
 package com.ocasoft.drfood.infoobjects;
 
+import android.content.Context;
+
 import com.ocasoft.drfood.utils.DateUtils;
+import com.ocasoft.drfood.utils.SharedPreferencesUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,26 +94,41 @@ public class FoodTimeList {
 	 * Return the id of the current foodTime in function of current hour
 	 * @return the current timeMomentId (FoodTimeList.TIMEMOMENT_*)
 	 */
-	public static int getCurrentTimeMoment() {
+	public static int getCurrentTimeMoment(Context mContext) {
 		int currentHour = DateUtils.getCurrentHour();
+		int currentMinute = DateUtils.getCurrentMinute();
+		String currentTime = DateUtils.formatDate(currentHour, currentMinute, DateUtils.DATE_FORMAT_HOURMINUTE);
 
 		// Breakfast
-		if (currentHour >= 6 && currentHour < 10) {
+		String morningInit 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_MORNING_INIT);
+		String morningEnd 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_MORNING_END);
+		if (DateUtils.compareTimeBetweenStrings(morningInit,morningEnd,currentTime,DateUtils.DATE_FORMAT_HOURMINUTE)) {
 			return TIMEMOMENT_BREAKFAST;
 		}
 
 		// Lunch
-		if (currentHour >= 13 && currentHour < 16) {
+		String lunchInit 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_LUNCH_INIT);
+		String lunchEnd 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_LUNCH_END);
+		if (DateUtils.compareTimeBetweenStrings(lunchInit,lunchEnd,currentTime,DateUtils.DATE_FORMAT_HOURMINUTE)) {
 			return TIMEMOMENT_LUNCH;
 		}
 
+		// Snack
+		String snackInit 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_SNACK_INIT);
+		String snackEnd 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_SNACK_END);
+		if (DateUtils.compareTimeBetweenStrings(snackInit,snackEnd,currentTime,DateUtils.DATE_FORMAT_HOURMINUTE)) {
+			return TIMEMOMENT_SNACK;
+		}
+
 		// Dinner
-		if (currentHour >= 20 && currentHour <= 23) {
+		String dinnerInit 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_DINNER_INIT);
+		String dinnerEnd 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_DINNER_END);
+		if (DateUtils.compareTimeBetweenStrings(dinnerInit,dinnerEnd,currentTime,DateUtils.DATE_FORMAT_HOURMINUTE)) {
 			return TIMEMOMENT_DINNER;
 		}
 
-		// In other case is a snack
-		return TIMEMOMENT_SNACK;
+		// In other case is a...
+		return TIMEMOMENT_BREAKFAST;
 	}
 
 	/**

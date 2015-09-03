@@ -19,6 +19,21 @@ public class SplashActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
 
+		String timeFoodEmpties = SharedPreferencesUtils.getSharedPrefStringValue(getBaseContext(),
+				SharedPreferencesUtils.SP_TM_MORNING_INIT);
+
+		if (timeFoodEmpties == null) {
+			// Init values
+			SharedPreferencesUtils.setSharedPrefValue(getBaseContext(), SharedPreferencesUtils.SP_TM_MORNING_INIT, "5:00");
+			SharedPreferencesUtils.setSharedPrefValue(getBaseContext(), SharedPreferencesUtils.SP_TM_MORNING_END, "12:59");
+			SharedPreferencesUtils.setSharedPrefValue(getBaseContext(), SharedPreferencesUtils.SP_TM_LUNCH_INIT, "13:00");
+			SharedPreferencesUtils.setSharedPrefValue(getBaseContext(), SharedPreferencesUtils.SP_TM_LUNCH_END, "16:59");
+			SharedPreferencesUtils.setSharedPrefValue(getBaseContext(), SharedPreferencesUtils.SP_TM_SNACK_INIT, "17:00");
+			SharedPreferencesUtils.setSharedPrefValue(getBaseContext(), SharedPreferencesUtils.SP_TM_SNACK_END, "19:59");
+			SharedPreferencesUtils.setSharedPrefValue(getBaseContext(), SharedPreferencesUtils.SP_TM_DINNER_INIT, "20:00");
+			SharedPreferencesUtils.setSharedPrefValue(getBaseContext(), SharedPreferencesUtils.SP_TM_DINNER_END, "4:59");
+		}
+
 		// Delay 3000ms
 		thread.start();
 	}

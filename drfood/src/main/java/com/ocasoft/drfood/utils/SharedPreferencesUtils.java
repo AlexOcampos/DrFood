@@ -46,6 +46,15 @@ public class SharedPreferencesUtils {
 	 */
 	public static final String SP_DBNOTEMPTY = "dbEmpty";
 
+	public static final String SP_TM_MORNING_INIT = "tmMorningInit";
+	public static final String SP_TM_MORNING_END = "tmMorningEnd";
+	public static final String SP_TM_LUNCH_INIT = "tmLuchInit";
+	public static final String SP_TM_LUNCH_END = "tmLuchEnd";
+	public static final String SP_TM_SNACK_INIT = "tmSnackInit";
+	public static final String SP_TM_SNACK_END = "tmSnackEnd";
+	public static final String SP_TM_DINNER_INIT = "tmDinnerInit";
+	public static final String SP_TM_DINNER_END = "tmDinnerEnd";
+
 	private static SharedPreferences getSettings(Context mContext){
 		return mContext.getSharedPreferences(SHARED_PREFS_FILE, 0);
 	}

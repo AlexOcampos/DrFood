@@ -20,6 +20,8 @@
     <dimen name="padding_home_card">8dp</dimen>
     <dimen name="padding_home_card_text">10dp</dimen>
     <dimen name="text_home_card">18dp</dimen>
+    <dimen name="settings_icon_size">50dp</dimen>
+    <dimen name="settings_icon_marginright">5dp</dimen>
 
     <!-- ======== LOGIN ======== -->
     <dimen name="skip_login_margin">32dp</dimen>

@@ -73,5 +73,121 @@ public class ConfigurationFragment extends Fragment {
 			}
 		});
 
+		// =================== FOOD TIMES
+		String morningInit 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_MORNING_INIT);
+		String morningEnd 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_MORNING_END);
+		String lunchInit 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_LUNCH_INIT);
+		String lunchEnd 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_LUNCH_END);
+		String snackInit 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_SNACK_INIT);
+		String snackEnd 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_SNACK_END);
+		String dinnerInit 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_DINNER_INIT);
+		String dinnerEnd 	= SharedPreferencesUtils.getSharedPrefStringValue(mContext, SharedPreferencesUtils.SP_TM_DINNER_END);
+
+		EditText morningInitET 	= (EditText) rootView.findViewById(R.id.editTextMorningInit);
+		EditText morningEndET 	= (EditText) rootView.findViewById(R.id.editTextMorningEnd);
+		EditText lunchInitET 	= (EditText) rootView.findViewById(R.id.editTextLunchInit);
+		EditText lunchEndET 	= (EditText) rootView.findViewById(R.id.editTextLunchEnd);
+		EditText snackInitET 	= (EditText) rootView.findViewById(R.id.editTextSnackInit);
+		EditText snackEndET 	= (EditText) rootView.findViewById(R.id.editTextSnackEnd);
+		EditText dinnerInitET 	= (EditText) rootView.findViewById(R.id.editTextDinnerInit);
+		EditText dinnerEndET 	= (EditText) rootView.findViewById(R.id.editTextDinnerEnd);
+
+		morningInitET.setText(morningInit);
+		morningEndET.setText(morningEnd);
+		lunchInitET.setText(lunchInit);
+		lunchEndET.setText(lunchEnd);
+		snackInitET.setText(snackInit);
+		snackEndET.setText(snackEnd);
+		dinnerInitET.setText(dinnerInit);
+		dinnerEndET.setText(dinnerEnd);
+
+		morningInitET.addTextChangedListener(new TextWatcher() {
+			public void afterTextChanged(Editable s) {
+				SharedPreferencesUtils.setSharedPrefValue(mContext, SharedPreferencesUtils.SP_TM_MORNING_INIT, s.toString());
+			}
+
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+		});
+		morningEndET.addTextChangedListener(new TextWatcher() {
+			public void afterTextChanged(Editable s) {
+				SharedPreferencesUtils.setSharedPrefValue(mContext,SharedPreferencesUtils.SP_TM_MORNING_END,s.toString());
+			}
+
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+		});
+		lunchInitET.addTextChangedListener(new TextWatcher() {
+			public void afterTextChanged(Editable s) {
+				SharedPreferencesUtils.setSharedPrefValue(mContext,SharedPreferencesUtils.SP_TM_LUNCH_INIT,s.toString());
+			}
+
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+		});
+		lunchEndET.addTextChangedListener(new TextWatcher() {
+			public void afterTextChanged(Editable s) {
+				SharedPreferencesUtils.setSharedPrefValue(mContext,SharedPreferencesUtils.SP_TM_LUNCH_END,s.toString());
+			}
+
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+		});
+		snackInitET.addTextChangedListener(new TextWatcher() {
+			public void afterTextChanged(Editable s) {
+				SharedPreferencesUtils.setSharedPrefValue(mContext,SharedPreferencesUtils.SP_TM_SNACK_INIT,s.toString());
+			}
+
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+		});
+		snackEndET.addTextChangedListener(new TextWatcher() {
+			public void afterTextChanged(Editable s) {
+				SharedPreferencesUtils.setSharedPrefValue(mContext,SharedPreferencesUtils.SP_TM_SNACK_END,s.toString());
+			}
+
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+		});
+		dinnerInitET.addTextChangedListener(new TextWatcher() {
+			public void afterTextChanged(Editable s) {
+				SharedPreferencesUtils.setSharedPrefValue(mContext,SharedPreferencesUtils.SP_TM_DINNER_INIT,s.toString());
+			}
+
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+		});
+		dinnerEndET.addTextChangedListener(new TextWatcher() {
+			public void afterTextChanged(Editable s) {
+				SharedPreferencesUtils.setSharedPrefValue(mContext,SharedPreferencesUtils.SP_TM_DINNER_END,s.toString());
+			}
+
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+		});
 	}
 }

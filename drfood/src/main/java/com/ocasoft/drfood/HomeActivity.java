@@ -37,11 +37,15 @@ public class HomeActivity extends MaterialNavigationDrawer {
 		// Save the context
 		mContext = view.getContext();
 
+
 		// create sections
-		target = newSection("Home", R.drawable.ic_action_tick, new HomeFragment());
+		target = newSection(getResources().getString(R.string.title_section1),
+				R.drawable.ic_action_tick, new HomeFragment());
 		this.addSection(target);
-		this.addSection(newSection("Configurations", R.drawable.ic_action_tick, new ConfigurationFragment()));
-		this.addSection(newSection("About", R.drawable.ic_action_tick, new AboutFragment()));
+		this.addSection(newSection(getResources().getString(R.string.title_section2),
+				R.drawable.ic_action_tick, new ConfigurationFragment()));
+		this.addSection(newSection(getResources().getString(R.string.title_section3),
+				R.drawable.ic_action_tick, new AboutFragment()));
 
 		enableToolbarElevation();
 

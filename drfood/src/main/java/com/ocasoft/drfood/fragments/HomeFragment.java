@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_home,container,false);
+		View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
 		initProgressBar(rootView);
 		initTrackFoodButton(rootView);
@@ -41,6 +41,44 @@ public class HomeFragment extends Fragment {
 		initHistoryButton(rootView);
 
 		return rootView;
+	}
+
+	@Override
+	public void onResume(){
+		super.onResume();
+
+		boolean initialized = SharedPreferencesUtils.getSharedPrefBooleanValue(getContext(),
+				SharedPreferencesUtils.SP_DBNOTEMPTY);
+
+		if (!initialized) {
+			// Si la base de datos no esta inicializada ocultamos los botones de history y edit
+			getActivity().findViewById(R.id.HomeBody_LinLay_History).setVisibility(View.GONE);
+			getActivity().findViewById(R.id.HomeBody_LinLay_Edit).setVisibility(View.GONE);
+			getActivity().findViewById(R.id.first_step_item).setVisibility(View.VISIBLE);
+			getActivity().findViewById(R.id.first_step_summary).setVisibility(View.VISIBLE);
+			getActivity().findViewById(R.id.HomeHeader_LinLay).setVisibility(View.VISIBLE);
+		} else {
+			getActivity().findViewById(R.id.HomeBody_LinLay_History).setVisibility(View.VISIBLE);
+			getActivity().findViewById(R.id.HomeBody_LinLay_Edit).setVisibility(View.VISIBLE);
+			getActivity().findViewById(R.id.first_step_item).setVisibility(View.GONE);
+			getActivity().findViewById(R.id.first_step_summary).setVisibility(View.GONE);
+			getActivity().findViewById(R.id.HomeHeader_LinLay).setVisibility(View.GONE);
+		}
+
+		// Si no hay guardados datos de la ultima comida registrada por el usuario eliminamos el boton de edit
+		int currentFoodTime = SharedPreferencesUtils.getSharedPrefIntValue(getContext(),
+				SharedPreferencesUtils.SP_CURRENTFOODTIME);
+		int currentDay = SharedPreferencesUtils.getSharedPrefIntValue(getContext(),
+				SharedPreferencesUtils.SP_CURRENTDAY);
+		int currentMonth = SharedPreferencesUtils.getSharedPrefIntValue(getContext(),
+				SharedPreferencesUtils.SP_CURRENTMONTH);
+		int currentYear = SharedPreferencesUtils.getSharedPrefIntValue(getContext(),
+				SharedPreferencesUtils.SP_CURRENTYEAR);
+
+		if (currentFoodTime == -1 || currentDay == -1 || currentMonth == -1 || currentYear == -1) {
+			getActivity().findViewById(R.id.HomeBody_LinLay_Edit).setVisibility(View.GONE);
+		}
+
 	}
 
 	/**
@@ -51,6 +89,7 @@ public class HomeFragment extends Fragment {
 		//Progress bar
 		if (DEBUG) Log.i("NavDrawFrag", "PlaceholderFragment - onCreateView - Home section - ProgressBar init");
 		mProgress = (ProgressBar) rootView.findViewById(R.id.progressBarHome);
+		mProgress.setVisibility(View.GONE);
 		mProgress.setMax(3000);
 		mProgress.setProgress(75);
 		//mProgress.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN); // +2500

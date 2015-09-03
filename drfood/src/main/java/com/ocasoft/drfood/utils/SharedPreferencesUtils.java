@@ -41,6 +41,11 @@ public class SharedPreferencesUtils {
 	// FoodDatabaseHelper
 	public static final String SP_DBINITIALIZED = "dbInitialized";
 
+	/**
+	 * Boolean - true if there aren't any trackings
+	 */
+	public static final String SP_DBNOTEMPTY = "dbEmpty";
+
 	private static SharedPreferences getSettings(Context mContext){
 		return mContext.getSharedPreferences(SHARED_PREFS_FILE, 0);
 	}

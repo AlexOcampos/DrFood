@@ -253,11 +253,16 @@ public class FoodDetailActivity extends AppCompatActivity {
 	 */
 	private void setDoneButtonListener() {
 		if (DEBUG) Log.i(TAG, "+++ setDoneButtonListener() +++");
+
+
+
 		findViewById(R.id.buttonDoneFoodDetail).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Context context = v.getContext();
 
-                // Read quantity (foodQuantity)
+				SharedPreferencesUtils.setSharedPrefValue(context, SharedPreferencesUtils.SP_DBNOTEMPTY,true);
+
+				// Read quantity (foodQuantity)
                 EditText mEdit   = (EditText) findViewById(R.id.quantityDetailET);
 
 				if (editOperation) {

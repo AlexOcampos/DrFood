@@ -5,7 +5,7 @@
 
     <!-- NavigationDrawerFragment titles -->
     <string name="title_section1">Dr. Food</string>
-    <string name="title_section2">Section 2</string>
+    <string name="title_section2">Settings</string>
     <string name="title_section3">About</string>
 
     <!-- ===== FRAGMENT_HOME ===== -->
@@ -13,6 +13,8 @@
     <string name="home_button_name_trackfood">Track your food!</string>
     <string name="home_button_name_editfood">Edit tracked food</string>
     <string name="home_button_name_showhistory">Show history</string>
+
+    <string name="home_first_steps">Are you new? Start tracking a food</string>
 
     <!-- Others -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -83,11 +85,11 @@
     <string name="food_category_green">green</string>
     <string name="food_category_orange">orange</string>
     <string name="food_category_red">red</string>
-    <string name="title_activity_pre_guest">PreGuestActivity</string>
+    <string name="title_activity_pre_guest">Basic information</string>
 
     <!-- ====================== HTTP ====================== -->
-    <string name="http_sync_url"></string>
-    <string name="http_sync_timeout">2000</string>
+    <string name="http_sync_url" translatable="false"></string>
+    <string name="http_sync_timeout" translatable="false">2000</string>
     <string name="http_status_not_sync">An error ocurred. It isn\'t possible to sync</string>
     <string name="http_status_user_not_valid">An error ocurred. Invalid user</string>
     <string name="http_status_password_not_valid">An error ocurred. Invalid password</string>
@@ -95,13 +97,13 @@
     <string name="http_status_authentication_ok">Authentication successful!</string>
     <string name="http_status_authentication_ko">Authentication unsuccessful. Invalid user/password combination</string>
     <string name="http_status_registration_ok">Registration successful!</string>
-    <string name="http_status_registration_ko">Registration unsuccessful. Invalid user/password combination</string>
+    <string name="http_status_registration_ko">Registration unsuccessful. Try again later</string>
     <string name="http_status_edit_ok">User information was modified successfully</string>
     <string name="http_status_edit_ko">An error ocurred during user information edition.</string>
     <string name="http_sync_tracking_ok">Food tracking correctly synced</string>
     <string name="http_sync_tracking_ko">An error ocurred during user information edition</string>
-    <string name="title_activity_sign_up">SignUpActivity</string>
-    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="title_activity_splash">Splash</string>
 
 
 </resources>

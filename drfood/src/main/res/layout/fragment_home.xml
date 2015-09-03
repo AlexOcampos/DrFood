@@ -34,14 +34,25 @@
             android:textStyle="bold"
             android:textSize="18dp"
             android:textColor="@color/text_black"
-            android:layout_marginBottom="3dp"/>
+            android:layout_marginBottom="3dp"
+            android:visibility="gone"/>
 
+
+        <ImageView
+            android:id="@+id/first_step_item"
+            android:layout_width="30dp"
+            android:layout_height="31dp"
+            android:src="@drawable/star"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:visibility="visible"/>
 
         <LinearLayout
             android:id="@+id/progressBarLL"
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:visibility="gone">
 
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
@@ -63,6 +74,18 @@
                 android:layout_below="@id/progressBarHome"/>
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/first_step_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_black"
+            android:text="@string/home_first_steps"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginTop="0dp"/>
+
     </LinearLayout>
     <!-- END HEADER -->
 
@@ -215,25 +238,25 @@
 
 
     <!-- START Test card - text -->
-    <LinearLayout
-        android:id="@+id/HomeBody_LinLay3"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/height_home_card"
-        android:layout_below="@id/HomeBody_LinLay_History"
-        android:background="#ffffffff"
-        android:layout_marginTop="@dimen/padding_home_card"
-        android:layout_marginBottom="@dimen/padding_home_card"
-        android:clickable="true">
+    <!--<LinearLayout-->
+        <!--android:id="@+id/HomeBody_LinLay3"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="@dimen/height_home_card"-->
+        <!--android:layout_below="@id/HomeBody_LinLay_History"-->
+        <!--android:background="#ffffffff"-->
+        <!--android:layout_marginTop="@dimen/padding_home_card"-->
+        <!--android:layout_marginBottom="@dimen/padding_home_card"-->
+        <!--android:clickable="true">-->
 
-        <TextView
-            android:id="@+id/section_label3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/text_black"
-            android:text="@string/Lorem_ipsum_medium"/>
+        <!--<TextView-->
+            <!--android:id="@+id/section_label3"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/text_black"-->
+            <!--android:text="@string/Lorem_ipsum_medium"/>-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
     <!-- END Test card - text -->
 
     <!-- START TEST CARD - BUTTON 1

@@ -13,11 +13,15 @@
 
     <!-- Login progress -->
     <ImageView
-        android:layout_width="174dp"
-        android:layout_height="205dp"
+        android:layout_width="@dimen/logo_width"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/logo_margin_bottom"
         android:id="@+id/imageViewIconGuest"
         android:src="@drawable/ic_launcher"
         android:layout_gravity="center_horizontal"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
 

@@ -32,6 +32,7 @@ public class PreGuestActivity extends AppCompatActivity {
 
 				SharedPreferencesUtils.setSharedPrefValue(context,SharedPreferencesUtils.SP_USER_NAME,guestNameStr);
 				SharedPreferencesUtils.setSharedPrefValue(context,SharedPreferencesUtils.SP_USER_EMAIL,guestEmailStr);
+				SharedPreferencesUtils.setSharedPrefValue(context, SharedPreferencesUtils.SP_USER_COD,"1");
 
 				Intent intent = new Intent(context, HomeActivity.class);
 				context.startActivity(intent);

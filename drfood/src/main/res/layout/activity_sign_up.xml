@@ -11,12 +11,16 @@
                 android:background="@color/login_background"
                 tools:context="com.ocasoft.drfood.SignUpActivity">
 
-    <!-- Login progress -->
+    <!-- Signup progress -->
     <ImageView
-        android:layout_width="174dp"
-        android:layout_height="205dp"
+        android:layout_width="@dimen/logo_width"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/logo_margin_bottom"
         android:id="@+id/imageView2"
         android:src="@drawable/ic_launcher"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
@@ -44,7 +48,6 @@
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/skip_login_margin"
                 android:text="@string/action_signup_summary"
                 android:textStyle="bold"/>
 
@@ -70,9 +73,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_password"
-                android:imeActionId="@+id/login"
-                android:imeActionLabel="@string/signup_done_button"
-                android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true"/>
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/signup_prompt_password_retype"
-                android:imeActionId="@+id/login"
+                android:imeActionId="@+id/signup_signup_button"
                 android:imeActionLabel="@string/signup_done_button"
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"

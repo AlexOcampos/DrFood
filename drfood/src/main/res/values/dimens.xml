@@ -7,6 +7,9 @@
          https://developer.android.com/design/patterns/navigation-drawer.html -->
     <dimen name="navigation_drawer_width">350dp</dimen>
 
+    <dimen name="logo_width">260dp</dimen>
+    <dimen name="logo_margin_bottom">48dp</dimen>
+
     <!-- ======== HOME ======== -->
     <dimen name="home_header_padding">4dp</dimen>
     <dimen name="home_header_size_name">25sp</dimen>

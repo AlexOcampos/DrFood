@@ -101,6 +101,7 @@
     <string name="http_sync_tracking_ok">Food tracking correctly synced</string>
     <string name="http_sync_tracking_ko">An error ocurred during user information edition</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
 
 
 </resources>

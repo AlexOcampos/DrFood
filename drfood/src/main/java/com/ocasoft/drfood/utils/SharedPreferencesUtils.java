@@ -32,6 +32,10 @@ public class SharedPreferencesUtils {
 	 * String - User email
 	 */
 	public static final String SP_USER_EMAIL = "userEmail";
+	/**
+	 * String - Login
+	 */
+	public static final String SP_USER_COD = "userCod";
 
 
 	// FoodDatabaseHelper

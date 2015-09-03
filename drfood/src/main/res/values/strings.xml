@@ -52,8 +52,8 @@
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_register">Sign up</string>
+    <string name="action_sign_in">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -67,6 +67,17 @@
     <string name="guest_email_hint">Email</string>
     <string name="action_guest_summary">Please, fill the following fields:</string>
 
+    <!-- REGISTER FORM -->
+    <string name="signup_done_button">Sign up</string>
+    <string name="signup_name_hint">Name</string>
+    <string name="signup_email_hint">Email</string>
+    <string name="action_signup_summary">To register a new account fill the following fields:</string>
+    <string name="signup_prompt_password">Password</string>
+    <string name="signup_prompt_password_retype">Retype password</string>
+    <string name="signup_error_invalid_password1">This password is too short</string>
+    <string name="signup_error_invalid_password2">Passwords must be equal</string>
+    <string name="signup_error_invalid_email">Please, use other email</string>
+
     <!-- ====================== OTHERS ====================== -->
     <!-- ===== FOOD CATEGORIES ===== -->
     <string name="food_category_green">green</string>
@@ -74,6 +85,22 @@
     <string name="food_category_red">red</string>
     <string name="title_activity_pre_guest">PreGuestActivity</string>
 
+    <!-- ====================== HTTP ====================== -->
+    <string name="http_sync_url"></string>
+    <string name="http_sync_timeout">2000</string>
+    <string name="http_status_not_sync">An error ocurred. It isn\'t possible to sync</string>
+    <string name="http_status_user_not_valid">An error ocurred. Invalid user</string>
+    <string name="http_status_password_not_valid">An error ocurred. Invalid password</string>
+    <string name="http_status_connection_timeout">An error ocurred. Connection timeout</string>
+    <string name="http_status_authentication_ok">Authentication successful!</string>
+    <string name="http_status_authentication_ko">Authentication unsuccessful. Invalid user/password combination</string>
+    <string name="http_status_registration_ok">Registration successful!</string>
+    <string name="http_status_registration_ko">Registration unsuccessful. Invalid user/password combination</string>
+    <string name="http_status_edit_ok">User information was modified successfully</string>
+    <string name="http_status_edit_ko">An error ocurred during user information edition.</string>
+    <string name="http_sync_tracking_ok">Food tracking correctly synced</string>
+    <string name="http_sync_tracking_ko">An error ocurred during user information edition</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
 
 
 </resources>

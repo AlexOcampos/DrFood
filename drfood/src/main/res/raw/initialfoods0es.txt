@@ -22,10 +22,10 @@
 #
 #3; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; green food; comment1; gr; 1; Paella                    #
 #4; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; green food; comment1; gr; 1; Calamares en su tinta     #
-#5; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; green food; comment1; gr; 1; chicharro al chacolí      #
+#5; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; green food; comment1; gr; 1; chicharro al chacolï¿½      #
 #6; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; green food; comment1; gr; 1; Migas de Teruel           #
 #7; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; green food; comment1; gr; 1; Escalibada                #
-#8; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; green food; comment1; gr; 1; Cocido madrileño          #
+#8; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; green food; comment1; gr; 1; Cocido madrileï¿½o          #
 #9; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; green food; comment1; gr; 1; Tarta de Santiago         #
 #10; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; orange food; comment1; gr; 1; Hojuelas                #
 #11; new java.util.Date(); Afternoon; 100; 1; 1; 1; 1; orange food; comment1; gr; 1; Pulpo a la gallega      #
@@ -60,3 +60,54 @@
 20;21/08/2015;1;1;38;1.97;2.11;2.68;2;Caf\u00E9 expreso con una peque\u00F1a cantidad de leche caliente para reducir la amargura;taza;0;Caf\u00E9 Cortado;7
 21;21/08/2015;2;1;38;1.97;2.11;2.68;2;Caf\u00E9 expreso con una peque\u00F1a cantidad de leche caliente para reducir la amargura;taza;0;Caf\u00E9 Cortado;7
 22;21/08/2015;3;1;38;1.97;2.11;2.68;2;caf\u00E9 expreso con una peque\u00F1a cantidad de leche caliente para reducir la amargura;taza;0;Caf\u00E9 Cortado;7
+23;06/09/2015;2;1;142;3.07;26.68;0;1;Filete de pechugas de pollo (a la Parrilla, Fre\u00EDdo o Asado);filete;0;Filete de pechuga de pollo;8
+24;06/09/2015;4;1;142;3.07;26.68;0;1;Filete de pechugas de pollo (a la Parrilla, Fre\u00EDdo o Asado);filete;0;Filete de pechuga de pollo;8
+25;06/09/2015;2;1;296;22.63;21.71;0;2;Costilla de cerdo (Producto despu\u00E9s de cocido, deshuesado);filete;0;Costilla de cerdo;9
+26;06/09/2015;4;1;296;22.63;21.71;0;2;Costilla de cerdo (Producto despu\u00E9s de cocido, deshuesado);filete;0;Costilla de cerdo;9
+27;06/09/2015;2;1;224;7.5;14.0;25.2;3;Pizza hecha a base de jam\u00F3n cocido y queso;porci\u00F3n;0;Pizza de jam\u00F3n y queso;10
+28;06/09/2015;4;1;224;7.5;14.0;25.2;3;Pizza hecha a base de jam\u00F3n cocido y queso;porci\u00F3n;0;Pizza de jam\u00F3n y queso;10
+29;06/09/2015;1;1;187;2.71;4.6;36.35;3;Postre t\u00EDpico de la reposter\u00EDa mediterr\u00E1nea hecho a base de huevo, harina y aceite;porci\u00F3n;0;Bizcocho;11
+30;06/09/2015;2;1;187;2.71;4.6;36.35;3;Postre t\u00EDpico de la reposter\u00EDa mediterr\u00E1nea hecho a base de huevo, harina y aceite;porci\u00F3n;0;Bizcocho;11
+31;06/09/2015;3;1;187;2.71;4.6;36.35;3;Postre t\u00EDpico de la reposter\u00EDa mediterr\u00E1nea hecho a base de huevo, harina y aceite;porci\u00F3n;0;Bizcocho;11
+32;06/09/2015;4;1;187;2.71;4.6;36.35;3;Postre t\u00EDpico de la reposter\u00EDa mediterr\u00E1nea hecho a base de huevo, harina y aceite;porci\u00F3n;0;Bizcocho;11
+33;06/09/2015;1;1;232;8.54;12.37;26.47;2;Postre hecho a base de huevo y leche;taza;0;Natillas;12
+34;06/09/2015;2;1;232;8.54;12.37;26.47;2;Postre hecho a base de huevo y leche;taza;0;Natillas;12
+35;06/09/2015;3;1;232;8.54;12.37;26.47;2;Postre hecho a base de huevo y leche;taza;0;Natillas;12
+36;06/09/2015;4;1;232;8.54;12.37;26.47;2;Postre hecho a base de huevo y leche;taza;0;Natillas;12
+37;06/09/2015;1;1;130;7.16;1.31;15.5;3;Peque\u00F1o bollo tradicional de la regi\u00F3n de Lorena, en Francia;unidad;0;Magdalenas;13
+38;06/09/2015;2;1;130;7.16;1.31;15.5;3;Peque\u00F1o bollo tradicional de la regi\u00F3n de Lorena, en Francia;unidad;0;Magdalenas;13
+39;06/09/2015;3;1;130;7.16;1.31;15.5;3;Peque\u00F1o bollo tradicional de la regi\u00F3n de Lorena, en Francia;unidad;0;Magdalenas;13
+40;06/09/2015;4;1;130;7.16;1.31;15.5;3;Peque\u00F1o bollo tradicional de la regi\u00F3n de Lorena, en Francia;unidad;0;Magdalenas;13
+41;06/09/2015;1;1;199;11.52;2.88;20.64;3;Rosquilla frita a base de harina, az\u00FAcar, levadura, mantequilla, huevo, vainilla y lecha;unidad;0;Donut;14
+42;06/09/2015;2;1;199;11.52;2.88;20.64;3;Rosquilla frita a base de harina, az\u00FAcar, levadura, mantequilla, huevo, vainilla y lecha;unidad;0;Donut;14
+43;06/09/2015;3;1;199;11.52;2.88;20.64;3;Rosquilla frita a base de harina, az\u00FAcar, levadura, mantequilla, huevo, vainilla y lecha;unidad;0;Donut;14
+44;06/09/2015;4;1;199;11.52;2.88;20.64;3;Rosquilla frita a base de harina, az\u00FAcar, levadura, mantequilla, huevo, vainilla y lecha;unidad;0;Donut;14
+45;06/09/2015;1;1;130;1.5;5.5;23.5;3;Postre elaborado ca base de yemas de huevo, az\u00FAcar y leche que se cuece y cuaja al ba\u00F1o Mar\u00EDa;unidad;0;Flan de huevo;15
+46;06/09/2015;2;1;130;1.5;5.5;23.5;3;Postre elaborado ca base de yemas de huevo, az\u00FAcar y leche que se cuece y cuaja al ba\u00F1o Mar\u00EDa;unidad;0;Flan de huevo;15
+47;06/09/2015;3;1;130;1.5;5.5;23.5;3;Postre elaborado ca base de yemas de huevo, az\u00FAcar y leche que se cuece y cuaja al ba\u00F1o Mar\u00EDa;unidad;0;Flan de huevo;15
+48;06/09/2015;4;1;130;1.5;5.5;23.5;3;Postre elaborado ca base de yemas de huevo, az\u00FAcar y leche que se cuece y cuaja al ba\u00F1o Mar\u00EDa;unidad;0;Flan de huevo;15
+49;06/09/2015;2;10;42;4.44;0.3;1.11;2;Fruto del olivo;unidad;0;Aceitunas verdes;16
+50;06/09/2015;3;10;42;4.44;0.3;1.11;2;Fruto del olivo;unidad;0;Aceitunas verdes;16
+51;06/09/2015;4;10;42;4.44;0.3;1.11;2;Fruto del olivo;unidad;0;Aceitunas verdes;16
+52;06/09/2015;1;1;29;0.16;0.71;6.94;1;Fruta t\u00EDpica espa\u00F1ola que se toma en rodajas;rodaja;0;Mel\u00F3n;17
+53;06/09/2015;2;1;29;0.16;0.71;6.94;1;Fruta t\u00EDpica espa\u00F1ola que se toma en rodajas;rodaja;0;Mel\u00F3n;17
+54;06/09/2015;3;1;29;0.16;0.71;6.94;1;Fruta t\u00EDpica espa\u00F1ola que se toma en rodajas;rodaja;0;Mel\u00F3n;17
+55;06/09/2015;4;1;29;0.16;0.71;6.94;1;Fruta t\u00EDpica espa\u00F1ola que se toma en rodajas;rodaja;0;Mel\u00F3n;17
+56;06/09/2015;1;1;86;0.43;1.74;21.59;1;Fruta parecida al mel\u00F3n cuyo interior suele ser de colo rojo con pepitas negras;rodaja;0;Sand\u00EDa;18
+57;06/09/2015;2;1;86;0.43;1.74;21.59;1;Fruta parecida al mel\u00F3n cuyo interior suele ser de colo rojo con pepitas negras;rodaja;0;Sand\u00EDa;18
+58;06/09/2015;3;1;86;0.43;1.74;21.59;1;Fruta parecida al mel\u00F3n cuyo interior suele ser de colo rojo con pepitas negras;rodaja;0;Sand\u00EDa;18
+59;06/09/2015;4;1;86;0.43;1.74;21.59;1;Fruta parecida al mel\u00F3n cuyo interior suele ser de colo rojo con pepitas negras;rodaja;0;Sand\u00EDa;18
+60;06/09/2015;2;1;135;11.6;3.64;5.52;1;Ensalada de lechuga, tomate, zanahoria, at\u00FAn y aceitunas;bol;0;Ensalada mixta;19
+61;06/09/2015;4;1;135;11.6;3.64;5.52;1;Ensalada de lechuga, tomate, zanahoria, at\u00FAn y aceitunas;bol;0;Ensalada mixta;19
+62;06/09/2015;2;1;179;9.21;16.32;7.01;1;Es una de las cerca de 60 especies de una misma familia de peces migratorios;porci\u00F3n;0;Bacalao;20
+63;06/09/2015;4;1;179;9.21;16.32;7.01;1;Es una de las cerca de 60 especies de una misma familia de peces migratorios;porci\u00F3n;0;Bacalao;20
+64;06/09/2015;2;1;96;5.5;8.6;3.1;2;Los calamares en su tinta se trata de un plato elaborado con trozos peque\u00F1os de calamares cocinados en su propia tinta;porci\u00F3n;0;Calamares en su tinta;21
+65;06/09/2015;4;1;96;5.5;8.6;3.1;2;Los calamares en su tinta se trata de un plato elaborado con trozos peque\u00F1os de calamares cocinados en su propia tinta;porci\u00F3n;0;Calamares en su tinta;21
+66;06/09/2015;2;1;146;5.93;21.62;0;1;Peces marinos y de agua dulce de la familia de los salm\u00F3nidos distribuidos por los oc\u00E9anos y mares de casi todo el mundo;porci\u00F3n;0;Salm\u00F3n;22
+67;06/09/2015;4;1;146;5.93;21.62;0;1;Peces marinos y de agua dulce de la familia de los salm\u00F3nidos distribuidos por los oc\u00E9anos y mares de casi todo el mundo;porci\u00F3n;0;Salm\u00F3n;22
+68;06/09/2015;2;1;28;0.36;3.87;4.36;2;Especie de hongo basidiomiceto de la familia Agaricales nativo de Europa y Am\u00E9rica del norte, cultivado extensamente para su uso en gastronom\u00EDa;taz\u00F3n;0;Champi\u00F1ones fritos;23
+69;06/09/2015;4;1;28;0.36;3.87;4.36;2;Especie de hongo basidiomiceto de la familia Agaricales nativo de Europa y Am\u00E9rica del norte, cultivado extensamente para su uso en gastronom\u00EDa;taz\u00F3n;0;Champi\u00F1ones fritos;23
+70;06/09/2015;2;1;293;3.99;9.87;53.62;2;Tipo de pasta con forma de cuerdas largas y delgadas, de secci\u00F3n circular;porci\u00F3n;0;Espaguetis con tomate;24
+71;06/09/2015;4;1;293;3.99;9.87;53.62;2;Tipo de pasta con forma de cuerdas largas y delgadas, de secci\u00F3n circular;porci\u00F3n;0;Espaguetis con tomate;24
+72;06/09/2015;2;1;213;10.4;6.2;24.6;3;Anillas de calamar frito rebozadas;porci\u00F3n;0;Calamares a la romana;25
+73;06/09/2015;4;1;213;10.4;6.2;24.6;3;Anillas de calamar frito rebozadas;porci\u00F3n;0;Calamares a la romana;25

@@ -127,6 +127,7 @@ public class TrackFoodListAdapter extends BaseAdapter implements ListAdapter {
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_CARBOHYDRATES, list.get(position).getCarbohydrates());
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_PROTEINS, list.get(position).getProteins());
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_CODE, list.get(position).getCode());
+					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_COMMENTS, list.get(position).getComments());
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_TIMEMOMENT, list.get(position).getTimeMoment());
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_UNITY_MEASURE, list.get(position).getUnity_measure());
 					intent.putExtra(FoodTable.COLUMN_NAME_FOOD_CATEGORY, list.get(position).getCategory());
